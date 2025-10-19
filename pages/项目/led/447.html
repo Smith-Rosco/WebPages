@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<title>【接口时序】6、IIC总线的原理与Verilog实现 - jgliu - 博客园</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<a name="top"></a><a href="https://developer.huawei.com/consumer/cn/activity/harmonyos-incentive/2025/?ha_source=bkyyg&amp;ha_sourceId=89000238" target="_blank" rel="nofollow"><div><span></span></div></a><div><a href="https://qoder.com/" rel="nofollow"><span></span></a></div><div><nav><ul><li><a href="https://www.cnblogs.com/" title="开发者的网上家园" role="banner"></a></li><li><a href="https://cnblogs.vip/">会员</a></li><li><a href="https://www.cnblogs.com/cmt/p/18500368">众包</a></li><li><a href="https://news.cnblogs.com/">新闻</a></li><li><a href="https://q.cnblogs.com/">博问</a></li><li><a href="https://ing.cnblogs.com/">闪存</a></li><li><a href="https://www.cnblogs.com/cmt/p/19081960">赞助商</a></li><li><a href="https://harmonyos.cnblogs.com/">HarmonyOS</a></li><li><a href="https://chat2db-ai.com/" target="_blank">Chat2DB</a></li></ul><ul><li><form action="https://zzk.cnblogs.com/s" method="get" role="search"><input name="w" placeholder="代码改变世界" type="search" tabindex="3" autocomplete="off"><button></button><ul><li tabindex="0"><div><div></div></div><span>所有博客</span></li><li tabindex="1"><div><div></div></div><span>当前博客</span></li></ul></form></li><li><a href="https://i.cnblogs.com/EditPosts.aspx?opt=1" alt="写随笔" title="写随笔"></a><a href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx" alt="我的博客" title="我的博客"></a><a href="https://msg.cnblogs.com/" alt="短消息" title="短消息"><span></span></a><a data-current-page="blog" href="javascript:void(0)" alt="简洁模式" title="简洁模式启用，您在访问他人博客时会使用简洁款皮肤展示"></a><div><a href="https://home.cnblogs.com/"></a><div><a href="https://passport.cnblogs.com/GetBlogApplyStatus.aspx">我的博客</a><a href="https://home.cnblogs.com/">我的园子</a><a href="https://account.cnblogs.com/settings/account">账号设置</a><a href="https://vip.cnblogs.com/my">会员中心</a><a href="javascript:void(0)" title="简洁模式会使用简洁款皮肤显示所有博客">
+    简洁模式 <span>...</span></a><a href="javascript:void(0)">退出登录</a></div></div><a href="https://account.cnblogs.com/signup">注册</a><a href="javascript:void(0);">登录</a></li></ul></nav></div><div><div><div><a href="https://www.cnblogs.com/liujinggang/"></a><h1><a href="https://www.cnblogs.com/liujinggang">jgliu</a></h1><h2></h2></div><div><ul><li><a href="https://www.cnblogs.com/">
+博客园</a></li><li><a href="https://www.cnblogs.com/liujinggang/">
+首页</a></li><li><a href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a></li><li><a href="https://msg.cnblogs.com/send/jgliu">
+联系</a></li><li><a href="javascript:void(0)" data-rss="https://www.cnblogs.com/liujinggang/rss/">
+订阅</a><!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>--></li><li><a href="https://i.cnblogs.com/">
+管理</a></li></ul><div><span>随笔 - 19&nbsp; </span><span>文章 - 0&nbsp; </span><span>评论 - 159&nbsp; </span><span>阅读 - 
+<span title="总阅读数: 519209">
+51万</span></span></div></div></div><div><div><div><div><div><div><h1><a href="https://www.cnblogs.com/liujinggang/p/9656358.html" title="发布于 2018-09-16 15:55"><span role="heading" aria-level="2">【接口时序】6、IIC总线的原理与Verilog实现</span></a></h1><div></div><div><div><p><span>一、 软件平台与硬件平台</span></p><p>　　软件平台：</p><p>　　　　1、操作系统：Windows-8.1</p><p>　　　　2、开发套件：ISE14.7</p><p>　　　　3、仿真工具：ModelSim-10.4-SE 、ChipScope</p><p>　　硬件平台：</p><p>　　　　1、 FPGA型号：Xilinx公司的XC6SLX45-2CSG324</p><p>　　　　2、 EEPROM型号：Microchip公司的AT24LC04B</p><p><span>二、 原理介绍</span></p><p>　　IIC(Inter-Integrated Circuit)总线是一种由PHILIPS公司开发的两线式串行总线，用于连接微控制器及其外围设备。I2C总线产生于在80年代，最初为音频和视频设备开发，如今主要在服务器管理中使用，其中包括单个组件状态的通信。例如管理员可对各个组件进行查询，以管理系统的配置或掌握组件的功能状态，如电源和系统风扇。可随时监控内存、硬盘、网络、系统温度等多个参数，增加了系统的安全性，方便了管理。IIC数据传输速率有标准模式（100 kbps）、快速模式（400 kbps）和高速模式（3.4 Mbps），另外一些变种实现了低速模式（10 kbps）和快速+模式（1 Mbps）。</p><p>　　下图是一个嵌入式系统中处理器仅通过2根线的IIC总线控制多个IIC外设的典型应用图</p><p></p><p>　　图中处理器是IIC主机，它仅仅通过两根信号就可以控制IO扩展器，各种不同的传感器，EEPROM，AD/DAs等设备，这也是IIC总线协议相较于其他协议最有优势的地方。</p><p>　　IIC总线的特点：</p><p>　　　　1、 简单性和有效性。由于接口直接在组件之上，因此I2C总线占用的空间非常小，减少了电路板的空间和芯片管脚的数量，降低了互联成本。总线的长度可高达25英尺，并且能够以10Kbps的最大传输速率支持40个组件。</p><p>　　　　2、 支持多主控(multimastering)， 其中任何能够进行发送和接收的设备都可以成为主总线。一个主控能够控制信号的传输和时钟频率。当然，在任何时间点上只能有一个主控占用IIC总线。</p><p>　　IIC总线协议详解：</p><p>　　　　IIC总线接口是一个标准的双向传输接口，一次数据传输需要主机和从机按照IIC协议的标准进行。I2C总线是由数据线SDA和时钟SCL构成的串行总线，可发送和接收数据，并且在硬件上都需要接一个上拉电阻到VCC。各种被控制电路均并联在这条总线上，但就像电话机一样只有拨通各自的号码才能工作，所以每个电路和模块都有唯一的地址，这样，各控制电路虽然挂在同一条总线上，却彼此独立，互不相关。</p><p>　　IIC主机往从机里面写入数据的步骤如下：</p><p>　　　　1、 主机发送一个起始信号和从机的设备地址给从机</p><p>　　　　2、 主机发送数据给从机</p><p>　　　　3、 主机发送一个停止信号结束发送过程</p><p>　　IIC主机从从机里面读出数据的步骤如下：</p><p>　　　　1、 主机发送一个起始信号和从机的设备地址给从机</p><p>　　　　2、 主机发送一个要读取的地址给从机</p><p>　　　　3、 主机从从机接收数据</p><p>　　　　4、 主机发送一个停止信号给从机结束整个接收过程</p><p>　　总的来说，IIC总线在通信的过程中一共有一下几种状态：</p><p>　　1、空闲状态</p><p>　　IIC 总线的 SDA 和 SCL 两条信号线同时处于高电平时，规定为总线的空闲状态。此时各个器件的输出级场效应管均处在截止状态，即释放总线，由两条信号线各自的上拉电阻把电平拉高。</p><p>　　2、起始状态和结束状态</p><p>　　在时钟线 SCL 保持高电平期间，数据线 SDA 上的电平被拉低(即负跳变)，定义为 I2C 总线总线的起始信号，它标志着一次数据传输的开始。起始信号是由主控器主动建立的，在建立该信号之前 I2C 总线必须处于空闲状态。</p><p>　　在时钟线 SCL 保持高电平期间，数据线 SDA 被释放，使得 SDA 返回高电平(即正跳变)，称为 I2C 总线的停止信号，它标志着一次数据传输的终止。停止信号也是由主控器主动建立的，建立该信号之后，I2C 总线将返回空闲状态。</p><p>　　起始信号和结束信号如下图所示</p><p></p><p>　　3、有效的数据位传输</p><p>　　在 IIC 总线上传送的每一位数据都有一个时钟脉冲相对应(或同步控制)，即在 SCL 串行时钟的配合下，数据在 SDA 上从高位向低位依次串行传送每一位的数据。进行数据传送时，在 SCL 呈现高电平期间，SDA 上的电平必须保持稳定，低电平为数据 0，高电平为数据 1。只有在 SCL 为低电平期间，才允许 SDA 上的电平改变状态。下图是0xaa在IIC总线上有效传输(有效传输是指第9个时钟的高电平期间，从机给主机反馈了一个有效的应答位0)的图示</p><p></p><p>　　4、应答信号与非应答信号</p><p>　　　　I2C 总线上的所有数据都是以 8 位字节传送的，发送器(主机)每发送一个字节，就在第9个时钟脉冲期间释放数据线，由接收器(从机)反馈一个应答信号。应答信号为低电平时，规定为有效应答位(ACK简称应答位)，表示接收器已经成功地接收了该字节；应答信号为高电平时，规定为非应答位(NACK)，一般表示接收器接收该字节没有成功。对于反馈有效应答位 ACK 的要求是，接收器在第 9 个时钟脉冲之前的低电平期间将 SDA 线拉低，并且确保在该时钟的高电平期间为稳定的低电平。</p><p>　　　　对非应答位(NACK)还要特别说明的是，还有以下四种情况IIC通信过程中会产生非应答位：</p><p>　　　　　　1、接收器(从机)正在处理某些实时的操作无法与主机实现IIC通信的时候，接收器(从机)会给主机反馈一个非应答位(NACK)</p><p>　　　　　　2、主机发送数据的过程中，从机无法解析发送的数据，接收器(从机)也会给主机反馈一个非应答位(NACK)</p><p>　　　　　　3、主机发送数据的过程中，从机无法再继续接收数据，接收器(从机)也会给主机反馈一个非应答位(NACK)</p><p>　　　　　　4、主机从从机中读取数据的过程中，主机不想再接收数据，主机会给从机反馈一个非应答位(NACK)，<span>注意，这种情况是主机给从机反馈一个非应答位(NACK)</span></p><p>　　关于有效应答位的图示在上一传输0xaa的图中可以清楚的看到，关于非应答位的图示见下图</p><p></p><p>　　了解清楚IIC总线在通信的过程中的几种状态以后接下来就具体看看IIC总线的读写过程吧。</p><p>　　1、主机通过IIC总线往从机里面写数据</p><p>　　　　主机通过IIC总线往从机中写数据的时候，主机首先会发送一个起始信号，接着把IIC从机的7位设备地址后面添一个0(设备地址后面的0表示主机向从机写数据，1表示主机从从机中读数据)组成一个8位的数据，把这个8位的数据发给从机，发完这8位的数据以后主机马上释放SDA信号线等待从机的应答，如果从机正确收到这个数据，从机就会发送一个有效应答位0给主机告诉主机自己已经收到了数据，主机收到从机的有效应答位以后 ，接下来主机会发送想要写入的寄存器地址，寄存器发送完毕以后主机同样会释放SDA信号线等待从机的应答，从机如果正确收到了主机发过来的寄存器地址，从机会再次发送一个有效应答位给主机，主机收到从机的有效应答位0以后，接下来主机就会给从机发送想要写入从机的数据，从机正确收到这个数据以后仍然像之前两次一样会给主机发送一个有效应答位，主机收到这个有效应答位以后给从机发送一个停止信号，整个传输过程就结束了。下图是整个传输过程的示意图：</p><p></p><p><span>　　特别注意：上图中灰色的地方表示主机正在控制SDA信号线，白色的地方表示从机正在控制SDA信号线。</span></p><p>　　2、主机通过IIC总线从从机里面读数据</p><p>　　　　主机通过IIC总线从从机中读数据的过程与写数据的过程有相似之处，但是读数据的过程还多了一些额外的步骤。主机从从机读数据时主机首先会发送一个起始信号，接着把IIC从机的7位设备地址后面添一个0(设备地址后面的0表示主机向从机写数据，1表示主机从从机中读数据)，把这个8位的数据发给从机，发完这8位的数据以后主机马上释放SDA信号线等待从机的应答，如果从机正确收到这个数据，从机就会发送一个有效应答位0给主机告诉主机自己已经收到了数据，主机收到从机的有效应答位以后 ，接下来主机会发送想要读的寄存器地址，寄存器发送完毕以后主机同样会释放SDA信号线等待从机的应答，从机如果正确收到了主机发过来的寄存器地址，从机会再次发送一个有效应答位给主机，主机收到从机的有效应答位0以后，主机会给从机再次发送一次起始信号，接着把IIC从机的7位设备地址后面添一个1(设备地址后面的0表示主机向从机写数据，1表示主机从从机中读数据)，注意，第一次是在设备地址后面添0，这一次是在设备地址后面添1，把这个8位的数据发给从机，发完这8位的数据以后主机马上释放SDA信号线等待从机的应答，如果从机正确收到这个数据，从机就会发送一个有效应答位0给主机告诉主机自己已经收到了数据，接着从机继续占用SDA信号线给主机发送寄存器中的数据，发送完毕以后，主机再次占用SDA信号线发送一个非应答信号1给从机，主机发送一个停止信号给从机结束整个读数据的过程。下图是整个读数据过程的示意图</p><p></p><p><span>　　特别注意：上图中灰色的地方表示主机正在控制<span lang="EN-US">SDA信号线，白色的地方表示从机正在控制<span lang="EN-US">SDA信号线。</span></span></span></p><p><span>三、 目标任务</span></p><p>　　1、编写IIC总线主机给从机发送数据的代码，实现FPGA(主机)往EEPROM(从机)的0x23这个地址写入0x45这个数据</p><p>　　2、编写IIC总线主机从从机接收数据的代码，实现FPGA(主机)从EEPROM(从机)的0x23这个地址读出0x45这个数据，并用0x45这个数据的低四位驱动4个LED</p><p><span>四、 设计思路与Verilog代码编写</span></p><p><span>4.1、 IIC发送模块的接口定义与整体设计</span></p><p>　　Verilog编写的IIC发送模块除了进行IIC通信的两根信号线(SCL和SDA)以外还要包括一些时钟、复位、使能、并行的输入输出以及完成标志位。其框图如下所示</p><p></p><p>　　其中：</p><p>　　I_clk是系统时钟；</p><p>　　I_rst_n是系统复位；</p><p>　　I_iic_send_en发送使能信号，当I_iic_send_en为1时IIC主机(FPGA)才能给IIC从机发送数据；</p><p>　　I_dev_addr[6:0]是IIC从机的设备地址；</p><p>　　I_word_addr[7:0]是字地址，也就是我们想要操作的IIC设备的内部存储地址；</p><p>　　I_write_data[7:0]是主机(FPGA)要往IIC字地址中写入的数据；</p><p>　　O_done_flag是主机(FPGA)发送一个字节完成标志位，发送完成后会产生一个高脉冲；</p><p>　　O_scl是IIC总线的串行时钟线；</p><p>　　IO_sda是IIC总线的串行数据线；</p><p>　　要想实现iic_send模块的功能，还是先得抽象出发送一个字节数据时序的状态机，这里把24LC04B发送过程的时序贴一遍</p><p></p><p>　　注意，上图中的控制字节(CONTROL BYTE)实际上就是代码里面定义的7-bit设备物理地址与最后1-bit的读写控制位拼接组成的。</p><p>　　通过观察上面的时序图可以看出，发送一个字节的数据之前必须要先发送起始位，然后发送控制字节，接着等待应答，然后在发送字地址，接着在等待应答。数据发送完毕以后，在等待最后一个应答，应答成功后发送停止信号结束整个过程。所以，根据这个流程，可以归纳出如下几个状态：</p><p>　　状态0：空闲状态，用来初始化各个寄存器的值</p><p>　　状态1：加载IIC设备的物理地址</p><p>　　状态2：加载IIC设备的字地址</p><p>　　状态3：加载要发送的数据</p><p>　　状态4：发送起始信号</p><p>　　状态5：发送一个字节，从高位开始发送</p><p>　　状态6：接收应答状态的应答位</p><p>　　状态7：校验应答位</p><p>　　状态8：发送停止信号</p><p>　　状态9：IIC写操作结束</p><p>　　需要注意的是上面的各个状态并不是按照顺序执行的，有些状态要复用多次，比如状态5发送字节的状态就需要复用三次用来发送三个8-bit的数据；同样，状态6和状态7也要复用多次。</p><p>　　抽象出状态机以后，写代码之前先分析一下代码中要注意的一些关键点：</p><p>　　1、由于IIC时序要求数据线SDA在串行时钟线的高电平保持不变，在串行时钟线的低电平才能变化，所以代码里面必须在串行时钟线低电平的正中间产生一个标志位，写代码的时候在这个标志位处改变SDA的值，这样就可以保证SDA在SCL的高电平期间保持稳定了。同理，由于IIC从机(24LC04)在接收到主机(FPGA)发送的有效数据以后会在SCL高电平期间产生一个有效应答信号0，所以为了保证采到的应答信号准确，必须在SCL高电平期间的正中间判断应答信号是否满足条件(0为有效应答，1为无效应答)，因此代码里面还必须在串行时钟线高电平的正中间产生一个标志位，在这个标志下接收应答位并进行校验。</p><p>　　这部分的代码通过一个计数器就很容易实现，代码如下：</p><div><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div><pre><span>parameter</span>   C_DIV_SELECT        =   <span>10</span><span>'</span><span>d500 ; <span>// 分频系数选择</span></span><span>parameter</span>   C_DIV_SELECT0       =   (C_DIV_SELECT &gt;&gt; <span>2</span>)  -  <span>1</span>           , <span>//</span><span> 用来产生IIC总线SCL低电平最中间的标志位</span>
+            C_DIV_SELECT1       =   (C_DIV_SELECT &gt;&gt; <span>1</span>)  -  <span>1</span><span>           ,
+            C_DIV_SELECT2       </span>=   (C_DIV_SELECT0 + C_DIV_SELECT1) + <span>1</span> , <span>//</span><span> 用来产生IIC总线SCL高电平最中间的标志位</span>
+            C_DIV_SELECT3       =   (C_DIV_SELECT &gt;&gt; <span>1</span>)  +  <span>1</span>           ; <span>//</span><span> 用来产生IIC总线SCL下降沿标志位<br></span><span>always</span> @(<span>posedge</span> I_clk <span>or</span><span>negedge</span><span> I_rst_n)
+</span><span>begin</span><span>if</span>(!<span>I_rst_n)
+        R_scl_cnt   </span>&lt;=  <span>10</span><span>'</span><span>d0 ; </span><span>else</span><span>if</span><span>(R_scl_en)   
+        </span><span>begin</span><span>if</span>(R_scl_cnt == C_DIV_SELECT - <span>1</span><span>'</span><span>b1)</span>
+                R_scl_cnt &lt;= <span>10</span><span>'</span><span>d0 ;</span><span>else</span><span>
+                R_scl_cnt </span>&lt;= R_scl_cnt + <span>1</span><span>'</span><span>b1 ;     </span><span>end</span><span>else</span><span>
+        R_scl_cnt   </span>&lt;= <span>10</span><span>'</span><span>d0 ;</span><span>end</span><span>assign</span> O_scl          = (R_scl_cnt &lt;= C_DIV_SELECT1) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生串行时钟信号O_scl</span><span>assign</span> W_scl_low_mid  = (R_scl_cnt == C_DIV_SELECT2) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl低电平正中间标志位</span><span>assign</span> W_scl_high_mid = (R_scl_cnt == C_DIV_SELECT0) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl高电平正中间标志位</span></pre><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div></div><p>　　2、有了SCL信号低电平正中间标志位和高电平正中间标志位以后最好还产生一个下降沿的标志位。原因是在发送第一个8-bit数据以后，处理这个8-bit数据应答位的位置在SCL信号高电平的正中间，由于要复用发送8-bit数据的那个状态，所以必须在第二次进入发送8-bit数据的状态时必须提前把数据再次加载好，因此可以在这个下降沿的标志来加载第二次要发送的数据，然后在SCL下降沿的正中间把8-bit数据发出去。这里必须结合代码来理解，这里可以暂时有个印象。</p><p>　　3、IIC总线的SDA数据线是一个双向IO口，关于双向IO在Verilog代码中如何进行处理，我在《QSPI Flash的原理与QSPI时序的实现》这篇博客已经做了说明，这里不再赘述，直接给出代码如下：</p><div><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div><pre><span>module</span><span> Test_inout
+(
+</span><span>input</span><span>   I_clk,
+</span><span>input</span><span>   I_rst_n,
+    .
+    .
+    .
+</span><span>inout</span><span>   IO_data,
+    .
+    .
+    . 
+)
+
+</span><span>reg</span><span>     R_data_out  ;
+</span><span>wire</span><span>    I_data_in   ;
+</span><span>assign</span>  IO_data = Control ? R_data_out : <span>1</span><span>'</span><span>bz ;</span><span>assign</span>  I_data_in   =<span>   IO_data ;
+
+</span><span>always</span> @(<span>posedge</span> I_clk <span>or</span><span>negedge</span><span> I_rst_n)
+</span><span>begin</span><span>
+    .
+    .
+    .
+    ;
+</span><span>end</span><span>endmodule</span></pre><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div></div><p>　　4、发送8-bit数据的整个过程如下：加载8-bit数据-&gt;<span>发送8-bit数据-&gt;接收应答位-&gt;校验应答位</span>-&gt;加载第二个8-bit数据……....。所以为了复用中间标红的这几个状态，必须在加载8-bit数据这个状态提前设置好校验应答位状态执行完毕以后的后一个状态的位置，这在代码里面通过R_jump_state这个变量来完成。这一点也必须对照着代码来进行理解。</p><p>　　思路理清楚以后就可以直接编写Verilog代码了，iic_send模块的代码如下：</p><div><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div><pre><span>module</span><span> iic_send
+(
+    </span><span>input</span>                I_clk           , <span>//</span><span> 系统50MHz时钟</span><span>input</span>                I_rst_n         , <span>//</span><span> 系统全局复位</span><span>input</span>                 I_iic_send_en   , <span>//</span><span> IIC发送使能位</span><span>input</span>        [<span>6</span>:<span>0</span>]   I_dev_addr      , <span>//</span><span> IIC设备的物理地址</span><span>input</span>        [<span>7</span>:<span>0</span>]   I_word_addr     , <span>//</span><span> IIC设备的字地址，即我们想操作的IIC的内部地址</span><span>input</span>        [<span>7</span>:<span>0</span>]   I_write_data    , <span>//</span><span> 往IIC设备的字地址写入的数据</span><span>output</span><span>reg</span>          O_done_flag     , <span>//</span><span> 读或写IIC设备结束标志位
+    
+    </span><span>//</span><span> 标准的IIC设备总线</span><span>output</span>               O_scl           , <span>//</span><span> IIC总线的串行时钟线</span><span>inout</span>                IO_sda            <span>//</span><span> IIC总线的双向数据线</span><span>);          
+
+</span><span>parameter</span>   C_DIV_SELECT        =   <span>10</span><span>'</span><span>d500 ; <span>// 分频系数选择</span></span><span>parameter</span>   C_DIV_SELECT0       =   (C_DIV_SELECT &gt;&gt; <span>2</span>)  -  <span>1</span>           , <span>//</span><span> 用来产生IIC总线SCL低电平最中间的标志位</span>
+            C_DIV_SELECT1       =   (C_DIV_SELECT &gt;&gt; <span>1</span>)  -  <span>1</span><span>           ,
+            C_DIV_SELECT2       </span>=   (C_DIV_SELECT0 + C_DIV_SELECT1) + <span>1</span> , <span>//</span><span> 用来产生IIC总线SCL高电平最中间的标志位</span>
+            C_DIV_SELECT3       =   (C_DIV_SELECT &gt;&gt; <span>1</span>)  +  <span>1</span>           ; <span>//</span><span> 用来产生IIC总线SCL下降沿标志位</span><span>reg</span>     [<span>9</span>:<span>0</span>]   R_scl_cnt       ; <span>//</span><span> 用来产生IIC总线SCL时钟线的计数器   </span><span>reg</span>             R_scl_en        ; <span>//</span><span> IIC总线SCL时钟线使能信号</span><span>reg</span>     [<span>3</span>:<span>0</span><span>]   R_state         ; 
+</span><span>reg</span>             R_sda_mode      ; <span>//</span><span> 设置SDA模式，1位输出，0为输入</span><span>reg</span>             R_sda_reg       ; <span>//</span><span> SDA寄存器</span><span>reg</span>     [<span>7</span>:<span>0</span>]   R_load_data     ; <span>//</span><span> 发送/接收过程中加载的数据，比如设备物理地址，字地址和数据等</span><span>reg</span>     [<span>3</span>:<span>0</span>]   R_bit_cnt       ; <span>//</span><span> 发送字节状态中bit个数计数</span><span>reg</span>             R_ack_flag      ; <span>//</span><span> 应答标志</span><span>reg</span>     [<span>3</span>:<span>0</span>]   R_jump_state    ; <span>//</span><span> 跳转状态，传输一个字节成功并应答以后通过这个变量跳转到导入下一个数据的状态</span><span>wire</span>            W_scl_low_mid   ; <span>//</span><span> SCL的低电平中间标志位</span><span>wire</span>            W_scl_high_mid  ; <span>//</span><span> SCL的高电平中间标志位</span><span>wire</span>            W_scl_neg        ; <span>//</span><span> SCL的下降沿标志位</span><span>assign</span> IO_sda  =  (R_sda_mode == <span>1</span><span>'</span><span>b1) ? R_sda_reg : 1</span><span>'</span><span>bz ;
+
+</span><span>always</span> @(<span>posedge</span> I_clk <span>or</span><span>negedge</span><span> I_rst_n)
+</span><span>begin</span><span>if</span>(!<span>I_rst_n)
+        R_scl_cnt   </span>&lt;=  <span>10</span><span>'</span><span>d0 ; </span><span>else</span><span>if</span><span>(R_scl_en)   
+        </span><span>begin</span><span>if</span>(R_scl_cnt == C_DIV_SELECT - <span>1</span><span>'</span><span>b1)</span>
+                R_scl_cnt &lt;= <span>10</span><span>'</span><span>d0 ;</span><span>else</span><span>
+                R_scl_cnt </span>&lt;= R_scl_cnt + <span>1</span><span>'</span><span>b1 ;     </span><span>end</span><span>else</span><span>
+        R_scl_cnt     </span>&lt;= <span>10</span><span>'</span><span>d0 ;</span><span>end</span><span>assign</span> O_scl           = (R_scl_cnt &lt;= C_DIV_SELECT1) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生串行时钟信号O_scl</span><span>assign</span> W_scl_low_mid  = (R_scl_cnt == C_DIV_SELECT2) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl低电平正中间标志位</span><span>assign</span> W_scl_high_mid = (R_scl_cnt == C_DIV_SELECT0) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl高电平正中间标志位</span><span>assign</span> W_scl_neg       = (R_scl_cnt == C_DIV_SELECT3) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl下降沿标志位</span><span>always</span> @(<span>posedge</span> I_clk <span>or</span><span>negedge</span><span> I_rst_n)
+</span><span>begin</span><span>if</span>(!<span>I_rst_n)
+        </span><span>begin</span><span>
+            R_state         </span>&lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_sda_mode      &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_bit_cnt       &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            O_done_flag     &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+            R_jump_state    &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_ack_flag        &lt;=    <span>1</span><span>'</span><span>b0 ;</span><span>end</span><span>else</span><span>if</span>(I_iic_send_en) <span>//</span><span> 往IIC设备发送数据</span><span>begin</span><span>case</span><span>(R_state)
+                </span><span>4</span><span>'</span><span>d0   : <span>// 空闲状态设置SCL与SDA均为高</span></span><span>begin</span><span>
+                        R_sda_mode      </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA为输出</span></span>
+                        R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ;<span> // 设置SDA为高电平</span></span>
+                        R_scl_en        &lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 关闭SCL时钟线</span></span>
+                        R_state         &lt;=  <span>4</span><span>'</span><span>d1 ; <span>// 下一个状态是加载设备物理地址状态</span></span>
+                        R_bit_cnt       &lt;=  <span>4</span><span>'</span><span>d0 ; <span>// 发送字节状态中bit个数计数清零</span></span>
+                        O_done_flag     &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+                        R_jump_state    &lt;=  <span>4</span><span>'</span><span>d0 ;</span><span>end</span><span>4</span><span>'</span><span>d1   :  <span>// 加载IIC设备物理地址 </span></span><span>begin</span><span>                             
+                        R_load_data     </span>&lt;=<span>  {I_dev_addr, 1'b0}  ;
+                        R_state         </span>&lt;=  <span>4</span><span>'</span><span>d4                ;</span>
+                        R_jump_state    &lt;=  <span>4</span><span>'</span><span>d2                ;</span><span>end</span><span>4</span><span>'</span><span>d2   :   <span>// 加载IIC设备字地址 </span></span><span>begin</span><span>                                   
+                        R_load_data     </span>&lt;=<span>  I_word_addr         ; 
+                        R_state         </span>&lt;=  <span>4</span><span>'</span><span>d5                ;</span>
+                        R_jump_state    &lt;=  <span>4</span><span>'</span><span>d3                ;</span><span>end</span><span>4</span><span>'</span><span>d3   :   <span> // 加载要发送的数据   </span></span><span>begin</span><span>                                   
+                        R_load_data     </span>&lt;=<span>  I_write_data        ; 
+                        R_state         </span>&lt;=  <span>4</span><span>'</span><span>d5                ;</span>
+                        R_jump_state    &lt;=  <span>4</span><span>'</span><span>d8                ;</span><span>end</span><span>4</span><span>'</span><span>d4   :   <span> // 发送起始信号  </span></span><span>begin</span><span>                                   
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1                ; <span>// 打开SCL时钟线</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1                ; <span>// 设置SDA为输出</span></span><span>if</span><span>(W_scl_high_mid)                  
+                            </span><span>begin</span><span>                           
+                                R_sda_reg   </span>&lt;=  <span>1</span><span>'</span><span>b0        ;<span> // 在SCL高电平中间把SDA信号拉低,产生起始信号</span></span>
+                                R_state     &lt;=  <span>4</span><span>'</span><span>d5        ; </span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d4                ; <span>// 如果SCL高电平中间标志没出现就一直在这个状态等着   </span></span><span>end</span><span>4</span><span>'</span><span>d5   :   <span> // 发送1个字节，从高位开始发</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1                ;<span> // 打开SCL时钟线</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1                ;<span> // 设置SDA为输出</span></span><span>if</span><span>(W_scl_low_mid)
+                            </span><span>begin</span><span>if</span>(R_bit_cnt == <span>4</span><span>'</span><span>d8)</span><span>begin</span>
+                                        R_bit_cnt   &lt;=  <span>4</span><span>'</span><span>d0            ;</span>
+                                        R_state     &lt;=  <span>4</span><span>'</span><span>d6            ; <span>// 字节发完以后进入应答状态</span></span><span>end</span><span>else</span><span>begin</span><span>                                 
+                                        R_sda_reg   </span>&lt;=  R_load_data[<span>7</span>-R_bit_cnt] ; <span>//</span><span> 先发送高位</span>
+                                        R_bit_cnt   &lt;=  R_bit_cnt + <span>1</span><span>'</span><span>b1         ; </span><span>end</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d5 ; <span>// 字节没发完时在这个状态一直等待</span></span><span>end</span><span>4</span><span>'</span><span>d6   :   <span> // 接收应答状态的应答位</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1  ; <span>// 打开SCL时钟线</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b0  ; <span>// 设置SDA为输入</span></span><span>if</span><span>(W_scl_high_mid)
+                            </span><span>begin</span><span>
+                                R_ack_flag  </span>&lt;=<span>  IO_sda  ; 
+                                R_state     </span>&lt;=  <span>4</span><span>'</span><span>d7    ; </span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d6  ;     </span><span>end</span><span>4</span><span>'</span><span>d7  :   <span> // 校验应答位</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1  ;<span> // 打开SCL时钟线   </span></span><span>if</span>(R_ack_flag == <span>1</span><span>'</span><span>b0)    <span>// 校验通过</span></span><span>begin</span><span>if</span>(W_scl_neg == <span>1</span><span>'</span><span>b1) </span><span>begin</span><span>
+                                        R_state </span>&lt;=<span>  R_jump_state ;
+                                        R_sda_mode  </span>&lt;=  <span>1</span><span>'</span><span>b1 ;<span> // 设置SDA的模式为输出</span></span>
+                                        R_sda_reg   &lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 读取完应答信号以后要把SDA信号设置成输出并拉低，因为如果这个状</span></span><span>//</span><span> 态后面是停止状态的话，需要SDA信号的上升沿，所以这里提前拉低它</span><span>end</span><span>else</span><span>
+                                    R_state </span>&lt;= <span>4</span><span>'</span><span>d7    ;</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d0 ;      </span><span>end</span><span>4</span><span>'</span><span>d8   : <span>// 发送停止信号</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1        ; <span>// 打开SCL时钟线</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1        ; <span>// 设置SDA为输出</span></span><span>if</span><span>(W_scl_high_mid)
+                            </span><span>begin</span><span>
+                                R_sda_reg   </span>&lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+                                R_state     &lt;=  <span>4</span><span>'</span><span>d9 ;</span><span>end</span><span>end</span><span>4</span><span>'</span><span>d9    :   <span>// IIC写操作结束</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 关闭SCL时钟线</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA为输出</span></span>
+                        R_sda_reg   &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 拉高SDA保持空闲状态情况</span></span>
+                        O_done_flag &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+                        R_state     &lt;=  <span>4</span><span>'</span><span>d0 ; </span>
+                        R_ack_flag  &lt;=  <span>1</span><span>'</span><span>b0 ;</span><span>end</span><span>default</span>    : R_state     &lt;=  <span>4</span><span>'</span><span>d0 ; </span><span>endcase</span><span>end</span><span>else</span><span>begin</span><span>
+            R_state         </span>&lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_sda_mode      &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_bit_cnt       &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            O_done_flag     &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+            R_jump_state    &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_ack_flag      &lt;=  <span>1</span><span>'</span><span>b0 ;</span><span>end</span><span>end</span><span>wire</span>    [<span>35</span>:<span>0</span><span>]    CONTROL0 ;
+</span><span>wire</span>    [<span>54</span>:<span>0</span><span>]    TRIG0 ;
+icon icon_inst (
+    .CONTROL0(CONTROL0) </span><span>//</span><span> INOUT BUS [35:0]</span><span>);
+
+ila ila_inst (
+    .CONTROL(CONTROL0), </span><span>//</span><span> INOUT BUS [35:0]</span>
+    .CLK(I_clk), <span>//</span><span> IN</span>
+    .TRIG0(TRIG0) <span>//</span><span> IN BUS [49:0]</span><span>);
+
+</span><span>assign</span> TRIG0[<span>0</span>] =<span> O_scl ;
+</span><span>assign</span> TRIG0[<span>1</span>] =<span> IO_sda ;
+</span><span>assign</span> TRIG0[<span>11</span>:<span>2</span>] =<span> R_scl_cnt ;
+</span><span>assign</span> TRIG0[<span>12</span>] =<span> R_scl_en ;
+</span><span>assign</span> TRIG0[<span>16</span>:<span>13</span>] =<span> R_state ;
+</span><span>assign</span> TRIG0[<span>17</span>] =<span> R_sda_mode ;
+</span><span>assign</span> TRIG0[<span>18</span>] =<span> R_sda_reg ;
+</span><span>assign</span> TRIG0[<span>26</span>:<span>19</span>] =<span> R_load_data ;
+
+</span><span>assign</span> TRIG0[<span>30</span>:<span>27</span>] =<span> R_bit_cnt ;
+</span><span>assign</span> TRIG0[<span>31</span>] =<span> R_ack_flag ;
+</span><span>assign</span> TRIG0[<span>36</span>:<span>32</span>] =<span> R_jump_state ;
+</span><span>assign</span> TRIG0[<span>37</span>] =<span> W_scl_low_mid ;
+</span><span>assign</span> TRIG0[<span>38</span>] =<span> W_scl_high_mid ;
+</span><span>assign</span> TRIG0[<span>39</span>] =<span> O_done_flag ;
+</span><span>assign</span> TRIG0[<span>40</span>] =<span> I_rst_n ;
+
+</span><span>endmodule</span></pre><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div></div><p>　　整个代码的流程与之前分析的流程完全一致。本来想写一个测试文件用ModelSim进行基本的仿真，但是由于应答信号是取决于IIC从设备的，所以还是决定用ChipScope直接抓。在用ChipScope抓之前先写一个顶层文件把上面的代码例化进去，顶层代码如下：</p><div><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div><pre><span>module</span><span> iic_send_top
+(
+    </span><span>input</span>           I_clk           , <span>//</span><span> 系统50MHz时钟</span><span>input</span>           I_rst_n         , <span>//</span><span> 系统全局复位
+    
+    </span><span>//</span><span> 标准的IIC设备总线</span><span>output</span>          O_scl           , <span>//</span><span> IIC总线的串行时钟线</span><span>inout</span>           IO_sda            <span>//</span><span> IIC总线的双向数据线</span><span>);
+
+</span><span>wire</span><span>             W_done_flag ;
+
+iic_send U_iic_send
+(
+    .I_clk           (I_clk            ), </span><span>//</span><span> 系统50MHz时钟</span>
+    .I_rst_n         (I_rst_n          ), <span>//</span><span> 系统全局复位</span>
+    .I_iic_send_en   (<span>1</span><span>'</span><span>b1             ), <span>// 发送使能位，高电平有效</span></span><span>    
+    .I_dev_addr      (</span><span><span>7</span></span><span>'</span><span>b1010_000      ), <span>// IIC设备的物理地址</span></span>
+    .I_word_addr     (<span>8</span><span>'</span><span>h23            ), <span>// IIC设备的字地址，即我们想操作的IIC的内部地址</span></span>
+    .I_write_data    (<span>8</span><span>'</span><span>h45            ), <span>// 往IIC设备的字地址写入的数据</span></span>
+    .O_done_flag     (W_done_flag      ), <span>//</span><span> 读或写IIC设备结束标志位
+    
+    </span><span>//</span><span> 标准的IIC设备总线</span>
+    .O_scl           (O_scl            ), <span>//</span><span> IIC总线的串行时钟线</span>
+    .IO_sda          (IO_sda           )  <span>//</span><span> IIC总线的双向数据线</span><span>);
+
+
+
+</span><span>endmodule</span></pre><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div></div><p>　　绑定好管脚以后就可以生成bit文件下载到FPGA里面用ChipScope抓时序了，下面是我抓到的时序图：</p><p></p><p>　　为了更清晰的说明上面的时序，我把起始信号，停止信号，每个比特以及应答位全部框出来进一步解释如下：</p><p></p><p>　　通过上面的时序图可以清楚的看到：</p><p>　　　　1号红框是起始信号，在SCL高电平期间SDA有一个下降沿</p><p>　　　　2~9号红框是发送设备物理地址8’ha0(8’b1010_0000)</p><p>　　　　10号红框是应答位，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　　　11~18号红框是发送字地址8’h23(8’b0010_0011)</p><p>　　　　19号红框是应答位，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　　　20~27号红框是发送数据8’h45(8’b0100_0101)</p><p>　　　　28号红框是应答位，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　　　29号红框是停止信号，在SCL高电平期间SDA有一个上升沿</p><p>　　其他变量的时序细节这里不再展开，大家可以自己抓出来。至此，IIC发送模块全部设计完毕。</p><p><span>4.2、 IIC接收模块的接口定义与整体设计</span></p><p>　　Verilog编写的IIC接收模块除了进行IIC通信的两根信号线(SCL和SDA)以外还要包括一些时钟、复位、使能、并行的输入输出以及完成标志位。其框图如下所示</p><p></p><p>　　其中：</p><p>　　I_clk是系统时钟；</p><p>　　I_rst_n是系统复位；</p><p>　　I_iic_recv_en接收使能信号，当I_iic_recv_en为1时IIC主机(FPGA)才能从IIC从机接收数据；</p><p>　　I_dev_addr[6:0]是IIC从机的设备地址；</p><p>　　I_word_addr[7:0]是字地址，也就是我们想要读取的IIC设备的内部存储地址；</p><p>　　O_read_data[7:0]是主机(FPGA)从IIC设备字地址中读取的数据；</p><p>　　O_done_flag是主机(FPGA)接收一个字节完成标志位，接收完成后会产生一个高脉冲；</p><p>　　O_scl是IIC总线的串行时钟线；</p><p>　　IO_sda是IIC总线的串行数据线；</p><p>　　要想实现iic_send模块的功能，还是先得抽象出发送一个字节数据时序的状态机，这里把24LC04B接收过程的时序贴一遍</p><p></p><p>　　注意，上图中的控制字节(CONTROL BYTE)实际上就是代码里面定义的7-bit设备物理地址与最后1-bit读写控制位组成的。</p><p>　　通过观察上面的时序图可以看出，接收一个字节的数据的过程与发送一个字节数据相比多了一个第二次的起始信号与控制字节(CONTROL BYTE)，而且第二个控制字节(CONTROL BYTE)的最低位应该为1，表示IIC主机(FPGA)从IIC从机(24LC04)中读数据，当主机(FPGA)想结束读数据的过程时，它会给IIC设备发送一个非应答位1，最后在发送停止信号结束整个读数据的过程。所以，根据这个流程，可以归纳出如下几个状态：</p><p>　　状态0：空闲状态，用来初始化各个寄存器的值</p><p>　　状态1：加载IIC设备的物理地址</p><p>　　状态2：加载IIC设备的字地址</p><p>　　状态3：发送第一个起始信号(读过程要求发送两次起始信号)</p><p>　　状态4：发送一个字节数据，从高位开始发送</p><p>　　状态5：接收应答状态的应答位</p><p>　　状态6：校验应答位</p><p>　　状态7：发送第二个起始信号(读过程要求发送两次起始信号</p><p>　　状态8：再次加载IIC设备的物理地址，但这次物理地址最后一位应该为1，表示读操作</p><p>　　状态9：接收一个字节数据，从高位开始接收</p><p>　　状态10：主机发送一个非应答信号1给从机</p><p>　　状态11：等确定从机收到这个非应答信号1以后，初始化SDA的值为0，准备产生停止信号</p><p>　　状态12：发送停止信号</p><p>　　状态13：读操作结束</p><p>　　需要注意的是上面的各个状态和发送模块一样，并不是按照顺序执行的，有些状态也要复用多次。</p><p>　　接收模块有以下几个关键点要注意：</p><p>　　1、和发送模块一样，需要产生SCL信号高电平中间标志位，低电平中间标志位以及下降沿标志位</p><p>　　2、由于读数据的过程需要发送第二次起始位，而起始位的条件是在SCL高电平期间SDA有一个下降沿，所以一定要在处理完写设备地址与写字地址的应答位之后，在SCL的下降沿标志处把SDA信号设置成输出并拉高方便产生第二次起始信号。具体细节对照着代码理解。</p><p>　　3、第一次发送的设备物理地址的最低位是0，表示写数据；第二次发送的设备物理地址的最低位是1，表示读数据</p><p>　　4、读完一个字节数据以后，一定要记住是主机(FPGA)给从机(24LC04)发送一个非应答信号1</p><p>　　有了上面这些储备以后就可以编写接收模块的代码了，接收模块的代码如下：</p><div><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div><pre><span>module</span><span> iic_recv
+(
+    </span><span>input</span>                I_clk           , <span>//</span><span> 系统50MHz时钟</span><span>input</span>                I_rst_n         , <span>//</span><span> 系统全局复位</span><span>input</span>                I_iic_recv_en   , <span>//</span><span> IIC发送使能位</span><span>input</span>        [<span>6</span>:<span>0</span>]   I_dev_addr      , <span>//</span><span> IIC设备的物理地址</span><span>input</span>        [<span>7</span>:<span>0</span>]   I_word_addr     , <span>//</span><span> IIC设备的字地址，即我们想操作的IIC的内部地址</span><span>output</span><span>reg</span>  [<span>7</span>:<span>0</span>]   O_read_data     , <span>//</span><span> 从IIC设备的字地址读出来的数据   </span><span>output</span><span>reg</span>          O_done_flag     , <span>//</span><span> 读或写IIC设备结束标志位
+    
+    </span><span>//</span><span> 标准的IIC设备总线</span><span>output</span>               O_scl           , <span>//</span><span> IIC总线的串行时钟线</span><span>inout</span>                IO_sda            <span>//</span><span> IIC总线的双向数据线</span><span>);          
+
+</span><span>parameter</span>   C_DIV_SELECT        =   <span>10</span><span>'</span><span>d500 ;<span> // 分频系数选择</span></span><span>parameter</span>   C_DIV_SELECT0       =   (C_DIV_SELECT &gt;&gt; <span>2</span>)  -  <span>1</span>           , <span>//</span><span> 用来产生IIC总线SCL低电平最中间的标志位</span>
+            C_DIV_SELECT1       =   (C_DIV_SELECT &gt;&gt; <span>1</span>)  -  <span>1</span>           , <span>//</span><span> 用来产生IIC串行时钟线</span>
+            C_DIV_SELECT2       =   (C_DIV_SELECT0 + C_DIV_SELECT1) + <span>1</span> , <span>//</span><span> 用来产生IIC总线SCL高电平最中间的标志位</span>
+            C_DIV_SELECT3       =   (C_DIV_SELECT &gt;&gt; <span>1</span>) + <span>1</span>             ; <span>//</span><span> 用来产生IIC总线SCL下降沿标志位</span><span>reg</span>     [<span>9</span>:<span>0</span>]   R_scl_cnt       ; <span>//</span><span> 用来产生IIC总线SCL时钟线的计数器   </span><span>reg</span>             R_scl_en        ; <span>//</span><span> IIC总线SCL时钟线使能信号</span><span>reg</span>     [<span>3</span>:<span>0</span><span>]   R_state         ; 
+</span><span>reg</span>             R_sda_mode      ; <span>//</span><span> 设置SDA模式，1位输出，0为输入</span><span>reg</span>             R_sda_reg       ; <span>//</span><span> SDA寄存器</span><span>reg</span>     [<span>7</span>:<span>0</span>]   R_load_data     ; <span>//</span><span> 发送/接收过程中加载的数据，比如设备物理地址，字地址和数据等</span><span>reg</span>     [<span>3</span>:<span>0</span>]   R_bit_cnt       ; <span>//</span><span> 发送字节状态中bit个数计数</span><span>reg</span>             R_ack_flag      ; <span>//</span><span> 应答标志</span><span>reg</span>     [<span>3</span>:<span>0</span>]   R_jump_state    ; <span>//</span><span> 跳转状态，传输一个字节成功并应答以后通过这个变量跳转到导入下一个数据的状态</span><span>reg</span>     [<span>7</span>:<span>0</span><span>]   R_read_data_reg ;
+
+</span><span>wire</span>            W_scl_low_mid   ; <span>//</span><span> SCL的低电平中间标志位</span><span>wire</span>            W_scl_high_mid  ; <span>//</span><span> SCL的高电平中间标志位</span><span>assign</span> IO_sda  =  (R_sda_mode == <span>1</span><span>'</span><span>b1) ? R_sda_reg : 1</span><span>'</span><span>bz ;
+
+</span><span>always</span> @(<span>posedge</span> I_clk <span>or</span><span>negedge</span><span> I_rst_n)
+</span><span>begin</span><span>if</span>(!<span>I_rst_n)
+        R_scl_cnt   </span>&lt;=  <span>10</span><span>'</span><span>d0 ; </span><span>else</span><span>if</span><span>(R_scl_en)   
+        </span><span>begin</span><span>if</span>(R_scl_cnt == C_DIV_SELECT - <span>1</span><span>'</span><span>b1)</span>
+                R_scl_cnt &lt;= <span>10</span><span>'</span><span>d0 ;</span><span>else</span><span>
+                R_scl_cnt </span>&lt;= R_scl_cnt + <span>1</span><span>'</span><span>b1 ;     </span><span>end</span><span>else</span><span>
+        R_scl_cnt     </span>&lt;= <span>10</span><span>'</span><span>d0 ;</span><span>end</span><span>assign</span> O_scl           = (R_scl_cnt &lt;= C_DIV_SELECT1) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生串行时钟信号O_scl</span><span>assign</span> W_scl_low_mid  = (R_scl_cnt == C_DIV_SELECT2) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl低电平正中间标志位</span><span>assign</span> W_scl_high_mid = (R_scl_cnt == C_DIV_SELECT0) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl高电平正中间标志位</span><span>assign</span> W_scl_neg       = (R_scl_cnt == C_DIV_SELECT3) ? <span>1</span><span>'</span><span>b1 : 1</span><span>'</span>b0 ; <span>//</span><span> 产生scl下降沿标志位</span><span>always</span> @(<span>posedge</span> I_clk <span>or</span><span>negedge</span><span> I_rst_n)
+</span><span>begin</span><span>if</span>(!<span>I_rst_n)
+        </span><span>begin</span><span>
+            R_state         </span>&lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_sda_mode      &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_bit_cnt       &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            O_done_flag     &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+            R_jump_state    &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_read_data_reg &lt;=  <span>8</span><span>'</span><span>d0 ;</span>
+            R_ack_flag        &lt;=    <span>1</span><span>'</span><span>b0 ;</span>
+            O_read_data        &lt;=    <span>8</span><span>'</span><span>d0 ;</span><span>end</span><span>else</span><span>if</span>(I_iic_recv_en) <span>//</span><span> 往IIC设备发送数据</span><span>begin</span><span>case</span><span>(R_state)
+                </span><span>4</span><span>'</span><span>d0    :   <span>// 空闲状态，用来初始化相关所有信号</span></span><span>begin</span><span>
+                        R_sda_mode      </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA为输出</span></span>
+                        R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA为高电平</span></span>
+                        R_scl_en        &lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 关闭SCL时钟线</span></span>
+                        R_state         &lt;=  <span>4</span><span>'</span><span>d1 ; <span>// 下一个状态是加载设备物理地址状态</span></span>
+                        R_bit_cnt       &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+                        O_done_flag     &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+                        R_jump_state    &lt;=  <span>5</span><span>'</span><span>d0 ;</span>
+                        R_read_data_reg &lt;=  <span>8</span><span>'</span><span>d0 ;</span><span>end</span><span>4</span><span>'</span><span>d1    :  <span> // 加载IIC设备物理地址</span></span><span>begin</span><span>
+                        R_load_data </span>&lt;=<span>  {I_dev_addr, 1'b0}  ;
+                        R_state     </span>&lt;=  <span>4</span><span>'</span><span>d3                ; <span>// 加载完设备物理地址以后进入起始状态</span></span>
+                        R_jump_state &lt;=  R_state + <span>1</span><span>'</span><span>b1     ; </span><span>end</span><span>4</span><span>'</span><span>d2   :  <span> // 加载IIC设备字地址   </span></span><span>begin</span><span>                                   
+                        R_load_data </span>&lt;=<span>  I_word_addr         ; 
+                        R_state     </span>&lt;=  <span>4</span><span>'</span><span>d4                ;</span>
+                        R_jump_state &lt;=  R_state + <span>5</span><span>'</span><span>d5      ; <span>// 设置这里是为了这一轮发送并应答后跳到第二次启始位</span></span><span>end</span><span>4</span><span>'</span><span>d3    :  <span> // 发送第一个起始信号</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1                ; <span>// 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1                ; <span>// 设置SDA的模式为输出</span></span><span>if</span><span>(W_scl_high_mid)
+                            </span><span>begin</span><span>
+                                R_sda_reg   </span>&lt;=  <span>1</span><span>'</span><span>b0        ; <span>// 在SCL高电平的正中间把SDA引脚拉低产生一个下降沿</span></span>
+                                R_state     &lt;=  <span>4</span><span>'</span><span>d4        ; <span>// 下一个状态是发送一个字节数据(IIC设备的物理地址)</span></span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d3                ;    </span><span>end</span><span>4</span><span>'</span><span>d4    :   <span>// 发送一个字节</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1                ;<span> // 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1                ; <span>// 设置SDA的模式为输出</span></span><span>if</span>(W_scl_low_mid)                     <span>//</span><span> 在SCL低电平的最中间改变数据</span><span>begin</span><span>if</span>(R_bit_cnt == <span>4</span><span>'</span><span>d8)</span><span>begin</span><span>
+                                        R_bit_cnt  </span>&lt;=  <span>4</span><span>'</span><span>d0 ;  </span>
+                                        R_state    &lt;=  <span>4</span><span>'</span><span>d5 ;</span><span>end</span><span>else</span><span>begin</span><span>
+                                        R_sda_reg  </span>&lt;=  R_load_data[<span>7</span>-<span>R_bit_cnt] ;
+                                        R_bit_cnt  </span>&lt;=  R_bit_cnt + <span>1</span><span>'</span><span>b1        ; </span><span>end</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d4    ;    </span><span>end</span><span>4</span><span>'</span><span>d5    : <span>  // 接收应答状态应答位</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 打开时钟</span></span>
+                        R_sda_reg   &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 设置SDA的模式为输入</span></span><span>if</span><span>(W_scl_high_mid)  
+                            </span><span>begin</span><span>
+                                R_ack_flag  </span>&lt;=<span>  IO_sda  ;
+                                R_state     </span>&lt;=  <span>4</span><span>'</span><span>d6    ;                                   </span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d5    ;    </span><span>end</span><span>4</span><span>'</span><span>d6    :  <span> // 校验应答位</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 打开时钟</span></span><span>if</span>(R_ack_flag   == <span>1</span><span>'</span><span>b0)   <span> // 校验通过</span></span><span>begin</span><span>if</span>(W_scl_neg == <span>1</span><span>'</span><span>b1)</span><span>begin</span><span>
+                                        R_state </span>&lt;=<span>  R_jump_state ;
+                                        R_sda_mode  </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA的模式为输出</span></span>
+                                        R_sda_reg   &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA的引脚电平拉高，方便后面产生第二次起始位</span></span><span>end</span><span>else</span><span>
+                                    R_state </span>&lt;= <span>4</span><span>'</span><span>d6    ;</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d0 ;    </span><span>end</span><span>4</span><span>'</span><span>d7    :  <span> // 第二次起始位(IIC读操作要求有2次起始位)</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA的模式为输出</span></span><span>if</span><span>(W_scl_high_mid)
+                            </span><span>begin</span><span>
+                                R_sda_reg   </span>&lt;=  <span>1</span><span>'</span><span>b0  ;</span>
+                                R_state     &lt;=  <span>4</span><span>'</span><span>d8  ; </span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d7 ;    </span><span>end</span><span>4</span><span>'</span><span>d8   :  <span> // 再次加载IIC设备物理地址 ，但这次地址最后一位应该为1，表示读操作   </span></span><span>begin</span><span>                                   
+                        R_load_data     </span>&lt;=  <span>{I_dev_addr, 1'b1}</span><span>  ;<span> // 前7bit是设备物理地址，最后一位1表示读操作</span></span>
+                        R_state         &lt;=  <span>4</span><span>'</span><span>d4      　　　　　　;</span>
+                        R_jump_state    &lt;=  <span>4</span><span>'</span><span>d9      　　　　　　; <span>// 设置这里是为了这一轮发送并应答后跳到第二次启始位</span></span><span>end</span><span>4</span><span>'</span><span>d9    :   <span>// 读一个字节数据</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 设置SDA的模式为输入</span></span><span>if</span><span>(W_scl_high_mid)
+                            </span><span>begin</span><span>if</span>(R_bit_cnt == <span>4</span><span>'</span><span>d7)</span><span>begin</span><span>
+                                        R_bit_cnt    </span>&lt;=  <span>4</span><span>'</span><span>d0    ;</span>
+                                        R_state      &lt;=  <span>4</span><span>'</span><span>d10   ;  </span>
+                                        O_read_data  &lt;=  {R_read_data_reg[<span>6</span>:<span>0</span><span>],IO_sda}  ;                                           
+                                    </span><span>end</span><span>else</span><span>begin</span><span>
+                                        R_read_data_reg  </span>&lt;=  {R_read_data_reg[<span>6</span>:<span>0</span><span>],IO_sda}  ;
+                                        R_bit_cnt        </span>&lt;=  R_bit_cnt   +   <span>1</span><span>'</span><span>b1            ;  </span><span>end</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d9 ;    </span><span>end</span><span>4</span><span>'</span><span>d10    : <span> // 读完一个字节数据以后进入10，主机发送一个非应答信号1</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1 ;<span> // 设置SDA的模式为输入</span></span><span>if</span><span>(W_scl_low_mid)
+                            </span><span>begin</span><span>
+                                R_state     </span>&lt;=  <span>4</span><span>'</span><span>d11   ; </span>
+                                R_sda_reg    &lt;=    <span>1</span><span>'</span><span>b1     ;</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d10 ;    </span><span>end</span><span>4</span><span>'</span><span>d11   :  </span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ;<span> // 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA的模式为输入</span></span><span>if</span><span>(W_scl_low_mid)
+                            </span><span>begin</span><span>
+                                R_state     </span>&lt;=  <span>4</span><span>'</span><span>d12   ; </span>
+                                R_sda_reg    &lt;=    <span>1</span><span>'</span><span>b0     ;</span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d11   ;    </span><span>end</span><span>4</span><span>'</span><span>d12   :<span> //停止位Stop</span></span><span>begin</span><span>
+                        R_scl_en    </span>&lt;=  <span>1</span><span>'</span><span>b1 ;<span> // 打开时钟</span></span>
+                        R_sda_mode  &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA的模式为输出</span></span><span>if</span><span>(W_scl_high_mid)
+                            </span><span>begin</span><span>
+                                R_sda_reg   </span>&lt;=  <span>1</span><span>'</span><span>b1    ;</span>
+                                R_state     &lt;=  <span>4</span><span>'</span><span>d13   ; </span><span>end</span><span>else</span><span>
+                            R_state </span>&lt;=  <span>4</span><span>'</span><span>d12   ;    </span><span>end</span><span>4</span><span>'</span><span>d13   :</span><span>begin</span><span>
+                        R_scl_en        </span>&lt;=  <span>1</span><span>'</span><span>b0 ; <span>// 关闭SCL时钟线</span></span>
+                        R_sda_mode      &lt;=  <span>1</span><span>'</span><span>b1 ; <span>// 设置SDA为输出</span></span>
+                        R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ;<span> // 拉高SDA保持空闲状态情况</span></span>
+                        O_done_flag     &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+                        R_state         &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+                        R_read_data_reg &lt;=  <span>8</span><span>'</span><span>d0 ;</span><span>end</span><span>default</span>: R_state         &lt;=  <span>4</span><span>'</span><span>d0 ;</span><span>endcase</span><span>end</span><span>else</span><span>begin</span><span>
+            R_state         </span>&lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_sda_mode      &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_sda_reg       &lt;=  <span>1</span><span>'</span><span>b1 ;</span>
+            R_bit_cnt       &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            O_done_flag     &lt;=  <span>1</span><span>'</span><span>b0 ;</span>
+            R_jump_state    &lt;=  <span>4</span><span>'</span><span>d0 ;</span>
+            R_read_data_reg &lt;=  <span>8</span><span>'</span><span>d0 ;</span>
+            R_ack_flag         &lt;=  <span>1</span><span>'</span><span>b0 ;</span><span>end</span><span>end</span><span>wire</span>    [<span>35</span>:<span>0</span><span>]    CONTROL0 ;
+</span><span>wire</span>    [<span>54</span>:<span>0</span><span>]    TRIG0 ;
+icon icon_inst (
+    .CONTROL0(CONTROL0) </span><span>//</span><span> INOUT BUS [35:0]</span><span>);
+
+ila ila_inst (
+    .CONTROL(CONTROL0), </span><span>//</span><span> INOUT BUS [35:0]</span>
+    .CLK(I_clk), <span>//</span><span> IN</span>
+    .TRIG0(TRIG0) <span>//</span><span> IN BUS [49:0]</span><span>);
+
+</span><span>assign</span> TRIG0[<span>0</span>] =<span> O_scl ;
+</span><span>assign</span> TRIG0[<span>1</span>] =<span> IO_sda ;
+</span><span>assign</span> TRIG0[<span>11</span>:<span>2</span>] =<span> R_scl_cnt ;
+</span><span>assign</span> TRIG0[<span>12</span>] =<span> R_scl_en ;
+</span><span>assign</span> TRIG0[<span>16</span>:<span>13</span>] =<span> R_state ;
+</span><span>assign</span> TRIG0[<span>17</span>] =<span> R_sda_mode ;
+</span><span>assign</span> TRIG0[<span>18</span>] =<span> R_sda_reg ;
+</span><span>assign</span> TRIG0[<span>26</span>:<span>19</span>] =<span> R_load_data ;
+
+</span><span>assign</span> TRIG0[<span>30</span>:<span>27</span>] =<span> R_bit_cnt ;
+</span><span>assign</span> TRIG0[<span>31</span>] =<span> R_ack_flag ;
+</span><span>assign</span> TRIG0[<span>36</span>:<span>32</span>] =<span> R_jump_state ;
+</span><span>assign</span> TRIG0[<span>37</span>] =<span> W_scl_low_mid ;
+</span><span>assign</span> TRIG0[<span>38</span>] =<span> W_scl_high_mid ;
+</span><span>assign</span> TRIG0[<span>39</span>] =<span> O_done_flag ;
+</span><span>assign</span> TRIG0[<span>40</span>] =<span> I_rst_n ;
+</span><span>assign</span> TRIG0[<span>48</span>:<span>41</span>] =<span> O_read_data ;
+</span><span>assign</span> TRIG0[<span>49</span>] =<span> W_scl_neg ;
+
+
+</span><span>endmodule</span></pre><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div></div><p>　　整个代码的流程与之前分析的流程完全一致。在用ChipScope抓之前先写一个顶层文件把上面的代码例化进去，顶层代码如下：</p><div><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div><pre><span>module</span><span> iic_recv_top
+(
+    </span><span>input</span>           I_clk           , <span>//</span><span> 系统50MHz时钟</span><span>input</span>           I_rst_n         , <span>//</span><span> 系统全局复位</span><span>output</span>  [<span>3</span>:<span>0</span>]   O_led_out       , <span>//</span><span> 从IIC设备的字地址读出来的数据 
+    
+    </span><span>//</span><span> 标准的IIC设备总线</span><span>output</span>          O_scl           , <span>//</span><span> IIC总线的串行时钟线</span><span>inout</span>           IO_sda            <span>//</span><span> IIC总线的双向数据线</span><span>);
+
+</span><span>wire</span><span>              W_done_flag ;
+</span><span>wire</span>  [<span>7</span>:<span>0</span>]       W_read_data ; <span>//</span><span> 从IIC设备的字地址读出来的数据 </span><span>assign</span>    O_led_out = W_read_data[<span>3</span>:<span>0</span><span>] ;
+
+iic_recv U_iic_recv
+(
+    .I_clk           (I_clk            ), </span><span>//</span><span> 系统50MHz时钟</span>
+    .I_rst_n         (I_rst_n          ), <span>//</span><span> 系统全局复位</span>
+    .I_iic_recv_en   (<span>1</span><span>'</span><span>b1             ), <span>// 接收使能位，高电平有效</span></span><span>    
+    .I_dev_addr      (</span><span><span>7</span></span><span>'</span><span>b1010_000     ), <span>// IIC设备的物理地址</span></span>
+    .I_word_addr     (<span>8</span><span>'</span><span>h23            ), <span>// IIC设备的字地址，即我们想操作的IIC的内部地址</span></span>
+    .O_read_data     (W_read_data      ), <span>//</span><span> 从IIC设备的字地址读出来的数据   </span>
+    .O_done_flag     (W_done_flag      ), <span>//</span><span> 读或写IIC设备结束标志位
+    
+    </span><span>//</span><span> 标准的IIC设备总线</span>
+    .O_scl           (O_scl            ), <span>//</span><span> IIC总线的串行时钟线</span>
+    .IO_sda          (IO_sda           )  <span>//</span><span> IIC总线的双向数据线</span><span>);
+
+
+
+</span><span>endmodule</span></pre><div><span><a href="javascript:void(0);" title="复制代码"></a></span></div></div><p>　　绑定好管脚以后就可以生成bit文件下载到FPGA里面用ChipScope抓时序了，由于EEPROM是一种非易失性存储器，所以做在IIC发送数据的实验中往24LC04的0x23地址中的0x45这个数据在掉电以后并不会丢失。刚好可以通过这个接收模块给读出来，并用读出数据的最低位驱动四个LED灯，如果时序正确的话，四个LED灯会间隔亮起来。下面是我抓到的接收数据时序图：</p><p></p><p>　　通过上面的时序图可以清楚的看到成功读出了EEPROM中的0x45这个数据，并且我板子上的四个LED灯也间隔亮了起来。</p><p>　　为了更清晰的说明上面的时序，我把起始信号，停止信号，每个比特，应答位和非应答位全部框出来进一步解释如下：</p><p></p><p>　　1号红框是起始信号，在SCL高电平期间SDA有一个下降沿</p><p>　　2~9号红框是发送设备物理地址8’ha0(8’b1010_0000)</p><p>　　10号红框是应答位，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　11~18号红框是发送字地址8’h23(8’b0010_0011)</p><p>　　19号红框是应答位，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　20号红框是第二次起始位，在SCL高电平期间SDA有一个下降沿</p><p>　　21~28号红框是发送数据8’ha1(8’b1010_0001)</p><p>　　29号红框是应答位，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　30~37号红框是读出的8-bit数据8’h45(8’b0100_0101)，在这个期间R_sda_mode保持低电平，SDA为输入</p><p>　　38号红框是非应答位，在这个期间R_sda_mode保持高电平，主机(FPGA)通过SDA输出一个非应答位1</p><p>　　39号红框是停止信号，在SCL高电平期间SDA有一个上升沿</p><p>　　其他变量的时序细节这里不再展开，大家可以自己抓出来。至此，IIC接收模块全部设计完毕。</p><p><span>五、 进一步思考</span></p><p><span>5.1、 24LC04写数据操作要注意的地方</span></p><p>　　Following the start condition from the master, the device code (4 bits), the block address (3 bits), and the R/W bit which is a logic low is placed onto the bus by the master transmitter. This indicates to the addressed slave receiver that a byte with a word address will follow after it has generated an acknowledge bit during the ninth clock cycle. Therefore the next byte transmitted by the master is the word address and will be written into the address pointer of the 24LC04B/08B. After receiving another acknowledge signal from the&nbsp;24LC04B/08B the master device will transmit the data word to be written into the addressed memory location.The 24LC04B/08B acknowledges again and the master generates a stop condition. This initiates the internal write cycle, and during this time the 24LC04B/08B will not generate acknowledge signals。</p><p>　　这是24LC04芯片手册对它的写操作的描述， 所以我们写进去的数据其实是放在24LC04的一个缓冲区中，等主机(FPGA)发送停止信号以后24LC04内部才开始工作把缓冲区中的数据写入它内部的ROM中，在这个过程中24LC04将不发送有效应答信号，所以当发送完停止信号又立马给一个起始信号重新发送时会出现下面的时序</p><p></p><p>　　这种情况由于24LC04内部还在处理缓冲区中的数据，所以即使主机(FPGA)发送了正确的时序，从机(24LC04)也不会有效应答。</p><p><span>5.2、 IIC设备多字节连续读写操作</span></p><p>　　24LC04支持16-Bytes的连续写操作，当超过16-Bytes是后面写入的数据会覆盖先前写入的数据，下面是关于这一段的描述：</p><p>　　The write control byte, word address and the first data byte are transmitted to the 24LC04B/08B in the same way as in a byte write. But instead of generating a stop condition the master transmits up to 16 data bytes to the 24LC04B/08B which are temporarily stored in the on-chip page buffer and will be written into the memory after the master has transmitted a stop condition. After the receipt of each word, the four lower order address pointer bits are internally incremented by one. The higher order seven bits of the word address remains constant. If the master should transmit more than 16 words prior to generating the stop condition, the address counter will roll over and the previously received data will be overwritten. As with the byte write operation, once the stop condition is received an internal write cycle will begin.</p><p>　　时序图如下所示：</p><p></p><p>　　其实要实现这个时序并不是难事，只要多增加几个加载数据的状态就可以了，大家可以直接在上面发送数据模块的基础上改。</p><p>　　24LC04支持整块存储器的连续读操作，下面是关于这一段的描述：</p><p>　　Sequential reads are initiated in the same way as a random read except that after the 24LC04B/08B transmits the first data byte, the master issues an acknowledge as opposed to a stop condition in a random read. This directs the 24LC04B/08B to transmit the next sequentially addressed 8-bit word (Figure 7-3).To provide sequential reads the 24LC04B/08B contains an internal address pointer which is incremented by one at the completion of each operation. This address pointer allows the entire memory contents to be serially read during one operation.</p><p>　　时序图如下所示：</p><p></p><p>　　有了上面接收模块的基础，实现这段时序应该也不算困难。以后有空再实现。</p></div><div></div><div role="contentinfo"><div>
+    分类: 
+            <a href="https://www.cnblogs.com/liujinggang/category/1296595.html" target="_blank">接口时序</a></div><div>
+    标签: 
+            <a href="https://www.cnblogs.com/liujinggang/tag/verilog/">verilog</a></div><div><div><a href="javascript:void(0);">好文要顶</a><a href="javascript:void(0);">关注我</a><a href="javascript:void(0);">收藏该文</a><a href="javascript:void(0);">微信分享</a></div><div><div><a href="https://home.cnblogs.com/u/liujinggang/" target="_blank"></a><div><a href="https://home.cnblogs.com/u/liujinggang/">jgliu</a><br><a href="https://home.cnblogs.com/u/liujinggang/followers/">粉丝 - <span>612</span></a><a href="https://home.cnblogs.com/u/liujinggang/followees/">关注 - <span>4</span></a><br></div></div><div></div><div></div><div><a href="javascript:void(0);">+加关注</a></div></div><div><div><span>15</span></div><div><span>0</span></div><div></div><div></div><div><a href="https://cnblogs.vip/" target="_blank">升级成为会员</a></div></div></div><div></div><div><a href="https://www.cnblogs.com/liujinggang/p/9651170.html">« </a> 上一篇：    <a href="https://www.cnblogs.com/liujinggang/p/9651170.html" data-featured-image="" title="发布于 2018-09-15 15:57">【接口时序】5、QSPI Flash的原理与QSPI时序的Verilog实现</a><br><a href="https://www.cnblogs.com/liujinggang/p/9690504.html">» </a> 下一篇：    <a href="https://www.cnblogs.com/liujinggang/p/9690504.html" data-featured-image="" title="发布于 2018-09-22 16:57">【接口时序】7、VGA接口原理与Verilog实现</a></div></div></div><div>posted @ 
+<span data-last-update-days="69.22569444444444" data-date-updated="2018-11-24 21:20" aria-expanded="false">2018-09-16 15:55</span><a href="https://www.cnblogs.com/liujinggang">jgliu</a>&nbsp;
+阅读(<span>41322</span>)&nbsp;
+评论(<span>22</span>)&nbsp;
+&nbsp;
+<a href="javascript:void(0)">收藏</a><a href="javascript:void(0)">举报</a></div></div></div><!--end: topics 文章、评论容器--></div><a></a><div></div><div><a name="commentform"></a><div></div><div><div><span></span><a href="#">刷新页面</a><a href="#top">返回顶部</a></div></div><div><div>
+    登录后才能查看或发表评论，立即 <a rel="nofollow" href="javascript:void(0);">登录</a> 或者
+    <a href="https://www.cnblogs.com/">逛逛</a> 博客园首页
+</div></div><div></div><div></div><div></div><div><a href="https://developer.huawei.com/consumer/cn/activity/digixActivity/digixcmsdetail/101750143863263087?ha_source=BKYQ3&amp;ha_sourceId=89000408" rel="nofollow" target="_blank"><span></span></a></div><div><div><header>编辑推荐：</header><ul><li><a href="https://www.cnblogs.com/tcjiaan/p/19136951" target="_blank">EF Core: FromExpression 方法有什么用？</a></li><li><a href="https://www.cnblogs.com/cpuimage/p/19127298" target="_blank">深度学习优化器算法巧思速览</a></li><li><a href="https://www.cnblogs.com/didispace/p/19133808" target="_blank">如何在 Spring Boot 应用中配置多个 Spring AI 的 LLM 客户端</a></li><li><a href="https://www.cnblogs.com/edisontalk/p/-/quick-start-agent-to-agent-part02" target="_blank">多Agent协作入门：基于A2A协议的Agent通信（中）</a></li><li><a href="https://www.cnblogs.com/StuLittleLi/p/19126277" target="_blank">作为一个高中生开发者，我的所思所想</a></li></ul></div></div><div><div><header>HarmonyOS专区：</header><ul><li><a href="https://harmonyos.cnblogs.com/p/22908" target="_blank">开发上架鸿蒙应用，现金激励超亿元！</a></li><li><a href="https://harmonyos.cnblogs.com/p/22887" target="_blank">前端转鸿蒙开发几个比较难受的地方</a></li><li><a href="https://harmonyos.cnblogs.com/p/22700" target="_blank">闯入鸿蒙：浪漫、理想与「草台班子」</a></li><li><a href="https://harmonyos.cnblogs.com/p/22782" target="_blank">3天赚2万！开发者的梦想也可以掷地有声！</a></li><li><a href="https://harmonyos.cnblogs.com/p/22695" target="_blank">Flutter 适配 HarmonyOS 5 开发知识地图</a></li></ul></div></div><div></div></div></div></div><div><div><div><h3>公告</h3><div><div><div>
+    昵称：
+    <a href="https://home.cnblogs.com/u/liujinggang/">
+        jgliu
+    </a><br>
+    园龄：
+    <a href="https://home.cnblogs.com/u/liujinggang/" title="入园时间：2018-06-21">
+        7年3个月
+    </a><br>
+    粉丝：
+    <a href="https://home.cnblogs.com/u/liujinggang/followers/">
+        612
+    </a><br>
+    关注：
+    <a href="https://home.cnblogs.com/u/liujinggang/followees/">
+        4
+    </a><div><a href="javascript:void(0)">+加关注</a></div></div></div></div></div><div><a href="https://qoder.com/" target="_blank"></a></div><div><table cellspacing="0" cellpadding="0" title="Calendar" border="0"><tbody><tr><td colspan="7"><table cellspacing="0" border="0"><tbody><tr><td><a href="javascript:void(0);">&lt;</a></td><td align="center">2025年10月</td><td align="right"><a href="javascript:void(0);">&gt;</a></td></tr></tbody></table></td></tr><tr><th align="center" abbr="日" scope="col">日</th><th align="center" abbr="一" scope="col">一</th><th align="center" abbr="二" scope="col">二</th><th align="center" abbr="三" scope="col">三</th><th align="center" abbr="四" scope="col">四</th><th align="center" abbr="五" scope="col">五</th><th align="center" abbr="六" scope="col">六</th></tr><tr><td align="center">28</td><td align="center">29</td><td align="center">30</td><td align="center">
+                            1
+                        </td><td align="center">
+                            2
+                        </td><td align="center">
+                            3
+                        </td><td align="center">
+                        4
+                    </td></tr><tr><td align="center">
+                            5
+                        </td><td align="center">
+                                6
+                            </td><td align="center">
+                                7
+                            </td><td align="center">
+                                8
+                            </td><td align="center">
+                                9
+                            </td><td align="center">
+                                10
+                            </td><td align="center">
+                            11
+                        </td></tr><tr><td align="center">
+                            12
+                        </td><td align="center">
+                                13
+                            </td><td align="center">
+                                14
+                            </td><td align="center">
+                                15
+                            </td><td align="center">
+                                16
+                            </td><td align="center">
+                                17
+                            </td><td align="center">
+                            18
+                        </td></tr><tr><td align="center">
+                            19
+                        </td><td align="center">
+                                20
+                            </td><td align="center">
+                                21
+                            </td><td align="center">
+                                22
+                            </td><td align="center">
+                                23
+                            </td><td align="center">
+                                24
+                            </td><td align="center">
+                            25
+                        </td></tr><tr><td align="center">
+                            26
+                        </td><td align="center">
+                                27
+                            </td><td align="center">
+                                28
+                            </td><td align="center">
+                                29
+                            </td><td align="center">
+                                30
+                            </td><td align="center">
+                                31
+                            </td><td align="center">
+                            1
+                        </td></tr><tr><td align="center">
+                            2
+                        </td><td align="center">
+                                3
+                            </td><td align="center">
+                                4
+                            </td><td align="center">
+                                5
+                            </td><td align="center">
+                                6
+                            </td><td align="center">
+                                7
+                            </td><td align="center">
+                            8
+                        </td></tr></tbody></table></div><div><div><div><div><h3>搜索</h3><div><div><input type="text"><input type="button" value="找找看"></div></div></div></div><div><div><h3>
+常用链接
+</h3><ul><li><a href="https://www.cnblogs.com/liujinggang/p/" title="我的博客的随笔列表">我的随笔</a></li><li><a href="https://www.cnblogs.com/liujinggang/MyComments.html" title="我的发表过的评论列表">我的评论</a></li><li><a href="https://www.cnblogs.com/liujinggang/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li><li><a href="https://www.cnblogs.com/liujinggang/comments" title="我的博客的评论列表">最新评论</a></li><li><a href="https://www.cnblogs.com/liujinggang/tag/" title="我的博客的标签列表">我的标签</a></li></ul></div></div><div><div><h3><a href="https://www.cnblogs.com/liujinggang/tag/">我的标签</a></h3><ul><li><a href="https://www.cnblogs.com/liujinggang/tag/verilog/">verilog<span>(9)</span></a></li><li><a href="https://www.cnblogs.com/liujinggang/tag/rapidIO/">rapidIO<span>(6)</span></a></li><li><a href="https://www.cnblogs.com/liujinggang/tag/serdes/">serdes<span>(1)</span></a></li><li><a href="https://www.cnblogs.com/liujinggang/tag/QSPI%20Flash/">QSPI Flash<span>(1)</span></a></li><li><a href="https://www.cnblogs.com/liujinggang/tag/DDR/">DDR<span>(1)</span></a></li><li><a href="https://www.cnblogs.com/liujinggang/tag/chipscope/">chipscope<span>(1)</span></a></li></ul></div></div><div><div><h3><a href="https://www.cnblogs.com/liujinggang/post-categories">随笔分类</a></h3><ul><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/category/1337215.html" rel="" target="">高速接口(6)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/category/1296595.html" rel="" target="">接口时序(8)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/category/1318081.html" rel="" target="">设计经验(5)</a></li></ul></div><div><h3>
+            
+随笔档案
+
+
+        </h3><ul><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/p/archive/2019/03" rel="" target="">2019年3月(1)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/p/archive/2018/12" rel="" target="">2018年12月(4)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/p/archive/2018/11" rel="" target="">2018年11月(3)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/p/archive/2018/10" rel="" target="">2018年10月(4)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/p/archive/2018/09" rel="" target="">2018年9月(4)</a></li><li data-category-list-item-visible="true"><a href="https://www.cnblogs.com/liujinggang/p/archive/2018/08" rel="" target="">2018年8月(3)</a></li></ul></div></div><div><div><h3><a href="https://www.cnblogs.com/liujinggang/most-viewed">
+    阅读排行榜
+</a></h3><div><ul><li><a href="https://www.cnblogs.com/liujinggang/p/9609739.html">
+                            1. 【接口时序】4、SPI总线的原理与Verilog实现(74612)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9651170.html">
+                            2. 【接口时序】5、QSPI Flash的原理与QSPI时序的Verilog实现(62598)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9925859.html">
+                            3. 【高速接口-RapidIO】1、RapidIO协议概述(42526)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9656358.html">
+                            4. 【接口时序】6、IIC总线的原理与Verilog实现(41316)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9813863.html">
+                            5. 【设计经验】2、ISE中ChipScope使用教程(40402)
+                        </a></li></ul></div></div></div><div><div><h3><a href="https://www.cnblogs.com/liujinggang/most-commented">评论排行榜</a></h3><div><ul><li><a href="https://www.cnblogs.com/liujinggang/p/9651170.html">
+                            1. 【接口时序】5、QSPI Flash的原理与QSPI时序的Verilog实现(49)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9656358.html">
+                            2. 【接口时序】6、IIC总线的原理与Verilog实现(22)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9609739.html">
+                            3. 【接口时序】4、SPI总线的原理与Verilog实现(21)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9782796.html">
+                            4. 【接口时序】8、DDR3驱动原理与FPGA实现（一、DDR的基本原理）(12)
+                        </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/10549095.html">
+                            5. 【设计经验】5、Verilog对数据进行四舍五入（round）与饱和（saturation）截位(11)
+                        </a></li></ul></div></div></div><div><div><div><h3><a href="https://www.cnblogs.com/liujinggang/most-liked">推荐排行榜</a></h3><div><ul><li><a href="https://www.cnblogs.com/liujinggang/p/9609739.html">
+                                1. 【接口时序】4、SPI总线的原理与Verilog实现(23)
+                            </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9656358.html">
+                                2. 【接口时序】6、IIC总线的原理与Verilog实现(15)
+                            </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9651170.html">
+                                3. 【接口时序】5、QSPI Flash的原理与QSPI时序的Verilog实现(14)
+                            </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/10549095.html">
+                                4. 【设计经验】5、Verilog对数据进行四舍五入（round）与饱和（saturation）截位(12)
+                            </a></li><li><a href="https://www.cnblogs.com/liujinggang/p/9925859.html">
+                                5. 【高速接口-RapidIO】1、RapidIO协议概述(12)
+                            </a></li></ul></div></div></div></div><div><div><h3><a href="https://www.cnblogs.com/liujinggang/comments">最新评论</a></h3><div><ul><li><a href="https://www.cnblogs.com/liujinggang/p/9651170.html">1. Re:【接口时序】5、QSPI Flash的原理与QSPI时序的Verilog实现</a></li><li><p></p><p>请问这个data,只有ff是为啥捏，还有就是cmd_type,flash_cmd都只有一个数值，该如何解决呢</p></li><li>--shakemoneytree</li><li><a href="https://www.cnblogs.com/liujinggang/p/9925859.html">2. Re:【高速接口-RapidIO】1、RapidIO协议概述</a></li><li><p>感谢楼主</p></li><li>--有点难、</li><li><a href="https://www.cnblogs.com/liujinggang/p/9925859.html">3. Re:【高速接口-RapidIO】1、RapidIO协议概述</a></li><li><p>怀疑有一处错误，其中括号的应该为“msgseg = 4’b0010”<br>
+原文：B、消息段是第3个包(msgseg = 4’b0011)</p></li><li>--harold0113</li><li><a href="https://www.cnblogs.com/liujinggang/p/9925859.html">4. Re:【高速接口-RapidIO】1、RapidIO协议概述</a></li><li><p>感谢分享</p></li><li>--..LEAF</li><li><a href="https://www.cnblogs.com/liujinggang/p/9651170.html">5. Re:【接口时序】5、QSPI Flash的原理与QSPI时序的Verilog实现</a></li><li><p>你好，有没有W25Q128BV   Quad SPI Flash的仿真模型</p></li><li>--liuguan</li></ul></div></div></div></div></div></div></div><div></div></div><div></div><div><a href="https://www.cnblogs.com/">博客园</a><span> &nbsp;©&nbsp; 2004-2025</span><br><span><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=33010602011771">浙公网安备 33010602011771号</a><a href="https://beian.miit.gov.cn" target="_blank">浙ICP备2021040463号-3</a></span></div></div><input type="hidden" value="CfDJ8G33EJ5dWE5OhU_7yPrjq1_ToXYkRm1vBpComBrtXwHNj8YGcq088EZCldcLoOn5wwB_CSwRMTlE4TsdkD4J9PW0o-Ch8BxcAfOjxAAqf76K1RQjlIVfsdMUoeALK5OtYnygGs2hLI3wnqecRH1UDZ0"><div><div><div></div><div>点击右上角即可分享</div></div></div><button type="button" title="显示工具栏"></button><div><div><div></div><div><a target="_blank" title="" href="https://qoder.com/"><span>Agentic 编程平台 Qoder</span></a><button type="button" title="隐藏工具栏"></button></div></div></div><div></div>
+</body>
+</html>

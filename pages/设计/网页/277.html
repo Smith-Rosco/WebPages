@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Trick – Customized Dashed or Dotted Border</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<div><div><div><h1>Customize your CSS Border 🚀</h1><h2>
+                With this tool you can simply increase space between dots, change dash length or distance between strokes.
+            </h2></div><div><div><div><div><div></div><div></div></div><!----><div></div><div><button></button><button></button><button></button><button></button><button></button></div></div></div><div><div><div><div><label for="input-block-width">Width:</label><input type="text"></div><div><label for="input-block-height">Height:</label><input type="text"></div></div><div><div><small>
+                                Note: It doesn't impact on generated style.
+                            </small></div></div><hr><div><div><label for="input-stroke-width">Stroke width: 4</label><input step="1" min="1" max="25" type="range"></div></div><div><div><div></div><div><label for="input-dash-array">Dash Array</label><div><input type="text" aria-describedby="dashArray"><div><button type="button">Random</button></div></div><small>
+                                    It's a sequence of visible/invisible intervals.
+                                </small></div></div><div><label for="input-linecap">Line Cap</label><select><option value="butt">
+                                    butt
+                                </option><option value="round">
+                                    round
+                                </option><option value="square">
+                                    square
+                                </option></select></div></div><div><div><label for="input-stroke-width">Dash offset: 0</label><input step="1" min="0" max="100" type="range"></div></div><hr><div><div><label for="input-border-radius">Border radius: 0</label><input step="1" min="0" max="100" type="range"></div></div></div></div></div><div><div><div><textarea readonly="readonly">background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");</textarea><button>
+                        Copy
+                    </button></div></div></div></div><hr><div><div><div><h2>Usage</h2><p>
+                    Just copy the output and paste it into your CSS code. For example:
+                </p><pre><code><span>.block</span> {
+   <span>width</span>: <span>100px</span>;
+   <span>height</span>: <span>100px</span>;
+   <span>/* dashed border */</span><span>background-image</span>: <span>url</span>(<span>"data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e"</span>);
+}</code></pre><p></p><h2>How does it work?</h2><p>
+                    Native CSS properties <b>don't support</b> the customization of <mark>border-style</mark>.
+                    Therefore, we use a trick with an <b><i>SVG image inside</i></b><mark>background-image</mark> property.
+                    The SVG features give us the ability to change the distance between dashed lines, set custom pattern, add dash offset or even change a line cap.
+                    Generated SVG image is vector and it fills width and height of elements by 100%, so it doesn't matter what size elements have.
+                </p></div></div></div></div><!-- Github corner --><a href="https://github.com/kovart/dashed-border-generator" aria-label="View source on GitHub"></a><!-- VueJS CDN --><!-- Libraries --><!-- App --><!-- Code highlight --><div></div>
+</body>
+</html>

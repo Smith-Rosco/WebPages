@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>fish2018/pansou: PanSou是一款高性能的网盘资源搜索API服务，支持TG频道和插件搜索。系统设计以性能和可扩展性为核心，支持多频道多插件并发搜索、结果智能排序和网盘类型分类。docker集成前后端，一键启动，开箱即用。 https://so.252035.xyz/</title>
+<meta charset="UTF-8">
+</head>
+<body>
+<div data-turbo-body=""><div role="region" data-turbo-permanent=""></div><div><a href="#start-of-content" data-skip-target-assigned="false">Skip to content</a><span data-view-component="true"><span data-view-component="true"></span></span><react-partial partial-name="keyboard-shortcuts-dialog" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false"><div data-target="react-partial.reactRoot"></div></react-partial><header role="banner"><h2>Navigation Menu</h2><div><div><div><deferred-side-panel data-url="/_side-panels/global"><include-fragment data-target="deferred-side-panel.fragment" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><button aria-label="Open global navigation menu" data-action="click:deferred-side-panel#loadPanel click:deferred-side-panel#panelOpened" data-show-dialog-id="dialog-6db4e1a3-3d5e-4b4a-bd34-22f5ce6e499d" type="button" data-view-component="true"></button><dialog-helper><dialog data-target="deferred-side-panel.panel" aria-modal="true" aria-labelledby="dialog-6db4e1a3-3d5e-4b4a-bd34-22f5ce6e499d-title" aria-describedby="dialog-6db4e1a3-3d5e-4b4a-bd34-22f5ce6e499d-description" data-view-component="true"><div styles="flex-direction: row;" data-view-component="true"><div><div><h1>
+        Global navigation
+      </h1><div data-view-component="true"><div data-view-component="true"></div></div></div><div><button data-close-dialog-id="dialog-6db4e1a3-3d5e-4b4a-bd34-22f5ce6e499d" aria-label="Close" type="button" data-view-component="true"></button></div></div></div><scrollable-region data-labelled-by="dialog-6db4e1a3-3d5e-4b4a-bd34-22f5ce6e499d-title" data-catalyst=""><div data-view-component="true"><div data-view-component="true"><nav aria-label="Site navigation" data-view-component="true"><nav-list data-catalyst=""><ul data-target="nav-list.topLevelList" data-view-component="true"><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-hotkey="g d" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;HOME&quot;,&quot;label&quot;:null}" href="/dashboard" data-view-component="true"><span></span><span data-view-component="true">
+          Home
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;ISSUES&quot;,&quot;label&quot;:null}" href="/issues" data-view-component="true"><span></span><span data-view-component="true">
+          Issues
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PULL_REQUESTS&quot;,&quot;label&quot;:null}" href="/pulls" data-view-component="true"><span></span><span data-view-component="true">
+          Pull requests
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PROJECTS&quot;,&quot;label&quot;:null}" href="/projects" data-view-component="true"><span></span><span data-view-component="true">
+          Projects
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;DISCUSSIONS&quot;,&quot;label&quot;:null}" href="/discussions" data-view-component="true"><span></span><span data-view-component="true">
+          Discussions
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;CODESPACES&quot;,&quot;label&quot;:null}" href="https://github.com/codespaces" data-view-component="true"><span></span><span data-view-component="true">
+          Codespaces
+</span></a></li><li role="presentation" aria-hidden="true" data-view-component="true"></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;COPILOT&quot;,&quot;label&quot;:null}" href="/copilot" data-view-component="true"><span></span><span data-view-component="true">
+          Copilot
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="/copilot/spaces" data-view-component="true"><span></span><span data-view-component="true">
+          Spaces
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><button type="button" aria-expanded="false" data-action="
+            click:nav-list#handleItemWithSubItemClick
+            keydown:nav-list#handleItemWithSubItemKeydown
+          " data-view-component="true"><span></span><span data-view-component="true">
+          Download Copilot
+</span><span></span></button><ul role="list" data-action="keydown:nav-list#handleItemWithSubItemKeydown" aria-labelledby="item-b30e73e2-1270-4582-b086-7735ec00598d" data-view-component="true"><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="https://marketplace.visualstudio.com/items?itemName=GitHub.copilot" data-view-component="true"><span data-view-component="true">
+          Visual Studio Code
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="https://visualstudio.microsoft.com/github-copilot/" data-view-component="true"><span data-view-component="true">
+          Visual Studio
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="https://github.com/github/CopilotForXcode" data-view-component="true"><span data-view-component="true">
+          Xcode
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="https://plugins.jetbrains.com/plugin/17718-github-copilot" data-view-component="true"><span data-view-component="true">
+          JetBrains
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="https://github.com/github/copilot.vim" data-view-component="true"><span data-view-component="true">
+          Neovim
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a href="https://docs.github.com/en/copilot/how-tos/set-up/installing-github-copilot-in-the-cli" data-view-component="true"><span data-view-component="true">
+          CLI
+</span></a></li></ul></li><li role="presentation" aria-hidden="true" data-view-component="true"></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;EXPLORE&quot;,&quot;label&quot;:null}" href="/explore" data-view-component="true"><span></span><span data-view-component="true">
+          Explore
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;MARKETPLACE&quot;,&quot;label&quot;:null}" href="/marketplace" data-view-component="true"><span></span><span data-view-component="true">
+          Marketplace
+</span></a></li><li data-item-id="" data-targets="nav-list.items" data-view-component="true"><a data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;MCP_REGISTRY&quot;,&quot;label&quot;:null}" href="https://github.com/mcp" data-view-component="true"><span></span><span data-view-component="true">
+          MCP Registry
+</span></a></li></ul></nav-list></nav><div data-view-component="true"><span data-view-component="true"><span>Loading</span></span></div></div><div data-view-component="true"></div><div data-view-component="true"><p>© 2025 GitHub, Inc.</p><div data-view-component="true"><a target="_blank" href="https://github.com/about" data-view-component="true">About</a><a target="_blank" href="https://github.blog" data-view-component="true">Blog</a><a target="_blank" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true">Terms</a><a target="_blank" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true">Privacy</a><a target="_blank" href="https://github.com/security" data-view-component="true">Security</a><a target="_blank" href="https://www.githubstatus.com/" data-view-component="true">Status</a></div></div></div></scrollable-region></dialog></dialog-helper><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment></deferred-side-panel></div><a href="https://github.com/" data-hotkey="g d" aria-label="Homepage " data-turbo="false" data-analytics-event="{&quot;category&quot;:&quot;Header&quot;,&quot;action&quot;:&quot;go to dashboard&quot;,&quot;label&quot;:&quot;icon:logo&quot;}"></a><context-region-controller data-max-items="5"><div><nav role="navigation" aria-label="GitHub Breadcrumb"><context-region data-target="context-region-controller.contextRegion" role="list" data-action="context-region-changed:context-region-controller#crumbsChanged"><context-region-crumb data-crumb-id="contextregion-usercrumb-fish2018" data-targets="context-region.crumbs" data-label="fish2018" data-href="/fish2018" data-pre-rendered="" role="listitem"><a data-target="context-region-crumb.linkElement" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;fish2018&quot;,&quot;screen_size&quot;:&quot;full&quot;}" data-hovercard-type="user" data-hovercard-url="/users/fish2018/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" href="/fish2018" data-view-component="true" aria-keyshortcuts="Alt+ArrowUp"><span data-target="context-region-crumb.labelElement">
+          fish2018
+        </span></a><context-region-divider data-target="context-region-crumb.dividerElement" data-pre-rendered=""><span><span>/</span></span></context-region-divider></context-region-crumb><li data-target="context-region-controller.overflowMenuContainer context-region.overflowMenuContainer" role="listitem" hidden=""><action-menu data-target="context-region-controller.overflowActionMenu" data-select-variant="none" data-view-component="true" data-catalyst="" data-ready="true"><focus-group direction="vertical" mnemonics="" retain=""><button popovertarget="action-menu-61c69e90-687b-4307-8eea-7c29f72150f6-overlay" aria-controls="action-menu-61c69e90-687b-4307-8eea-7c29f72150f6-list" aria-haspopup="true" aria-labelledby="tooltip-7e3a57c2-929a-494f-b0ba-836b5956c410" type="button" data-view-component="true"></button><tool-tip for="action-menu-61c69e90-687b-4307-8eea-7c29f72150f6-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Show more breadcrumb items</tool-tip><anchored-position data-target="action-menu.overlay" anchor="action-menu-61c69e90-687b-4307-8eea-7c29f72150f6-button" align="start" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true"><div data-view-component="true"><div data-view-component="true"><action-list data-catalyst=""><div data-view-component="true"><ul aria-labelledby="action-menu-61c69e90-687b-4307-8eea-7c29f72150f6-button" role="menu" data-view-component="true"><li hidden="hidden" data-crumb-id="contextregion-usercrumb-fish2018" data-targets="context-region.overflowCrumbs action-list.items" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_overflow_menu_crumb&quot;,&quot;label&quot;:&quot;global-navigation&quot;}" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018" role="menuitem" data-view-component="true"><span data-view-component="true">
+          fish2018
+</span></a></li><li hidden="hidden" data-crumb-id="contextregion-repositorycrumb-pansou" data-targets="context-region.overflowCrumbs action-list.items" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_overflow_menu_crumb&quot;,&quot;label&quot;:&quot;global-navigation&quot;}" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou" role="menuitem" data-view-component="true"><span data-view-component="true">
+          pansou
+</span></a></li></ul></div></action-list></div></div></anchored-position></focus-group></action-menu><context-region-divider data-target="context-region-crumb.dividerElement" data-pre-rendered=""><span><span>/</span></span></context-region-divider></li><context-region-crumb data-crumb-id="contextregion-repositorycrumb-pansou" data-targets="context-region.crumbs" data-label="pansou" data-href="/fish2018/pansou" data-pre-rendered="" role="listitem"><a data-target="context-region-crumb.linkElement" data-analytics-event="{&quot;category&quot;:&quot;SiteHeaderComponent&quot;,&quot;action&quot;:&quot;context_region_crumb&quot;,&quot;label&quot;:&quot;pansou&quot;,&quot;screen_size&quot;:&quot;full&quot;}" href="/fish2018/pansou" aria-current="page" data-view-component="true"><span data-target="context-region-crumb.labelElement">
+          pansou
+        </span></a><context-region-divider data-target="context-region-crumb.dividerElement" data-pre-rendered=""><span><span>/</span></span></context-region-divider></context-region-crumb></context-region></nav></div></context-region-controller></div><div><div><qbsearch-input data-scope="repo:fish2018/pansou" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="kGnjYWlyMu24PRC2634JRq1WMhTH7t1YEIxh4sLiQeF1Ik9-WsxeK9r01EshS9YIybd5lh5Vnor81ufBKh6N_g" data-max-custom-scopes="10" data-header-redesign-enabled="true" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="fish2018/pansou" data-current-org="" data-current-owner="fish2018" data-logged-in="true" data-copilot-chat-enabled="true" data-nl-search-enabled="false"><div data-action="click:qbsearch-input#searchInputContainerClicked"><button type="button" data-action="click:qbsearch-input#handleExpand" aria-label="Search or jump to…" aria-expanded="false" aria-haspopup="dialog"></button><div><div><div><label for="AppHeader-searchInput" aria-label="Search or jump to…"></label><button type="button" data-target="qbsearch-input.inputButton" data-action="click:qbsearch-input#handleExpand" data-hotkey="s,/" data-analytics-event="{&quot;location&quot;:&quot;navbar&quot;,&quot;action&quot;:&quot;searchbar&quot;,&quot;context&quot;:&quot;global&quot;,&quot;tag&quot;:&quot;input&quot;,&quot;label&quot;:&quot;searchbar_input_global_navbar&quot;}" aria-describedby="search-error-message-flash"><div><span data-target="qbsearch-input.inputButtonText">
+                  Type <kbd>/</kbd> to search
+              </span></div></button></div></div></div><input type="hidden" name="type"><div data-modal-dialog-overlay=""><modal-dialog data-action="close:qbsearch-input#handleClose cancel:qbsearch-input#handleClose" data-target="qbsearch-input.searchSuggestionsDialog" role="dialog" aria-modal="true" aria-labelledby="search-suggestions-dialog-header" data-view-component="true"><h1>Search code, repositories, users, issues, pull requests...</h1><div><div data-view-component="true"><div data-target="qbsearch-input.queryBuilderContainer" hidden=""><!-- '"` --><!-- </textarea></xmp> --><form action="" accept-charset="UTF-8" method="get"><query-builder data-target="qbsearch-input.queryBuilder" data-filter-key=":" data-view-component="true"><div><label for="query-builder-test">
+        Search
+      </label><div data-target="query-builder.styledInput"><span></span><div data-target="query-builder.styledInputContainer"><div aria-hidden="true" data-target="query-builder.styledInputContent"></div><div><div aria-hidden="true" data-target="query-builder.sizer"></div><input name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-e7baa48a-45ce-4423-9598-5b0a9abb9628" data-target="query-builder.input" data-action="
+          input:query-builder#inputChange
+          blur:query-builder#inputBlur
+          keydown:query-builder#inputKeydown
+          focus:query-builder#inputFocus
+        " data-view-component="true"></div></div><span>Clear</span><button role="button" aria-labelledby="query-builder-test-clear query-builder-test-label" data-target="query-builder.clearButton" data-action="
+                click:query-builder#clear
+                focus:query-builder#clearButtonFocus
+                blur:query-builder#clearButtonBlur
+              " variant="small" hidden="hidden" type="button" data-view-component="true"></button></div><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code">
+    <path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-file-code">
+    <path d="M4 1.75C4 .784 4.784 0 5.75 0h5.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v8.586A1.75 1.75 0 0 1 14.25 15h-9a.75.75 0 0 1 0-1.5h9a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 10 4.25V1.5H5.75a.25.25 0 0 0-.25.25v2.5a.75.75 0 0 1-1.5 0Zm1.72 4.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734l1.47-1.47-1.47-1.47a.75.75 0 0 1 0-1.06ZM3.28 7.78 1.81 9.25l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Zm8.22-6.218V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-history">
+    <path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-bookmark">
+    <path d="M3 2.75C3 1.784 3.784 1 4.75 1h6.5c.966 0 1.75.784 1.75 1.75v11.5a.75.75 0 0 1-1.227.579L8 11.722l-3.773 3.107A.751.751 0 0 1 3 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v9.91l3.023-2.489a.75.75 0 0 1 .954 0l3.023 2.49V2.75a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-plus-circle">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm7.25-3.25v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 1.5 0Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-dot-fill">
+    <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-trash">
+    <path d="M11 1.75V3h2.25a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1 0-1.5H5V1.75C5 .784 5.784 0 6.75 0h2.5C10.216 0 11 .784 11 1.75ZM4.496 6.675l.66 6.6a.25.25 0 0 0 .249.225h5.19a.25.25 0 0 0 .249-.225l.66-6.6a.75.75 0 0 1 1.492.149l-.66 6.6A1.748 1.748 0 0 1 10.595 15h-5.19a1.75 1.75 0 0 1-1.741-1.575l-.66-6.6a.75.75 0 1 1 1.492-.15ZM6.5 1.75V3h3V1.75a.25.25 0 0 0-.25-.25h-2.5a.25.25 0 0 0-.25.25Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-people">
+    <path d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5.5-.5a2 2 0 1 0-.001 3.999A2 2 0 0 0 5.5 3.5Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-project">
+    <path d="M1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0ZM1.5 1.75v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25ZM11.75 3a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75Zm-8.25.75a.75.75 0 0 1 1.5 0v5.5a.75.75 0 0 1-1.5 0ZM8 3a.75.75 0 0 1 .75.75v3.5a.75.75 0 0 1-1.5 0v-3.5A.75.75 0 0 1 8 3Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pencil">
+    <path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copilot">
+    <path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copilot-error">
+    <path d="M16 11.24c0 .112-.072.274-.21.467L13 9.688V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-.198 0-.388-.009-.571-.029L6.833 5.226a4.01 4.01 0 0 0 .17-.782c.117-.935-.037-1.395-.241-1.614-.193-.206-.637-.413-1.682-.297-.683.076-1.115.231-1.395.415l-1.257-.91c.579-.564 1.413-.877 2.485-.996 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095Zm-5.083-8.707c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Zm2.511 11.074c-1.393.776-3.272 1.428-5.43 1.428-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.18-.455-.241-.963-.252-1.475L.31 4.107A.747.747 0 0 1 0 3.509V3.49a.748.748 0 0 1 .625-.73c.156-.026.306.047.435.139l14.667 10.578a.592.592 0 0 1 .227.264.752.752 0 0 1 .046.249v.022a.75.75 0 0 1-1.19.596Zm-1.367-.991L5.635 7.964a5.128 5.128 0 0 1-.889.073c-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433 1.539 0 3.089-.505 4.063-.934Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-workflow">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h3.5C6.216 0 7 .784 7 1.75v3.5A1.75 1.75 0 0 1 5.25 7H4v4a1 1 0 0 0 1 1h4v-1.25C9 9.784 9.784 9 10.75 9h3.5c.966 0 1.75.784 1.75 1.75v3.5A1.75 1.75 0 0 1 14.25 16h-3.5A1.75 1.75 0 0 1 9 14.25v-.75H5A2.5 2.5 0 0 1 2.5 11V7h-.75A1.75 1.75 0 0 1 0 5.25Zm1.75-.25a.25.25 0 0 0-.25.25v3.5c0 .138.112.25.25.25h3.5a.25.25 0 0 0 .25-.25v-3.5a.25.25 0 0 0-.25-.25Zm9 9a.25.25 0 0 0-.25.25v3.5c0 .138.112.25.25.25h3.5a.25.25 0 0 0 .25-.25v-3.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book">
+    <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-review">
+    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 13H8.061l-2.574 2.573A1.458 1.458 0 0 1 3 14.543V13H1.75A1.75 1.75 0 0 1 0 11.25v-8.5C0 1.784.784 1 1.75 1ZM1.5 2.75v8.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h6.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm5.28 1.72a.75.75 0 0 1 0 1.06L5.31 7l1.47 1.47a.751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018l-2-2a.75.75 0 0 1 0-1.06l2-2a.75.75 0 0 1 1.06 0Zm2.44 0a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L10.69 7 9.22 5.53a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-codespaces">
+    <path d="M0 11.25c0-.966.784-1.75 1.75-1.75h12.5c.966 0 1.75.784 1.75 1.75v3A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm2-9.5C2 .784 2.784 0 3.75 0h8.5C13.216 0 14 .784 14 1.75v5a1.75 1.75 0 0 1-1.75 1.75h-8.5A1.75 1.75 0 0 1 2 6.75Zm1.75-.25a.25.25 0 0 0-.25.25v5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-5a.25.25 0 0 0-.25-.25Zm-2 9.5a.25.25 0 0 0-.25.25v3c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-3a.25.25 0 0 0-.25-.25Z"></path><path d="M7 12.75a.75.75 0 0 1 .75-.75h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1-.75-.75Zm-4 0a.75.75 0 0 1 .75-.75h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1-.75-.75Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment">
+    <path d="M1 2.75C1 1.784 1.784 1 2.75 1h10.5c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 13.25 12H9.06l-2.573 2.573A1.458 1.458 0 0 1 4 13.543V12H2.75A1.75 1.75 0 0 1 1 10.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h2a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h4.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-comment-discussion">
+    <path d="M1.75 1h8.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 10.25 10H7.061l-2.574 2.573A1.458 1.458 0 0 1 2 11.543V10h-.25A1.75 1.75 0 0 1 0 8.25v-5.5C0 1.784.784 1 1.75 1ZM1.5 2.75v5.5c0 .138.112.25.25.25h1a.75.75 0 0 1 .75.75v2.19l2.72-2.72a.749.749 0 0 1 .53-.22h3.5a.25.25 0 0 0 .25-.25v-5.5a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25Zm13 2a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.458 1.458 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-organization">
+    <path d="M1.75 16A1.75 1.75 0 0 1 0 14.25V1.75C0 .784.784 0 1.75 0h8.5C11.216 0 12 .784 12 1.75v12.5c0 .085-.006.168-.018.25h2.268a.25.25 0 0 0 .25-.25V8.285a.25.25 0 0 0-.111-.208l-1.055-.703a.749.749 0 1 1 .832-1.248l1.055.703c.487.325.779.871.779 1.456v5.965A1.75 1.75 0 0 1 14.25 16h-3.5a.766.766 0 0 1-.197-.026c-.099.017-.2.026-.303.026h-3a.75.75 0 0 1-.75-.75V14h-1v1.25a.75.75 0 0 1-.75.75Zm-.25-1.75c0 .138.112.25.25.25H4v-1.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 .75.75v1.25h2.25a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM3.75 6h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 3.75A.75.75 0 0 1 3.75 3h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 3.75Zm4 3A.75.75 0 0 1 7.75 6h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 7 6.75ZM7.75 3h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5ZM3 9.75A.75.75 0 0 1 3.75 9h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 9.75ZM7.75 9h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-rocket">
+    <path d="M14.064 0h.186C15.216 0 16 .784 16 1.75v.186a8.752 8.752 0 0 1-2.564 6.186l-.458.459c-.314.314-.641.616-.979.904v3.207c0 .608-.315 1.172-.833 1.49l-2.774 1.707a.749.749 0 0 1-1.11-.418l-.954-3.102a1.214 1.214 0 0 1-.145-.125L3.754 9.816a1.218 1.218 0 0 1-.124-.145L.528 8.717a.749.749 0 0 1-.418-1.11l1.71-2.774A1.748 1.748 0 0 1 3.31 4h3.204c.288-.338.59-.665.904-.979l.459-.458A8.749 8.749 0 0 1 14.064 0ZM8.938 3.623h-.002l-.458.458c-.76.76-1.437 1.598-2.02 2.5l-1.5 2.317 2.143 2.143 2.317-1.5c.902-.583 1.74-1.26 2.499-2.02l.459-.458a7.25 7.25 0 0 0 2.123-5.127V1.75a.25.25 0 0 0-.25-.25h-.186a7.249 7.249 0 0 0-5.125 2.123ZM3.56 14.56c-.732.732-2.334 1.045-3.005 1.148a.234.234 0 0 1-.201-.064.234.234 0 0 1-.064-.201c.103-.671.416-2.273 1.15-3.003a1.502 1.502 0 1 1 2.12 2.12Zm6.94-3.935c-.088.06-.177.118-.266.175l-2.35 1.521.548 1.783 1.949-1.2a.25.25 0 0 0 .119-.213ZM3.678 8.116 5.2 5.766c.058-.09.117-.178.176-.266H3.309a.25.25 0 0 0-.213.119l-1.2 1.95ZM12 5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-shield-check">
+    <path d="m8.533.133 5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667l5.25-1.68a1.748 1.748 0 0 1 1.066 0Zm-.61 1.429.001.001-5.25 1.68a.251.251 0 0 0-.174.237V7c0 1.36.275 2.666 1.057 3.859.784 1.194 2.121 2.342 4.366 3.298a.196.196 0 0 0 .154 0c2.245-.957 3.582-2.103 4.366-3.297C13.225 9.666 13.5 8.358 13.5 7V3.48a.25.25 0 0 0-.174-.238l-5.25-1.68a.25.25 0 0 0-.153 0ZM11.28 6.28l-3.5 3.5a.75.75 0 0 1-1.06 0l-1.5-1.5a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215l.97.97 2.97-2.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-heart">
+    <path d="m8 14.25.345.666a.75.75 0 0 1-.69 0l-.008-.004-.018-.01a7.152 7.152 0 0 1-.31-.17 22.055 22.055 0 0 1-3.434-2.414C2.045 10.731 0 8.35 0 5.5 0 2.836 2.086 1 4.25 1 5.797 1 7.153 1.802 8 3.02 8.847 1.802 10.203 1 11.75 1 13.914 1 16 2.836 16 5.5c0 2.85-2.045 5.231-3.885 6.818a22.066 22.066 0 0 1-3.744 2.584l-.018.01-.006.003h-.002ZM4.25 2.5c-1.336 0-2.75 1.164-2.75 3 0 2.15 1.58 4.144 3.365 5.682A20.58 20.58 0 0 0 8 13.393a20.58 20.58 0 0 0 3.135-2.211C12.92 9.644 14.5 7.65 14.5 5.5c0-1.836-1.414-3-2.75-3-1.373 0-2.609.986-3.029 2.456a.749.749 0 0 1-1.442 0C6.859 3.486 5.623 2.5 4.25 2.5Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-server">
+    <path d="M1.75 1h12.5c.966 0 1.75.784 1.75 1.75v4c0 .372-.116.717-.314 1 .198.283.314.628.314 1v4a1.75 1.75 0 0 1-1.75 1.75H1.75A1.75 1.75 0 0 1 0 12.75v-4c0-.358.109-.707.314-1a1.739 1.739 0 0 1-.314-1v-4C0 1.784.784 1 1.75 1ZM1.5 2.75v4c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-4a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25Zm.25 5.75a.25.25 0 0 0-.25.25v4c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-4a.25.25 0 0 0-.25-.25ZM7 4.75A.75.75 0 0 1 7.75 4h4.5a.75.75 0 0 1 0 1.5h-4.5A.75.75 0 0 1 7 4.75ZM7.75 10h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM3 4.75A.75.75 0 0 1 3.75 4h.5a.75.75 0 0 1 0 1.5h-.5A.75.75 0 0 1 3 4.75ZM3.75 10h.5a.75.75 0 0 1 0 1.5h-.5a.75.75 0 0 1 0-1.5Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-globe">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM5.78 8.75a9.64 9.64 0 0 0 1.363 4.177c.255.426.542.832.857 1.215.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a9.927 9.927 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.507 6.507 0 0 0 4.666 5.5c-.123-.181-.24-.365-.352-.552-.715-1.192-1.437-2.874-1.581-4.948Zm-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.507 6.507 0 0 0-4.666 5.5Zm10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.507 6.507 0 0 0 4.666-5.5Zm2.733-1.5a6.507 6.507 0 0 0-4.666-5.5c.123.181.24.365.353.552.714 1.192 1.436 2.874 1.58 4.948Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-issue-opened">
+    <path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-mobile">
+    <path d="M3.75 0h8.5C13.216 0 14 .784 14 1.75v12.5A1.75 1.75 0 0 1 12.25 16h-8.5A1.75 1.75 0 0 1 2 14.25V1.75C2 .784 2.784 0 3.75 0ZM3.5 1.75v12.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25h-8.5a.25.25 0 0 0-.25.25ZM8 13a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-package">
+    <path d="m8.878.392 5.25 3.045c.54.314.872.89.872 1.514v6.098a1.75 1.75 0 0 1-.872 1.514l-5.25 3.045a1.75 1.75 0 0 1-1.756 0l-5.25-3.045A1.75 1.75 0 0 1 1 11.049V4.951c0-.624.332-1.201.872-1.514L7.122.392a1.75 1.75 0 0 1 1.756 0ZM7.875 1.69l-4.63 2.685L8 7.133l4.755-2.758-4.63-2.685a.248.248 0 0 0-.25 0ZM2.5 5.677v5.372c0 .09.047.171.125.216l4.625 2.683V8.432Zm6.25 8.271 4.625-2.683a.25.25 0 0 0 .125-.216V5.677L8.75 8.432Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-credit-card">
+    <path d="M10.75 9a.75.75 0 0 0 0 1.5h1.5a.75.75 0 0 0 0-1.5h-1.5Z"></path><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25ZM14.5 6.5h-13v5.75c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Zm0-2.75a.25.25 0 0 0-.25-.25H1.75a.25.25 0 0 0-.25.25V5h13Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-play">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-gift">
+    <path d="M2 2.75A2.75 2.75 0 0 1 4.75 0c.983 0 1.873.42 2.57 1.232.268.318.497.668.68 1.042.183-.375.411-.725.68-1.044C9.376.42 10.266 0 11.25 0a2.75 2.75 0 0 1 2.45 4h.55c.966 0 1.75.784 1.75 1.75v2c0 .698-.409 1.301-1 1.582v4.918A1.75 1.75 0 0 1 13.25 16H2.75A1.75 1.75 0 0 1 1 14.25V9.332C.409 9.05 0 8.448 0 7.75v-2C0 4.784.784 4 1.75 4h.55c-.192-.375-.3-.8-.3-1.25ZM7.25 9.5H2.5v4.75c0 .138.112.25.25.25h4.5Zm1.5 0v5h4.5a.25.25 0 0 0 .25-.25V9.5Zm0-4V8h5.5a.25.25 0 0 0 .25-.25v-2a.25.25 0 0 0-.25-.25Zm-7 0a.25.25 0 0 0-.25.25v2c0 .138.112.25.25.25h5.5V5.5h-5.5Zm3-4a1.25 1.25 0 0 0 0 2.5h2.309c-.233-.818-.542-1.401-.878-1.793-.43-.502-.915-.707-1.431-.707ZM8.941 4h2.309a1.25 1.25 0 0 0 0-2.5c-.516 0-1 .205-1.43.707-.337.392-.646.975-.879 1.793Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-code-square">
+    <path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25V1.75a.25.25 0 0 0-.25-.25Zm7.47 3.97a.75.75 0 0 1 1.06 0l2 2a.75.75 0 0 1 0 1.06l-2 2a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L10.69 8 9.22 6.53a.75.75 0 0 1 0-1.06ZM6.78 6.53 5.31 8l1.47 1.47a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215l-2-2a.75.75 0 0 1 0-1.06l2-2a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path>
+</svg>
+</template><template>
+  <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-device-desktop">
+    <path d="M14.25 1c.966 0 1.75.784 1.75 1.75v7.5A1.75 1.75 0 0 1 14.25 12h-3.727c.099 1.041.52 1.872 1.292 2.757A.752.752 0 0 1 11.25 16h-6.5a.75.75 0 0 1-.565-1.243c.772-.885 1.192-1.716 1.292-2.757H1.75A1.75 1.75 0 0 1 0 10.25v-7.5C0 1.784.784 1 1.75 1ZM1.75 2.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25ZM9.018 12H6.982a5.72 5.72 0 0 1-.765 2.5h3.566a5.72 5.72 0 0 1-.765-2.5Z"></path>
+</svg>
+</template><div><ul role="listbox" aria-label="Suggestions" data-action="
+                    combobox-commit:query-builder#comboboxCommit
+                    mousedown:query-builder#resultsMousedown
+                  " data-target="query-builder.resultsList" data-persist-list="false" tabindex="-1"></ul></div><div hidden="hidden"><span></span><span></span></div></div><div data-target="query-builder.screenReaderFeedback" aria-live="polite" aria-atomic="true"></div></query-builder></form><div><a target="_blank" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax" data-view-component="true">Search syntax tips</a><div></div><button data-action="click:qbsearch-input#showFeedbackDialog" type="button" data-view-component="true"><span><span>Give feedback</span></span></button></div></div></div></div></modal-dialog></div></div><div data-action="click:qbsearch-input#retract" hidden="" data-target="qbsearch-input.darkBackdrop"></div><div><dialog-helper><dialog data-target="qbsearch-input.feedbackDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" aria-modal="true" aria-labelledby="feedback-dialog-title" aria-describedby="feedback-dialog-description" data-view-component="true"><div data-view-component="true"><div><div><h1>
+        Provide feedback
+      </h1></div><div><button data-close-dialog-id="feedback-dialog" aria-label="Close" type="button" data-view-component="true"></button></div></div></div><scrollable-region data-labelled-by="feedback-dialog-title" data-catalyst=""><div data-view-component="true"><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="yuSJCqV8p5wbAyUduJP51IRRg9sl8hd9bjXgeWvfq_u3Y-E10vaXaQxlHRFnyyx3IR3udbUbZgf7ESj1-bYwog"><p>We read every piece of feedback, and take your input very seriously.</p><textarea name="feedback"></textarea><input name="include_email" aria-label="Include my email address so I can be contacted" type="checkbox"><label for="include_email">Include my email address so I can be contacted</label></form></div></scrollable-region><div data-view-component="true"><button data-close-dialog-id="feedback-dialog" type="button" data-view-component="true">    Cancel
+</button><button form="code-search-feedback-form" data-action="click:qbsearch-input#submitFeedback" type="submit" data-view-component="true">    Submit feedback
+</button></div></dialog></dialog-helper><custom-scopes data-target="qbsearch-input.customScopesManager"><dialog-helper><dialog data-target="custom-scopes.customScopesModalDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" aria-modal="true" aria-labelledby="custom-scopes-dialog-title" aria-describedby="custom-scopes-dialog-description" data-view-component="true"><div data-view-component="true"><div><div><h1>
+        Saved searches
+      </h1><h2>Use saved searches to filter your results more quickly</h2></div><div><button data-close-dialog-id="custom-scopes-dialog" aria-label="Close" type="button" data-view-component="true"></button></div></div></div><scrollable-region data-labelled-by="custom-scopes-dialog-title" data-catalyst=""><div data-view-component="true"><div data-target="custom-scopes.customScopesModalDialogFlash"></div><div hidden="" data-target="custom-scopes.createCustomScopeForm"><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="1molMYvYCd-XFhIymg8p-J6pP-Mm7WxNMuIClhHjigMd_WRZ1qSUnBBcW7rO2PgHKFQZR2fp84YPfDJDAtBSVw"><div data-target="custom-scopes.customScopesModalDialogFlash"></div><input type="hidden" name="custom_scope_id" data-target="custom-scopes.customScopesIdField"><div><label for="custom_scope_name">Name</label><auto-check src="/search/custom_scopes/check_name" required=""><input type="text" name="custom_scope_name" data-target="custom-scopes.customScopesNameField" autocomplete="off" placeholder="github-ruby" required="" maxlength="50" spellcheck="false"><input type="hidden" value="3tExUbu6_eqvXo06Br9zcqvivbO5sGTXp6YE6_mrAXWslZvikZvaer51qIWamzp-rQ1GjTEUhEYmMedgR3kr-g" data-csrf="true"></auto-check></div><div><label for="custom_scope_query">Query</label><input type="text" name="custom_scope_query" data-target="custom-scopes.customScopesQueryField" autocomplete="off" placeholder="(repo:mona/a OR repo:mona/b) AND lang:python" required="" maxlength="500"></div><p>
+            To see all available qualifiers, see our <a href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax">documentation</a>.
+          </p></form></div><div data-target="custom-scopes.manageCustomScopesForm"><div data-target="custom-scopes.list"></div></div></div></scrollable-region><div data-view-component="true"><button data-action="click:custom-scopes#customScopesCancel" type="button" data-view-component="true">    Cancel
+</button><button form="custom-scopes-dialog-form" data-action="click:custom-scopes#customScopesSubmit" data-target="custom-scopes.customScopesSubmitButton" type="submit" data-view-component="true">    Create saved search
+</button></div></dialog></dialog-helper></custom-scopes></div></qbsearch-input><input type="hidden" value="EvU4nGjYjwZqKS9V7uFyLhTpr9vH0G5KnIeNJDsA14dHGMtUXKJEKp-_zyker-3uYSIoPbonmuKa6QErAtOuDA" data-csrf="true"></div><div><div><react-partial-anchor><a href="/copilot" data-target="react-partial-anchor.anchor" aria-labelledby="tooltip-8dc524da-b844-404e-a1ad-0acc61bd5adc" data-view-component="true"></a><tool-tip for="copilot-chat-header-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Chat with Copilot</tool-tip><template data-target="react-partial-anchor.template">
+        <script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_react-relay_index_js-0bf1cccebb74.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_comma-separated-tokens_index_js-node_modules_mdast-util-from-markdown_li-6db53e-21819123964e.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_hastscript_lib_index_js-node_modules_mdast-util-gfm_lib_index_js-node_mo-2895d2-1abd1bdb0499.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_github_mini-throttle_dist_decorators_js-node_modules_accname_dist_access-690142-387fd2fa9b38.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_remark-parse_lib_index_js-node_modules_unified_lib_index_js-b8fc42bb86ed.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_lowlight_lib_all_js-node_modules_react-markdown_lib_index_js-node_module-5ac2ea-78b399f7edf8.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_fzy_js_index_js-node_modules_primer_styled-react_dist_deprecated_js-node-558e1e-3b2e437c6ba4.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/vendors-node_modules_emoji-regex_index_js-node_modules_github_hotkey_dist_index_js-node_modul-1e71c3-c816c199c941.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_utils_copilot-local-storage_ts-cb3e6dafca61.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_components_tracing_TraceProvider_tsx-0b84a51e0239.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_utils_CopilotChatContext_tsx-packages_safe-html_VerifiedHTML_tsx-f92485305fef.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_item-picker_components_RepositoryPicker_tsx-7ae13841a9ab.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-markdown_MarkdownRenderer_tsx-ddb9246f4625.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_code-view-shared_hooks_use-repos-analytics_ts-packages_code-view-shared_hooks_use-tr-fbe81a-17c0672ce7ff.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_components_ModelPicker_tsx-packages_copilot-byok_providers_assets_anthr-9df025-42b3c650a82f.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_components_CopilotIconAnimation_tsx-2161209d84be.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_hooks_use-active-plugin_ts-packages_copilot-chat_components_ChatMessage-aba353-e80bc53a7c8b.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_copilot-chat_hooks_use-chat-message-behavior_ts-packages_copilot-chat_hooks_use-grou-d552cd-e0443f5cadc8.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/packages_noop_noop_ts-packages_promise-with-resolvers-polyfill_promise-with-resolvers-polyfil-1effa1-a665d02f61aa.js" defer="defer"></script>
+<script crossorigin="anonymous" type="application/javascript" src="https://github.githubassets.com/assets/copilot-chat-d46d8b3638ad.js" defer="defer"></script>
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-react.3d66a64c5878cc361e85.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/packages_noop_noop_ts-packages_promise-with-resolvers-polyfill_promise-with-resolvers-polyfil-1effa1.1e72eb14c1a217b15599.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/copilot-chat.1e432eb258025d83c603.module.css">
+        <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/copilot-markdown-rendering-ddd978d4a7c0.css">
+        <include-fragment src="/github-copilot/chat?skip_anchor=true" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true">
+  
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>
+      </template></react-partial-anchor><div><react-partial-anchor><button data-target="react-partial-anchor.anchor" aria-expanded="false" aria-labelledby="tooltip-d64d3deb-385c-4d6d-9a56-bdbe76becda0" type="button" data-view-component="true"></button><tool-tip for="global-copilot-menu-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Open Copilot…</tool-tip><template data-target="react-partial-anchor.template">
+            <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-react.3d66a64c5878cc361e85.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-copilot-menu.e8b96f8e81aaf397c759.module.css">
+
+<react-partial partial-name="global-copilot-menu" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"repository":{"id":1017201879,"name":"pansou","ownerLogin":"fish2018"}}}</script>
+  <div data-target="react-partial.reactRoot"></div>
+</react-partial>
+
+
+          </template></react-partial-anchor></div></div></div><div><react-partial-anchor><button aria-label="Create something new" data-target="react-partial-anchor.anchor" type="button" disabled="disabled" data-view-component="true" aria-describedby="tooltip-3dfe4d0d-5e45-458d-894f-c94322f6c879"><span><span></span><span></span></span></button><tool-tip for="global-create-menu-anchor" popover="manual" data-direction="s" data-type="description" data-view-component="true" role="tooltip">Create new…</tool-tip><template data-target="react-partial-anchor.template">
+        <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-react.3d66a64c5878cc361e85.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-create-menu.4d24ecb322134c573644.module.css">
+
+<react-partial partial-name="global-create-menu" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"createRepo":true,"importRepo":true,"codespaces":true,"spark":false,"codingAgent":false,"gist":true,"createOrg":true,"createProject":false,"createProjectUrl":"/Smith-Rosco?tab=projects","createLegacyProject":false,"createIssue":true,"org":null,"owner":"fish2018","repo":"pansou"}}</script>
+  <div data-target="react-partial.reactRoot"></div>
+</react-partial>
+
+
+      </template></react-partial-anchor><a href="/issues" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;ISSUES_HEADER&quot;,&quot;label&quot;:null}" aria-labelledby="tooltip-fd2991e2-1ac1-4583-a95d-19c98f32f890" data-view-component="true"></a><tool-tip for="icon-button-601136d8-48fe-4404-a714-00b5dbf91ea1" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Your issues</tool-tip><a href="/pulls" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;PULL_REQUESTS_HEADER&quot;,&quot;label&quot;:null}" aria-labelledby="tooltip-9af07114-b93a-47e2-a2a4-eecfc63251b3" data-view-component="true"></a><tool-tip for="icon-button-f155051a-362e-4151-8864-dba6dec610db" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Your pull requests</tool-tip></div><notification-indicator data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6NjEwMzcwMDciLCJ0IjoxNzYwODQzMzIwfQ==--6bb7a83401d4fad0f6ac2a2827b0c7d20ce0638c6006242686d8c7e7ddfa0a03" data-indicator-mode="none" data-tooltip-global="You have unread notifications" data-tooltip-unavailable="Notifications are unavailable at the moment." data-tooltip-none="You have no unread notifications" data-header-redesign-enabled="true" data-fetch-indicator-src="/notifications/indicator" data-fetch-indicator-enabled="true" data-view-component="true"><a href="/notifications" aria-labelledby="notification-indicator-tooltip" data-hotkey="g n" data-target="notification-indicator.link" data-analytics-event="{&quot;category&quot;:&quot;Global navigation&quot;,&quot;action&quot;:&quot;NOTIFICATIONS_HEADER&quot;,&quot;label&quot;:null}" data-view-component="true"></a><tool-tip data-target="notification-indicator.tooltip" for="AppHeader-notifications-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Notifications</tool-tip></notification-indicator><div><deferred-side-panel data-url="/_side-panels/user?repository_id=1017201879"><include-fragment data-target="deferred-side-panel.fragment" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><react-partial-anchor><button data-target="react-partial-anchor.anchor" data-login="Smith-Rosco" aria-label="Open user navigation menu" type="button" data-view-component="true"><span><span></span></span></button><template data-target="react-partial-anchor.template">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/primer-react.3d66a64c5878cc361e85.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="https://github.githubassets.com/assets/global-user-nav-drawer.c2bc1ffb732493d0bf54.module.css">
+
+<react-partial partial-name="global-user-nav-drawer" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"owner":{"login":"Smith-Rosco","name":"He Kaifeng","avatarUrl":"https://avatars.githubusercontent.com/u/61037007?v=4"},"drawerId":"global-user-nav-drawer","lazyLoadItemDataFetchUrl":"/_side-panels/user.json","canAddAccount":true,"addAccountPath":"/login?add_account=1\u0026return_to=https%3A%2F%2Fgithub.com%2Ffish2018%2Fpansou","switchAccountPath":"/switch_account","loginAccountPath":"/login?add_account=1","projectsPath":"/Smith-Rosco?tab=projects","gistsUrl":"https://gist.github.com/mine","docsUrl":"https://docs.github.com","yourEnterpriseUrl":null,"enterpriseSettingsUrl":null,"supportUrl":"https://support.github.com","showAccountSwitcher":true,"showCopilot":true,"showEnterprises":true,"showEnterprise":false,"showGists":true,"showOrganizations":true,"showSponsors":true,"showUpgrade":true,"showFeaturesPreviews":true,"showEnterpriseSettings":false,"createMenuProps":{"createRepo":true,"importRepo":true,"codespaces":true,"spark":false,"codingAgent":false,"gist":true,"createOrg":true,"createProject":false,"createProjectUrl":"/Smith-Rosco?tab=projects","createLegacyProject":false,"createIssue":true,"org":null,"owner":"fish2018","repo":"pansou"}}}</script>
+  <div data-target="react-partial.reactRoot"></div>
+</react-partial>
+
+
+  </template></react-partial-anchor><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment></deferred-side-panel></div><div><site-header-logged-in-user-menu></site-header-logged-in-user-menu></div></div></div><div><nav data-pjax="#js-repo-pjax-container" aria-label="Repository" data-view-component="true"><ul data-view-component="true"><li data-view-component="true"><a href="/fish2018/pansou" data-tab-item="i0code-tab" data-selected-links="repo_source repo_downloads repo_commits repo_releases repo_tags repo_branches repo_packages repo_deployments repo_attestations /fish2018/pansou" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g c" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Code&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" aria-current="page" data-view-component="true"><span data-content="Code">Code</span><span data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true"></span></a></li><li data-view-component="true"><a href="/fish2018/pansou/issues" data-tab-item="i1issues-tab" data-selected-links="repo_issues repo_labels repo_milestones /fish2018/pansou/issues" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g i" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Issues&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><span data-content="Issues">Issues</span><span data-pjax-replace="" data-turbo-replace="" title="4" data-view-component="true">4</span></a></li><li data-view-component="true"><a href="/fish2018/pansou/pulls" data-tab-item="i2pull-requests-tab" data-selected-links="repo_pulls checks /fish2018/pansou/pulls" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g p" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Pull requests&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><span data-content="Pull requests">Pull requests</span><span data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true">0</span></a></li><li data-view-component="true"><a href="/fish2018/pansou/actions" data-tab-item="i3actions-tab" data-selected-links="repo_actions /fish2018/pansou/actions" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g a" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Actions&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><span data-content="Actions">Actions</span><span data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true"></span></a></li><li data-view-component="true"><a href="/fish2018/pansou/projects" data-tab-item="i4projects-tab" data-selected-links="repo_projects new_repo_project repo_project /fish2018/pansou/projects" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g b" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Projects&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><span data-content="Projects">Projects</span><span data-pjax-replace="" data-turbo-replace="" title="0" hidden="hidden" data-view-component="true">0</span></a></li><li data-view-component="true"><a href="/fish2018/pansou/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /fish2018/pansou/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><span data-content="Security">Security</span></a><div data-show-on-forbidden-error="" hidden=""><a href="/fish2018/pansou/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /fish2018/pansou/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"></a><div><a href="/fish2018/pansou/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /fish2018/pansou/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"></a><div><a href="/fish2018/pansou/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /fish2018/pansou/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"></a><div data-view-component="true"><a href="/fish2018/pansou/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /fish2018/pansou/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p></a><p><a href="/fish2018/pansou/security" data-tab-item="i5security-tab" data-selected-links="security overview alerts policy token_scanning code_scanning /fish2018/pansou/security" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-hotkey="g s" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Security&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true">There was an error while loading. </a><a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></li><li data-view-component="true"><a href="/fish2018/pansou/pulse" data-tab-item="i6insights-tab" data-selected-links="repo_graphs repo_contributors dependency_graph dependabot_updates pulse people community /fish2018/pansou/pulse" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" data-analytics-event="{&quot;category&quot;:&quot;Underline navbar&quot;,&quot;action&quot;:&quot;Click tab&quot;,&quot;label&quot;:&quot;Insights&quot;,&quot;target&quot;:&quot;UNDERLINE_NAV.TAB&quot;}" data-view-component="true"><span data-content="Insights">Insights</span><span data-pjax-replace="" data-turbo-replace="" title="Not available" data-view-component="true"></span></a></li></ul><div data-view-component="true"><action-menu data-select-variant="none" data-view-component="true" data-catalyst="" data-ready="true"><focus-group direction="vertical" mnemonics="" retain=""><button popovertarget="action-menu-b0945d73-3bcc-40b4-9bf8-148f35ae373d-overlay" aria-controls="action-menu-b0945d73-3bcc-40b4-9bf8-148f35ae373d-list" aria-haspopup="true" aria-labelledby="tooltip-40c304f9-8a6b-480f-b559-b3dcc61ecebf" type="button" data-view-component="true"></button><tool-tip for="action-menu-b0945d73-3bcc-40b4-9bf8-148f35ae373d-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Additional navigation options</tool-tip><anchored-position data-target="action-menu.overlay" anchor="action-menu-b0945d73-3bcc-40b4-9bf8-148f35ae373d-button" align="start" side="outside-bottom" anchor-offset="normal" popover="auto" data-view-component="true"><div data-view-component="true"><div data-view-component="true"><action-list data-catalyst=""><div data-view-component="true"><ul aria-labelledby="action-menu-b0945d73-3bcc-40b4-9bf8-148f35ae373d-button" role="menu" data-view-component="true"><li hidden="" data-menu-item="i0code-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Code
+</span></a></li><li hidden="" data-menu-item="i1issues-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou/issues" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Issues
+</span></a></li><li hidden="" data-menu-item="i2pull-requests-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou/pulls" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Pull requests
+</span></a></li><li hidden="" data-menu-item="i3actions-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou/actions" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Actions
+</span></a></li><li hidden="" data-menu-item="i4projects-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou/projects" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Projects
+</span></a></li><li hidden="" data-menu-item="i5security-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou/security" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Security
+</span></a></li><li hidden="" data-menu-item="i6insights-tab" data-targets="action-list.items" role="none" data-view-component="true"><a tabindex="-1" href="/fish2018/pansou/pulse" role="menuitem" data-view-component="true"><span></span><span data-view-component="true">
+          Insights
+</span></a></li></ul></div></action-list></div></div></anchored-position></focus-group></action-menu></div></nav></div></header><div hidden="hidden" data-view-component="true"><span hidden="">You signed in with another tab or window. <a href="">Reload</a> to refresh your session.</span><span hidden="">You signed out in another tab or window. <a href="">Reload</a> to refresh your session.</span><span hidden="">You switched accounts on another tab or window. <a href="">Reload</a> to refresh your session.</span><button aria-labelledby="tooltip-421f90db-beee-4e65-815b-ab0dc4199e3d" type="button" data-view-component="true"></button><tool-tip for="icon-button-09f64587-eda8-4ae5-9d5c-f3829a675096" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Dismiss alert</tool-tip></div></div><div></div><div data-turbo-replace=""><template>
+    
+<div class="flash flash-full   {{ className }}">
+  <div>
+    <button autofocus="" class="flash-close js-flash-close" type="button" aria-label="Dismiss this message">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    <div aria-atomic="true" role="alert" class="js-flash-alert">
+      
+      <div>{{ message }}</div>
+
+    </div>
+  </div>
+</div>
+  </template></div><notification-shelf-watcher data-base-url="https://github.com/notifications/beta/shelf" data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6NjEwMzcwMDciLCJ0IjoxNzYwODQzMzIwfQ==--6bb7a83401d4fad0f6ac2a2827b0c7d20ce0638c6006242686d8c7e7ddfa0a03" data-view-component="true"></notification-shelf-watcher><div hidden="" data-initial="" data-target="notification-shelf-watcher.placeholder"></div><div data-commit-hovercards-enabled="" data-discussion-hovercards-enabled="" data-issue-and-pr-hovercards-enabled="" data-project-hovercards-enabled=""><div itemscope="" itemtype="http://schema.org/SoftwareSourceCode"><main><template data-label="Create list">
+  <div class="Box-header">
+    <h2 class="Box-title">Create list</h2>
+  </div>
+  <!-- '"` --><!-- </textarea></xmp> --><form class="Box-body d-flex flex-column p-3 js-user-list-form" data-turbo="false" action="/stars/Smith-Rosco/lists" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="Fk_RUquNHiklAFIWamah802tv1y5KLOJblbFEJv1tZTIc4qOtefRD9RqOanPIdxq3PZzWhNp7pxThFotYs3aJA" autocomplete="off">
+        <p class="color-fg-subtle mb-3">Create a list to organize your starred repositories.</p>
+      <input type="hidden" name="repository_id" value="{{ repositoryId }}">
+
+  <div class="form-group mx-0 mt-0 mb-2 js-user-list-input-container js-characters-remaining-container position-relative">
+    <auto-check src="/stars/Smith-Rosco/list-check?attr=name" required="">
+      <text-expander keys=":" data-emoji-url="/autocomplete/emoji">
+        <input type="text" name="user_list[name]" class="form-control js-user-list-input js-characters-remaining-field" placeholder="⭐️ Name this list" value="{{ placeholderName }}" aria-label="List name" maxlength="32" data-maxlength="32" autofocus="" required="">
+      </text-expander>
+      <input type="hidden" value="n-kxI6dbW0L79384Qq8YRn3EeUuTUZHzBA9Y1BXl9VQCni_SoDSSi-m2eKXLgOTD7rzQLtcn99B5WlzDOdF5TA" data-csrf="true">
+    </auto-check>
+    <p class="note error position-relative js-user-list-error" hidden="">
+      Name .
+    </p>
+    <p class="mt-1 text-small float-right js-characters-remaining" data-suffix="remaining" hidden="">
+      32 remaining
+    </p>
+  </div>
+  <div class="form-group mx-0 mt-0 mb-2 js-user-list-input-container js-characters-remaining-container position-relative">
+    <text-expander keys=":" data-emoji-url="/autocomplete/emoji">
+      <textarea name="user_list[description]" class="form-control js-user-list-input js-characters-remaining-field" placeholder="Write a description" aria-label="List description" maxlength="160" data-maxlength="160" style="height: 74px; min-height: 74px"></textarea>
+    </text-expander>
+    <p class="note error position-relative js-user-list-error" hidden="">
+      Description .
+    </p>
+    <p class="mt-1 text-small float-right js-characters-remaining" data-suffix="remaining" hidden="">
+      160 remaining
+    </p>
+  </div>
+  <div hidden="hidden" data-generic-message="Unable to save your list at this time." data-view-component="true" class="js-user-list-base flash flash-error mx-0 mt-0 mb-2">
+  
+    .
+
+
+  
+</div>      <button data-disable-invalid="true" data-submitting-message="Creating..." type="submit" disabled="disabled" data-view-component="true" class="Button--primary Button--medium Button Button--fullWidth mt-2">  <span class="Button-content">
+    <span class="Button-label">Create</span>
+  </span>
+</button>
+
+
+  <p class="note mt-2 mb-0">
+    <strong>Tip:</strong> type <code>:</code> to add emoji to the name or description.
+  </p>
+</form>
+</template><div data-turbo-replace=""><div><div><div><strong itemprop="name"><a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" href="/fish2018/pansou">pansou</a></strong><span></span><span>Public</span></div><div></div></div><div data-turbo-replace=""><ul><li><include-fragment loading="lazy" src="/notifications/1017201879/watch_subscription?aria_id_prefix=repository-details&amp;button_block=false&amp;show_count=true" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><div data-hide-on-error=""><button aria-label="Watching a repository" type="button" disabled="disabled" data-view-component="true"><span><span></span><span>Watch</span></span></button></div><p data-show-on-error="" hidden=""><span>
+            Couldn't load subscription status.&nbsp;
+            <button data-retry-button="" type="button" data-view-component="true"><span><span>Retry</span></span></button></span></p><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment></li><li><div data-view-component="true"><a icon="repo-forked" href="/fish2018/pansou/fork" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:1017201879,&quot;originating_url&quot;:&quot;https://github.com/fish2018/pansou&quot;,&quot;user_id&quot;:61037007}}" data-hydro-click-hmac="77d84a65e4c94e822df8afa366c26aff4e4b171fb642664a8ea3975f1341286e" data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork" data-view-component="true" aria-describedby="tooltip-3fababa5-e819-4463-8dee-58e8297feba8">Fork
+          <span data-pjax-replace="true" data-turbo-replace="true" title="1,717" data-view-component="true">1.7k</span><tool-tip for="fork-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" role="tooltip">Fork your own copy of fish2018/pansou</tool-tip></a><details group_item="true" data-view-component="true"><summary aria-label="See your forks of this repository" data-view-component="true" aria-haspopup="menu" role="button"></summary><details-menu src="/fish2018/pansou/my_forks_menu_content?can_fork=true" role="menu"><div><button type="button" aria-label="Close menu" data-toggle-for="my-forks-menu-1017201879"></button><div><div><include-fragment aria-label="Loading" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><p data-show-on-error="" hidden="">
+                  Forks could not be loaded
+                </p><span data-hide-on-error=""><span data-view-component="true"><span>Loading</span></span></span><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment></div></div></div></details-menu></details></div></li><li><template aria-live="polite">
+  <div class="Box-header">
+    <h2 class="Box-title">Unstar this repository?</h2>
+  </div>
+  <div class="Box-body">
+    <p class="mb-3">
+      This will remove {{ repoNameWithOwner }} from the {{ listsWithCount }} that it's been added to.
+    </p>
+    <div class="form-actions">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-confirmation-form" data-turbo="false" action="{{ confirmUrl }}" accept-charset="UTF-8" method="post">
+        <input type="hidden" name="authenticity_token" value="{{ confirmCsrfToken }}">
+        <input type="hidden" name="confirm" value="true">
+          <button data-close-dialog="true" type="submit" data-view-component="true" class="btn-danger btn width-full">    Unstar
+</button>
+</form>    </div>
+  </div>
+</template><div data-view-component="true"><div data-view-component="true"><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/fish2018/pansou/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="DfE-kXsnqb5QYzYAu7XcuhEekmTI9rfXvF7qLeWIbznIQZx7BrYG8bd1enbvLBW2eu3Ni67rKAYuS2lMPsP72Q" autocomplete="off"><input type="hidden" value="527US9VAHSxig4FBW3UBvwRGytFvAm5hO-mN_iStDjMi3nahqNGyY4WVzTcP7Mizb7WVPgkf8bCp_A6f_-aa0w" data-csrf="true"><input type="hidden" name="context" value="repository"><button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:1017201879,&quot;originating_url&quot;:&quot;https://github.com/fish2018/pansou&quot;,&quot;user_id&quot;:61037007}}" data-hydro-click-hmac="1fe5afa0292fea26a67fd26a712452f8d6311d048a4f274a7a28388c2636ceb5" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar" data-aria-prefix="Starred, click to unstar this repository" aria-label="Starred, click to unstar this repository (7611)" type="submit" data-view-component="true"><span data-view-component="true">
+              Starred
+</span><span aria-label="7611 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="7,611" data-view-component="true">7.6k</span></button></form><details data-view-component="true"><summary aria-label="Add this repository to a list" data-view-component="true" aria-haspopup="menu" role="button"></summary><details-menu src="/fish2018/pansou/lists" role="menu"><div><header><h4>Lists</h4><button type="button" aria-label="Close menu" data-toggle-for="details-user-list-1017201879-starred"></button></header><div><div><include-fragment aria-label="Loading" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><span data-view-component="true"><span>Loading</span></span><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment></div></div></div></details-menu></details></div><div data-view-component="true"><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/fish2018/pansou/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="sA8O2gapqHOHVtV4bIgKd6BEjhzoCesxlWcgnUFIjkbC7Cxv23BZ9vYuI-xbV8Fk3BS70digsZ4MMEB5UKm1Fg" autocomplete="off"><input type="hidden" name="context" value="repository"><button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:1017201879,&quot;originating_url&quot;:&quot;https://github.com/fish2018/pansou&quot;,&quot;user_id&quot;:61037007}}" data-hydro-click-hmac="34cd7c2926f75a5503921bc11075022f6647de26330e9db83a02a4415338ba25" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star" data-aria-prefix="Star this repository" aria-label="Star this repository (7611)" type="submit" data-view-component="true"><span data-view-component="true">
+              Star
+</span><span aria-label="7611 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="7,611" data-view-component="true">7.6k</span></button></form><details data-view-component="true"><summary aria-label="Add this repository to a list" data-view-component="true" aria-haspopup="menu" role="button"></summary><details-menu src="/fish2018/pansou/lists" role="menu"><div><header><h4>Lists</h4><button type="button" aria-label="Close menu" data-toggle-for="details-user-list-1017201879-unstarred"></button></header><div><div><include-fragment aria-label="Loading" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><span data-view-component="true"><span>Loading</span></span><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment></div></div></div></details-menu></details></div></div></li></ul></div></div><div><div data-turbo-replace=""><div><div><div><react-partial partial-name="notifications-subscriptions-menu" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false"><div data-target="react-partial.reactRoot"></div></react-partial><div data-view-component="true"><a variant="small" group_item="true" href="/fish2018/pansou/fork" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:1017201879,&quot;originating_url&quot;:&quot;https://github.com/fish2018/pansou&quot;,&quot;user_id&quot;:61037007}}" data-hydro-click-hmac="77d84a65e4c94e822df8afa366c26aff4e4b171fb642664a8ea3975f1341286e" data-ga-click="Repository, show fork modal, action:files#disambiguate; text:Fork" aria-labelledby="tooltip-26c53f9c-9b55-4d53-a99a-6c28e79d450e" data-view-component="true"></a><tool-tip for="fork-icon-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Fork your own copy of fish2018/pansou</tool-tip></div><div data-view-component="true"><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/fish2018/pansou/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="wGMGLGG7AAlwryt3IkRVrLFRh0a-Rd_22GVN7ReUcGMF06TGHCqvRpe5ZwF23Zyg2qLYqdhYQCdKcM6MzN_kgw" autocomplete="off"><input type="hidden" name="context" value="repository"><button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:1017201879,&quot;originating_url&quot;:&quot;https://github.com/fish2018/pansou&quot;,&quot;user_id&quot;:61037007}}" data-hydro-click-hmac="1fe5afa0292fea26a67fd26a712452f8d6311d048a4f274a7a28388c2636ceb5" data-ga-click="Repository, click unstar button, action:files#disambiguate; text:Unstar" aria-labelledby="tooltip-6131e4c2-af2f-4ffb-9115-a339e5ddc27d" type="submit" data-view-component="true"></button><tool-tip for="icon-button-aead3a5e-38de-463e-86f4-666ddc5079cf" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Unstar this repository</tool-tip></form><!-- '"` --><!-- </textarea></xmp> --><form data-turbo="false" action="/fish2018/pansou/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="cUaP-KtEw71GpnL-yTOllECQ_Gzsf4Kw5pmjGGGaCiQDpa1Ndp0yODfehGr-7G6HPMDJodzW2B9_zsP8cHsxdA" autocomplete="off"><input type="hidden" name="context" value="repository"><button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:1017201879,&quot;originating_url&quot;:&quot;https://github.com/fish2018/pansou&quot;,&quot;user_id&quot;:61037007}}" data-hydro-click-hmac="34cd7c2926f75a5503921bc11075022f6647de26330e9db83a02a4415338ba25" data-ga-click="Repository, click star button, action:files#disambiguate; text:Star" aria-labelledby="tooltip-215d1ece-f9a5-4bd4-add6-bd2766cacdcb" type="submit" data-view-component="true"></button><tool-tip for="icon-button-0f09735e-7e37-431f-879a-2d9c6eaa6902" popover="manual" data-direction="s" data-type="label" data-view-component="true" aria-hidden="true" role="tooltip">Star this repository</tool-tip></form></div></div><div></div></div><p>
+        PanSou是一款高性能的网盘资源搜索API服务，支持TG频道和插件搜索。系统设计以性能和可扩展性为核心，支持多频道多插件并发搜索、结果智能排序和网盘类型分类。docker集成前后端，一键启动，开箱即用。 <a href="https://so.252035.xyz/" rel="nofollow">https://so.252035.xyz/</a></p><h3>License</h3><div><a href="/fish2018/pansou/blob/main/LICENSE" data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:license&quot;}">
+     MIT license
+    </a></div><div><ul aria-label="Repository details"><a role="listitem" href="/fish2018/pansou/stargazers"><span>7.6k</span>
+    stars
+</a><a role="listitem" href="/fish2018/pansou/forks"><span>1.7k</span>
+    forks
+</a><a role="listitem" href="/fish2018/pansou/watchers"><span>22</span>
+    watching
+</a><include-fragment loading="lazy" src="/fish2018/pansou/branch-and-tag-count" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><a role="listitem" href="/fish2018/pansou/branches"><span>Branches</span></a><a role="listitem" href="/fish2018/pansou/tags"><span>Tags</span></a><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment><a role="listitem" href="/fish2018/pansou/activity"><span>Activity</span></a></ul><div><div></div><span>
+    Public repository
+  </span></div></div></div></div><div></div></div></div><turbo-frame target="_top" data-turbo-action="advance"><div><a href="https://github.dev/" data-hotkey=".,Mod+Alt+.">Open in github.dev</a><a href="https://github.dev/" data-hotkey="Shift+.,Shift+&gt;,&gt;" target="_blank" rel="noopener noreferrer">Open in a new github.dev tab</a><a data-hotkey=",,Mod+Alt+," target="_blank" href="/codespaces/new/fish2018/pansou?resume=1">Open in codespace</a><h1>fish2018/pansou</h1><div><div><div data-view-component="true"><div data-view-component="true"><react-partial partial-name="repos-overview" data-ssr="true" data-attempted-ssr="true" data-react-profiling="false"><div data-target="react-partial.reactRoot"><!-- --><!-- --><div><div></div><div><div><div><button type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-label="main branch" data-testid="anchor-button" data-loading="false" data-size="medium" data-variant="default" aria-describedby="ref-picker-repos-header-ref-selector-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="text"><div><div></div><div><span><!-- -->main</span></div></div></span><span data-component="trailingVisual"></span></span></button><button hidden="" data-testid="ref-selector-hotkey-button" data-hotkey-scope="read-only-cursor-text-area"></button></div><div><a type="button" href="/fish2018/pansou/branches" data-loading="false" data-size="medium" data-variant="invisible" aria-describedby=":Rclab:-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="leadingVisual"></span><span data-component="text">Branches</span></span></a><a type="button" href="/fish2018/pansou/tags" data-loading="false" data-size="medium" data-variant="invisible" aria-describedby=":Rklab:-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="leadingVisual"></span><span data-component="text">Tags</span></span></a></div><div><a type="button" aria-label="Go to Branches page" href="/fish2018/pansou/branches" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-describedby=":Relab:-loading-announcement"></a><a type="button" aria-label="Go to Tags page" href="/fish2018/pansou/tags" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-describedby=":Rmlab:-loading-announcement"></a></div></div><div><div><button hidden=""></button><div><!--$!--><template></template><!--/$--></div><div><button type="button" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="default" aria-describedby=":R1j5ab:-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="text">Go to file</span></span></button></div><div><h2 data-testid="screen-reader-heading">Add file</h2><button type="button" aria-label="Add file" aria-haspopup="true" aria-expanded="false" tabindex="0" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="default" aria-describedby=":Ra35ab:-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="text"><span>Add file</span></span></span></button></div></div><button type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" data-loading="false" data-size="medium" data-variant="primary" aria-describedby=":R75ab:-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="leadingVisual"></span><span data-component="text">Code</span><span data-component="trailingVisual"></span></span></button><div><button data-component="IconButton" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="default" aria-describedby=":R95ab:-loading-announcement" aria-labelledby=":R7p5ab:"></button><span data-direction="n" aria-hidden="true">Open more actions menu</span></div></div></div><div><div data-hpc="true"><button hidden="" data-testid="focus-next-element-button" data-hotkey="j"></button><button hidden="" data-testid="focus-previous-element-button" data-hotkey="k"></button><h2 data-testid="screen-reader-heading">Folders and files</h2><table aria-labelledby="folders-and-files"><thead><tr><th colspan="2"><span>Name</span></th><th colspan="1"><span>Name</span></th><th><div data-inline="true" title="Last commit message"><span>Last commit message</span></div></th><th colspan="1"><div data-inline="true" title="Last commit date"><span>Last commit date</span></div></th></tr></thead><tbody><tr><td colspan="3"><div><h2 data-testid="screen-reader-heading">Latest commit</h2><div data-testid="loading"></div><div><div data-testid="latest-commit-details"></div><div><h2 data-testid="screen-reader-heading">History</h2><a href="/fish2018/pansou/commits/main/" data-loading="false" data-size="small" data-variant="invisible" aria-describedby=":Raqj8pab:-loading-announcement"><span data-component="buttonContent" data-align="center"><span data-component="leadingVisual"></span><span data-component="text"><span>138 Commits</span></span></span></a><div></div><div><span role="tooltip" aria-label="138 Commits"><a aria-label="View commit history for this file." href="/fish2018/pansou/commits/main/" data-loading="false" data-size="small" data-variant="invisible" aria-describedby=":R1iqj8pab:-loading-announcement history-icon-button-tooltip"><span data-component="buttonContent" data-align="center"><span data-component="leadingVisual"></span></span></a></span></div></div></div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="This path skips through empty directories" aria-label=".github/workflows, (Directory)" href="/fish2018/pansou/tree/main/.github/workflows" data-discover="true"><span data-testid="path-name-segment">.github/</span><span data-testid="path-name-segment">workflows</span></a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="This path skips through empty directories" aria-label=".github/workflows, (Directory)" href="/fish2018/pansou/tree/main/.github/workflows" data-discover="true"><span data-testid="path-name-segment">.github/</span><span data-testid="path-name-segment">workflows</span></a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="api" aria-label="api, (Directory)" href="/fish2018/pansou/tree/main/api" data-discover="true">api</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="api" aria-label="api, (Directory)" href="/fish2018/pansou/tree/main/api" data-discover="true">api</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="config" aria-label="config, (Directory)" href="/fish2018/pansou/tree/main/config" data-discover="true">config</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="config" aria-label="config, (Directory)" href="/fish2018/pansou/tree/main/config" data-discover="true">config</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="docs" aria-label="docs, (Directory)" href="/fish2018/pansou/tree/main/docs" data-discover="true">docs</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="docs" aria-label="docs, (Directory)" href="/fish2018/pansou/tree/main/docs" data-discover="true">docs</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="model" aria-label="model, (Directory)" href="/fish2018/pansou/tree/main/model" data-discover="true">model</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="model" aria-label="model, (Directory)" href="/fish2018/pansou/tree/main/model" data-discover="true">model</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="plugin" aria-label="plugin, (Directory)" href="/fish2018/pansou/tree/main/plugin" data-discover="true">plugin</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="plugin" aria-label="plugin, (Directory)" href="/fish2018/pansou/tree/main/plugin" data-discover="true">plugin</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="service" aria-label="service, (Directory)" href="/fish2018/pansou/tree/main/service" data-discover="true">service</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="service" aria-label="service, (Directory)" href="/fish2018/pansou/tree/main/service" data-discover="true">service</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="typescript" aria-label="typescript, (Directory)" href="/fish2018/pansou/tree/main/typescript" data-discover="true">typescript</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="typescript" aria-label="typescript, (Directory)" href="/fish2018/pansou/tree/main/typescript" data-discover="true">typescript</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="util" aria-label="util, (Directory)" href="/fish2018/pansou/tree/main/util" data-discover="true">util</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="util" aria-label="util, (Directory)" href="/fish2018/pansou/tree/main/util" data-discover="true">util</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title=".dockerignore" aria-label=".dockerignore, (File)" href="/fish2018/pansou/blob/main/.dockerignore" data-discover="true">.dockerignore</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title=".dockerignore" aria-label=".dockerignore, (File)" href="/fish2018/pansou/blob/main/.dockerignore" data-discover="true">.dockerignore</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="Dockerfile" aria-label="Dockerfile, (File)" href="/fish2018/pansou/blob/main/Dockerfile" data-discover="true">Dockerfile</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="Dockerfile" aria-label="Dockerfile, (File)" href="/fish2018/pansou/blob/main/Dockerfile" data-discover="true">Dockerfile</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="LICENSE" aria-label="LICENSE, (File)" href="/fish2018/pansou/blob/main/LICENSE" data-discover="true">LICENSE</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="LICENSE" aria-label="LICENSE, (File)" href="/fish2018/pansou/blob/main/LICENSE" data-discover="true">LICENSE</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="README.md" aria-label="README.md, (File)" href="/fish2018/pansou/blob/main/README.md" data-discover="true">README.md</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="README.md" aria-label="README.md, (File)" href="/fish2018/pansou/blob/main/README.md" data-discover="true">README.md</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="docker-compose.yml" aria-label="docker-compose.yml, (File)" href="/fish2018/pansou/blob/main/docker-compose.yml" data-discover="true">docker-compose.yml</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="docker-compose.yml" aria-label="docker-compose.yml, (File)" href="/fish2018/pansou/blob/main/docker-compose.yml" data-discover="true">docker-compose.yml</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="go.mod" aria-label="go.mod, (File)" href="/fish2018/pansou/blob/main/go.mod" data-discover="true">go.mod</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="go.mod" aria-label="go.mod, (File)" href="/fish2018/pansou/blob/main/go.mod" data-discover="true">go.mod</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="go.sum" aria-label="go.sum, (File)" href="/fish2018/pansou/blob/main/go.sum" data-discover="true">go.sum</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="go.sum" aria-label="go.sum, (File)" href="/fish2018/pansou/blob/main/go.sum" data-discover="true">go.sum</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="main.go" aria-label="main.go, (File)" href="/fish2018/pansou/blob/main/main.go" data-discover="true">main.go</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="main.go" aria-label="main.go, (File)" href="/fish2018/pansou/blob/main/main.go" data-discover="true">main.go</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="mcp-config.json" aria-label="mcp-config.json, (File)" href="/fish2018/pansou/blob/main/mcp-config.json" data-discover="true">mcp-config.json</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="mcp-config.json" aria-label="mcp-config.json, (File)" href="/fish2018/pansou/blob/main/mcp-config.json" data-discover="true">mcp-config.json</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="package-lock.json" aria-label="package-lock.json, (File)" href="/fish2018/pansou/blob/main/package-lock.json" data-discover="true">package-lock.json</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="package-lock.json" aria-label="package-lock.json, (File)" href="/fish2018/pansou/blob/main/package-lock.json" data-discover="true">package-lock.json</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr><td colspan="2"><div><div><div><div><a title="package.json" aria-label="package.json, (File)" href="/fish2018/pansou/blob/main/package.json" data-discover="true">package.json</a></div></div></div></div></td><td colspan="1"><div><div><div><div><a title="package.json" aria-label="package.json, (File)" href="/fish2018/pansou/blob/main/package.json" data-discover="true">package.json</a></div></div></div></div></td><td><div></div></td><td><div></div></td></tr><tr data-testid="view-all-files-row"><td colspan="3"><div><button>View all files</button></div></td></tr></tbody></table></div><div><div><div itemscope="" itemtype="https://schema.org/abstract"><h2>Repository files navigation</h2><nav aria-label="Repository files" data-variant="inset"><ul role="list"><li><a href="#" aria-current="page"><span data-component="icon"></span><span data-component="text" data-content="README">README</span></a></li><li><a href="#"><span data-component="icon"></span><span data-component="text" data-content="MIT license">MIT license</span></a></li></ul></nav><button data-component="IconButton" type="button" title="Edit file" data-loading="false" data-no-visuals="true" data-size="small" data-variant="invisible" aria-describedby=":R3j9ab:-loading-announcement" aria-labelledby=":Rj9ab:"></button><span data-direction="s" aria-hidden="true">Edit file</span><button type="button" aria-label="Outline" aria-haspopup="true" aria-expanded="false" tabindex="0" data-loading="false" data-size="medium" data-variant="invisible" aria-describedby=":Rr9ab:-loading-announcement"></button></div><div data-hpc="true"><article itemprop="text"><div dir="auto"><h1 tabindex="-1" dir="auto">PanSou 网盘搜索API</h1><a aria-label="Permalink: PanSou 网盘搜索API" href="#pansou-网盘搜索api"></a></div><p dir="auto">PanSou是一个高性能的网盘资源搜索API服务，支持TG搜索和自定义插件搜索。系统设计以性能和可扩展性为核心，支持并发搜索、结果智能排序和网盘类型分类。</p><div dir="auto"><h2 tabindex="-1" dir="auto">特性（<a href="/fish2018/pansou/blob/main/docs/%E7%B3%BB%E7%BB%9F%E5%BC%80%E5%8F%91%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3.md">详见系统设计文档</a>）</h2><a aria-label="Permalink: 特性（详见系统设计文档）" href="#特性详见系统设计文档"></a></div><ul dir="auto"><li><strong>高性能搜索</strong>：并发执行多个TG频道及异步插件搜索，显著提升搜索速度；工作池设计，高效管理并发任务</li><li><strong>网盘类型分类</strong>：自动识别多种网盘链接，按类型归类展示</li><li><strong>智能排序</strong>：基于插件等级、时间新鲜度和优先关键词的多维度综合排序算法</li><li><strong>异步插件系统</strong>：支持通过插件扩展搜索来源，支持"尽快响应，持续处理"的异步搜索模式，解决了某些搜索源响应时间长的问题。详情参考<a href="/fish2018/pansou/blob/main/docs/%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97.md"><strong>插件开发指南</strong></a></li><li><strong>二级缓存</strong>：分片内存+分片磁盘缓存机制，大幅提升重复查询速度和并发性能</li></ul><div dir="auto"><h2 tabindex="-1" dir="auto">MCP 服务</h2><a aria-label="Permalink: MCP 服务" href="#mcp-服务"></a></div><p dir="auto">PanSou 还提供了一个基于 <a href="https://modelcontextprotocol.io" rel="nofollow">Model Context Protocol (MCP)</a> 的服务，可以将搜索功能集成到 Claude Desktop 等支持 MCP 的应用中。详情请参阅 <a href="/fish2018/pansou/blob/main/docs/MCP-SERVICE.md">MCP 服务文档</a>。</p><div dir="auto"><h2 tabindex="-1" dir="auto">支持的网盘类型</h2><a aria-label="Permalink: 支持的网盘类型" href="#支持的网盘类型"></a></div><p dir="auto">百度网盘 (<code>baidu</code>)、阿里云盘 (<code>aliyun</code>)、夸克网盘 (<code>quark</code>)、天翼云盘 (<code>tianyi</code>)、UC网盘 (<code>uc</code>)、移动云盘 (<code>mobile</code>)、115网盘 (<code>115</code>)、PikPak (<code>pikpak</code>)、迅雷网盘 (<code>xunlei</code>)、123网盘 (<code>123</code>)、磁力链接 (<code>magnet</code>)、电驴链接 (<code>ed2k</code>)、其他 (<code>others</code>)</p><div dir="auto"><h2 tabindex="-1" dir="auto">快速开始</h2><a aria-label="Permalink: 快速开始" href="#快速开始"></a></div><p dir="auto">在 Github 上先<a href="https://github.com/fish2018/pansou/fork"></a>
+本项目，并点上 Star !!!</p><div dir="auto"><h3 tabindex="-1" dir="auto">使用Docker部署</h3><a aria-label="Permalink: 使用Docker部署" href="#使用docker部署"></a></div><p dir="auto"><a href="https://github.com/fish2018/pansou/issues/46" data-hovercard-type="issue" data-hovercard-url="/fish2018/pansou/issues/46/hovercard" aria-keyshortcuts="Alt+ArrowUp">常见问题总结</a></p><p dir="auto"><a href="https://github.com/fish2018/pansou/issues/4" data-hovercard-type="issue" data-hovercard-url="/fish2018/pansou/issues/4/hovercard" aria-keyshortcuts="Alt+ArrowUp">TG资源频道列表</a></p><details><summary>插件列表（请务必按需加载）</summary><pre>export ENABLED_PLUGINS=hunhepan,jikepan,panwiki,pansearch,panta,qupansou,susu,thepiratebay,wanou,xuexizhinan,panyq,zhizhen,labi,muou,ouge,shandian,duoduo,huban,cyg,erxiao,miaoso,fox4k,pianku,clmao,wuji,cldi,xiaozhang,libvio,leijing,xb6v,xys,ddys,hdmoli,yuhuage,u3c3,javdb,clxiong,jutoushe,sdso,xiaoji,xdyh,haisou,bixin,djgou,
+nyaa,xinjuc,aikanzy,qupanshe,xdpan
+</pre></details><div dir="auto"><h4 tabindex="-1" dir="auto"><strong>1、前后端集成版</strong></h4><a aria-label="Permalink: 1、前后端集成版" href="#1前后端集成版"></a></div><div dir="auto"><h5 tabindex="-1" dir="auto">直接使用Docker命令</h5><a aria-label="Permalink: 直接使用Docker命令" href="#直接使用docker命令"></a></div><p dir="auto">一键启动，开箱即用</p><div><pre><code>docker run -d --name pansou -p 80:80 -e ENABLED_PLUGINS="labi,zhizhen,shandian,duoduo,muou,wanou" ghcr.io/fish2018/pansou-web
+</code></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="docker run -d --name pansou -p 80:80 -e ENABLED_PLUGINS=&quot;labi,zhizhen,shandian,duoduo,muou,wanou&quot; ghcr.io/fish2018/pansou-web" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h5 tabindex="-1" dir="auto">使用Docker Compose（推荐）</h5><a aria-label="Permalink: 使用Docker Compose（推荐）" href="#使用docker-compose推荐"></a></div><div><pre><code># 下载配置文件
+curl -o docker-compose.yml https://raw.githubusercontent.com/fish2018/pansou-web/refs/heads/main/docker-compose.yml
+
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+</code></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 下载配置文件
+curl -o docker-compose.yml https://raw.githubusercontent.com/fish2018/pansou-web/refs/heads/main/docker-compose.yml
+
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h4 tabindex="-1" dir="auto"><strong>2、纯后端API版</strong></h4><a aria-label="Permalink: 2、纯后端API版" href="#2纯后端api版"></a></div><div dir="auto"><h5 tabindex="-1" dir="auto">直接使用Docker命令</h5><a aria-label="Permalink: 直接使用Docker命令" href="#直接使用docker命令-1"></a></div><div dir="auto"><pre>docker run -d --name pansou -p 8888:8888 -v pansou-cache:/app/cache -e CHANNELS=<span><span>"</span>tgsearchers3,xxx<span>"</span></span> -e ENABLED_PLUGINS=<span><span>"</span>labi,zhizhen,shandian,duoduo,muou,wanou<span>"</span></span> ghcr.io/fish2018/pansou:latest</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="docker run -d --name pansou -p 8888:8888 -v pansou-cache:/app/cache -e CHANNELS=&quot;tgsearchers3,xxx&quot; -e ENABLED_PLUGINS=&quot;labi,zhizhen,shandian,duoduo,muou,wanou&quot; ghcr.io/fish2018/pansou:latest" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h5 tabindex="-1" dir="auto">使用Docker Compose（推荐）</h5><a aria-label="Permalink: 使用Docker Compose（推荐）" href="#使用docker-compose推荐-1"></a></div><div dir="auto"><pre><span><span>#</span> 下载配置文件</span>
+curl -o docker-compose.yml  https://raw.githubusercontent.com/fish2018/pansou/refs/heads/main/docker-compose.yml
+
+<span><span>#</span> 启动服务</span>
+docker-compose up -d
+
+<span><span>#</span> 访问服务</span>
+http://localhost:8888</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 下载配置文件
+curl -o docker-compose.yml  https://raw.githubusercontent.com/fish2018/pansou/refs/heads/main/docker-compose.yml
+
+# 启动服务
+docker-compose up -d
+
+# 访问服务
+http://localhost:8888" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h3 tabindex="-1" dir="auto">从源码安装</h3><a aria-label="Permalink: 从源码安装" href="#从源码安装"></a></div><div dir="auto"><h4 tabindex="-1" dir="auto">环境要求</h4><a aria-label="Permalink: 环境要求" href="#环境要求"></a></div><ul dir="auto"><li>Go 1.18+</li><li>可选：SOCKS5代理（用于访问受限地区的Telegram站点）</li></ul><ol dir="auto"><li>克隆仓库</li></ol><div dir="auto"><pre>git clone https://github.com/fish2018/pansou.git
+<span>cd</span> pansou</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="git clone https://github.com/fish2018/pansou.git
+cd pansou" tabindex="0" role="button"></clipboard-copy></div></div><ol start="2" dir="auto"><li>配置环境变量（可选）</li></ol><div dir="auto"><h4 tabindex="-1" dir="auto">基础配置</h4><a aria-label="Permalink: 基础配置" href="#基础配置"></a></div><markdown-accessiblity-table><table><thead><tr><th>环境变量</th><th>描述</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><strong>PORT</strong></td><td>服务端口</td><td><code>8888</code></td><td>修改服务监听端口</td></tr><tr><td><strong>PROXY</strong></td><td>SOCKS5代理</td><td>无</td><td>如：<code>socks5://127.0.0.1:1080</code></td></tr><tr><td><strong>CHANNELS</strong></td><td>默认搜索的TG频道</td><td><code>tgsearchers3</code></td><td>多个频道用逗号分隔</td></tr><tr><td><strong>ENABLED_PLUGINS</strong></td><td>指定启用插件，多个插件用逗号分隔</td><td>无</td><td>必须显式指定</td></tr></tbody></table></markdown-accessiblity-table><div dir="auto"><h4 tabindex="-1" dir="auto">认证配置（可选）</h4><a aria-label="Permalink: 认证配置（可选）" href="#认证配置可选"></a></div><p dir="auto">PanSou支持可选的安全认证功能，默认关闭。开启后，所有API接口（除登录接口外）都需要提供有效的JWT Token。详见<a href="/fish2018/pansou/blob/main/docs/%E8%AE%A4%E8%AF%81%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1.md">认证系统设计文档</a>。</p><markdown-accessiblity-table><table><thead><tr><th>环境变量</th><th>描述</th><th>默认值</th><th>说明</th></tr></thead><tbody><tr><td><strong>AUTH_ENABLED</strong></td><td>是否启用认证</td><td><code>false</code></td><td>设置为<code>true</code>启用认证功能</td></tr><tr><td><strong>AUTH_USERS</strong></td><td>用户账号配置</td><td>无</td><td>格式：<code>user1:pass1,user2:pass2</code></td></tr><tr><td><strong>AUTH_TOKEN_EXPIRY</strong></td><td>Token有效期（小时）</td><td><code>24</code></td><td>JWT Token的有效时长</td></tr><tr><td><strong>AUTH_JWT_SECRET</strong></td><td>JWT签名密钥</td><td>自动生成</td><td>用于签名Token，建议手动设置</td></tr></tbody></table></markdown-accessiblity-table><p dir="auto"><strong>认证配置示例：</strong></p><div dir="auto"><pre><span><span>#</span> 启用认证并配置单个用户</span>
+docker run -d --name pansou -p 8888:8888 \
+  -e AUTH_ENABLED=true \
+  -e AUTH_USERS=admin:admin123 \
+  -e AUTH_TOKEN_EXPIRY=24 \
+  ghcr.io/fish2018/pansou:latest
+
+<span><span>#</span> 配置多个用户</span>
+docker run -d --name pansou -p 8888:8888 \
+  -e AUTH_ENABLED=true \
+  -e AUTH_USERS=admin:pass123,user1:pass456,user2:pass789 \
+  ghcr.io/fish2018/pansou:latest</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 启用认证并配置单个用户
+docker run -d --name pansou -p 8888:8888 \
+  -e AUTH_ENABLED=true \
+  -e AUTH_USERS=admin:admin123 \
+  -e AUTH_TOKEN_EXPIRY=24 \
+  ghcr.io/fish2018/pansou:latest
+
+# 配置多个用户
+docker run -d --name pansou -p 8888:8888 \
+  -e AUTH_ENABLED=true \
+  -e AUTH_USERS=admin:pass123,user1:pass456,user2:pass789 \
+  ghcr.io/fish2018/pansou:latest" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>认证API接口：</strong></p><ul dir="auto"><li><code>POST /api/auth/login</code> - 用户登录，获取Token</li><li><code>POST /api/auth/verify</code> - 验证Token有效性</li><li><code>POST /api/auth/logout</code> - 退出登录（客户端删除Token）</li></ul><p dir="auto"><strong>使用Token调用API：</strong></p><div dir="auto"><pre><span><span>#</span> 1. 登录获取Token</span>
+curl -X POST http://localhost:8888/api/auth/login \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -d <span><span>'</span>{"username":"admin","password":"admin123"}<span>'</span></span><span><span>#</span> 响应：{"token":"eyJhbGc...","expires_at":1234567890,"username":"admin"}</span><span><span>#</span> 2. 使用Token调用搜索API</span>
+curl -X POST http://localhost:8888/api/search \
+  -H <span><span>"</span>Authorization: Bearer eyJhbGc...<span>"</span></span> \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -d <span><span>'</span>{"kw":"速度与激情"}<span>'</span></span></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 1. 登录获取Token
+curl -X POST http://localhost:8888/api/auth/login \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;admin123&quot;}'
+
+# 响应：{&quot;token&quot;:&quot;eyJhbGc...&quot;,&quot;expires_at&quot;:1234567890,&quot;username&quot;:&quot;admin&quot;}
+
+# 2. 使用Token调用搜索API
+curl -X POST http://localhost:8888/api/search \
+  -H &quot;Authorization: Bearer eyJhbGc...&quot; \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;kw&quot;:&quot;速度与激情&quot;}'" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h4 tabindex="-1" dir="auto">高级配置（默认值即可）</h4><a aria-label="Permalink: 高级配置（默认值即可）" href="#高级配置默认值即可"></a></div><details><summary>点击展开高级配置选项（通常不需要修改）</summary><markdown-accessiblity-table><table><thead><tr><th>环境变量</th><th>描述</th><th>默认值</th></tr></thead><tbody><tr><td>CONCURRENCY</td><td>并发搜索数</td><td>自动计算</td></tr><tr><td>CACHE_TTL</td><td>缓存有效期（分钟）</td><td><code>60</code></td></tr><tr><td>CACHE_MAX_SIZE</td><td>最大缓存大小(MB)</td><td><code>100</code></td></tr><tr><td>PLUGIN_TIMEOUT</td><td>插件超时时间(秒)</td><td><code>30</code></td></tr><tr><td>ASYNC_RESPONSE_TIMEOUT</td><td>快速响应超时(秒)</td><td><code>4</code></td></tr><tr><td>ASYNC_LOG_ENABLED</td><td>异步插件详细日志</td><td><code>true</code></td></tr><tr><td>CACHE_PATH</td><td>缓存文件路径</td><td><code>./cache</code></td></tr><tr><td>SHARD_COUNT</td><td>缓存分片数量</td><td><code>8</code></td></tr><tr><td>CACHE_WRITE_STRATEGY</td><td>缓存写入策略(immediate/hybrid)</td><td><code>hybrid</code></td></tr><tr><td>ENABLE_COMPRESSION</td><td>是否启用压缩</td><td><code>false</code></td></tr><tr><td>MIN_SIZE_TO_COMPRESS</td><td>最小压缩阈值(字节)</td><td><code>1024</code></td></tr><tr><td>GC_PERCENT</td><td>Go GC触发百分比</td><td><code>50</code></td></tr><tr><td>ASYNC_MAX_BACKGROUND_WORKERS</td><td>最大后台工作者数量</td><td>CPU核心数×5</td></tr><tr><td>ASYNC_MAX_BACKGROUND_TASKS</td><td>最大后台任务数量</td><td>工作者数×5</td></tr><tr><td>ASYNC_CACHE_TTL_HOURS</td><td>异步缓存有效期(小时)</td><td><code>1</code></td></tr><tr><td>ASYNC_PLUGIN_ENABLED</td><td>异步插件是否启用</td><td><code>true</code></td></tr><tr><td>HTTP_READ_TIMEOUT</td><td>HTTP读取超时(秒)</td><td>自动计算</td></tr><tr><td>HTTP_WRITE_TIMEOUT</td><td>HTTP写入超时(秒)</td><td>自动计算</td></tr><tr><td>HTTP_IDLE_TIMEOUT</td><td>HTTP空闲超时(秒)</td><td><code>120</code></td></tr><tr><td>HTTP_MAX_CONNS</td><td>HTTP最大连接数</td><td>自动计算</td></tr></tbody></table></markdown-accessiblity-table></details><ol start="3" dir="auto"><li>构建</li></ol><div><pre lang="linux"><code>CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w -extldflags '-static'" -o pansou .
+</code></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags=&quot;-s -w -extldflags '-static'&quot; -o pansou ." tabindex="0" role="button"></clipboard-copy></div></div><ol start="4" dir="auto"><li>运行</li></ol><div dir="auto"><pre>./pansou</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="./pansou" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h3 tabindex="-1" dir="auto">其他配置参考</h3><a aria-label="Permalink: 其他配置参考" href="#其他配置参考"></a></div><details><summary>点击展开 supervisor 配置参考</summary><div><pre><code>[program:pansou]
+environment=PORT=8888,CHANNELS="tgsearchers3,Aliyun_4K_Movies,bdbdndn11,yunpanx,bsbdbfjfjff,yp123pan,sbsbsnsqq,yunpanxunlei,tianyifc,BaiduCloudDisk,txtyzy,peccxinpd,gotopan,PanjClub,kkxlzy,baicaoZY,MCPH01,bdwpzhpd,ysxb48,jdjdn1111,yggpan,MCPH086,zaihuayun,Q66Share,Oscar_4Kmovies,ucwpzy,shareAliyun,alyp_1,dianyingshare,Quark_Movies,XiangxiuNBB,ydypzyfx,ucquark,xx123pan,yingshifenxiang123,zyfb123,tyypzhpd,tianyirigeng,cloudtianyi,hdhhd21,Lsp115,oneonefivewpfx,qixingzhenren,taoxgzy,Channel_Shares_115,tyysypzypd,vip115hot,wp123zy,yunpan139,yunpan189,yunpanuc,yydf_hzl,leoziyuan,pikpakpan,Q_dongman,yoyokuakeduanju",ENABLED_PLUGINS="labi,zhizhen,shandian,duoduo,muou"
+command=/home/work/pansou/pansou
+directory=/home/work/pansou
+autostart=true
+autorestart=true
+startsecs=5
+startretries=3
+exitcodes=0
+stopwaitsecs=10
+stopasgroup=true
+killasgroup=true
+</code></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="[program:pansou]
+environment=PORT=8888,CHANNELS=&quot;tgsearchers3,Aliyun_4K_Movies,bdbdndn11,yunpanx,bsbdbfjfjff,yp123pan,sbsbsnsqq,yunpanxunlei,tianyifc,BaiduCloudDisk,txtyzy,peccxinpd,gotopan,PanjClub,kkxlzy,baicaoZY,MCPH01,bdwpzhpd,ysxb48,jdjdn1111,yggpan,MCPH086,zaihuayun,Q66Share,Oscar_4Kmovies,ucwpzy,shareAliyun,alyp_1,dianyingshare,Quark_Movies,XiangxiuNBB,ydypzyfx,ucquark,xx123pan,yingshifenxiang123,zyfb123,tyypzhpd,tianyirigeng,cloudtianyi,hdhhd21,Lsp115,oneonefivewpfx,qixingzhenren,taoxgzy,Channel_Shares_115,tyysypzypd,vip115hot,wp123zy,yunpan139,yunpan189,yunpanuc,yydf_hzl,leoziyuan,pikpakpan,Q_dongman,yoyokuakeduanju&quot;,ENABLED_PLUGINS=&quot;labi,zhizhen,shandian,duoduo,muou&quot;
+command=/home/work/pansou/pansou
+directory=/home/work/pansou
+autostart=true
+autorestart=true
+startsecs=5
+startretries=3
+exitcodes=0
+stopwaitsecs=10
+stopasgroup=true
+killasgroup=true" tabindex="0" role="button"></clipboard-copy></div></div></details><details><summary>点击展开 nginx 配置参考</summary><div><pre><code>server {
+    listen 80;
+    server_name pansou.252035.xyz;
+
+    # 将 HTTP 重定向到 HTTPS
+    return 301 https://$host$request_uri;
+}
+
+limit_req_zone $binary_remote_addr zone=api_limit:10m rate=60r/m;
+
+server {
+    listen 443 ssl http2;
+    server_name pansou.252035.xyz;
+
+    access_log /home/work/logs/pansou.log;
+
+    # 证书和密钥路径
+    ssl_certificate /etc/letsencrypt/live/252035.xyz/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/252035.xyz/privkey.pem;
+
+    # 增强 SSL 安全性
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
+    ssl_prefer_server_ciphers on;
+
+    # 后端代理，应用限流
+    location / {
+        # 应用限流规则
+        limit_req zone=api_limit burst=10 nodelay;
+        # 当超过限制时返回 429 状态码
+        limit_req_status 429;
+
+        proxy_pass http://127.0.0.1:8888;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+</code></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="server {
+    listen 80;
+    server_name pansou.252035.xyz;
+
+    # 将 HTTP 重定向到 HTTPS
+    return 301 https://$host$request_uri;
+}
+
+limit_req_zone $binary_remote_addr zone=api_limit:10m rate=60r/m;
+
+server {
+    listen 443 ssl http2;
+    server_name pansou.252035.xyz;
+
+    access_log /home/work/logs/pansou.log;
+
+    # 证书和密钥路径
+    ssl_certificate /etc/letsencrypt/live/252035.xyz/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/252035.xyz/privkey.pem;
+
+    # 增强 SSL 安全性
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_ciphers EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
+    ssl_prefer_server_ciphers on;
+
+    # 后端代理，应用限流
+    location / {
+        # 应用限流规则
+        limit_req zone=api_limit burst=10 nodelay;
+        # 当超过限制时返回 429 状态码
+        limit_req_status 429;
+
+        proxy_pass http://127.0.0.1:8888;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}" tabindex="0" role="button"></clipboard-copy></div></div></details><div dir="auto"><h2 tabindex="-1" dir="auto">API文档</h2><a aria-label="Permalink: API文档" href="#api文档"></a></div><div dir="auto"><h3 tabindex="-1" dir="auto">认证说明</h3><a aria-label="Permalink: 认证说明" href="#认证说明"></a></div><p dir="auto">当启用认证功能（<code>AUTH_ENABLED=true</code>）时，除登录和健康检测接口外的所有API接口都需要提供有效的JWT Token。</p><p dir="auto"><strong>请求头格式</strong>：</p><div><pre><code>Authorization: Bearer &lt;your-jwt-token&gt;
+</code></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Authorization: Bearer &lt;your-jwt-token&gt;" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>获取Token</strong>：</p><ol dir="auto"><li>调用登录接口获取Token（详见下方<a href="#%E8%AE%A4%E8%AF%81API">认证API</a>）</li><li>在后续所有API请求的Header中添加<code>Authorization: Bearer &lt;token&gt;</code></li><li>Token过期后需要重新登录获取新Token</li></ol><p dir="auto"><strong>示例</strong>：</p><div dir="auto"><pre><span><span>#</span> 未启用认证时</span>
+curl -X POST http://localhost:8888/api/search \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -d <span><span>'</span>{"kw":"速度与激情"}<span>'</span></span><span><span>#</span> 启用认证时</span>
+curl -X POST http://localhost:8888/api/search \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -H <span><span>"</span>Authorization: Bearer eyJhbGc...<span>"</span></span> \
+  -d <span><span>'</span>{"kw":"速度与激情"}<span>'</span></span></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 未启用认证时
+curl -X POST http://localhost:8888/api/search \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;kw&quot;:&quot;速度与激情&quot;}'
+
+# 启用认证时
+curl -X POST http://localhost:8888/api/search \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Authorization: Bearer eyJhbGc...&quot; \
+  -d '{&quot;kw&quot;:&quot;速度与激情&quot;}'" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h3 tabindex="-1" dir="auto">认证API</h3><a aria-label="Permalink: 认证API" href="#认证api"></a></div><div dir="auto"><h4 tabindex="-1" dir="auto">用户登录</h4><a aria-label="Permalink: 用户登录" href="#用户登录"></a></div><p dir="auto">获取JWT Token用于后续API调用。</p><p dir="auto"><strong>接口地址</strong>：<code>/api/auth/login</code><br><strong>请求方法</strong>：<code>POST</code><br><strong>Content-Type</strong>：<code>application/json</code><br><strong>是否需要认证</strong>：否</p><p dir="auto"><strong>请求参数</strong>：</p><markdown-accessiblity-table><table><thead><tr><th>参数名</th><th>类型</th><th>必填</th><th>描述</th></tr></thead><tbody><tr><td>username</td><td>string</td><td>是</td><td>用户名</td></tr><tr><td>password</td><td>string</td><td>是</td><td>密码</td></tr></tbody></table></markdown-accessiblity-table><p dir="auto"><strong>请求示例</strong>：</p><div dir="auto"><pre>curl -X POST http://localhost:8888/api/auth/login \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -d <span><span>'</span>{"username":"admin","password":"admin123"}<span>'</span></span></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="curl -X POST http://localhost:8888/api/auth/login \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;username&quot;:&quot;admin&quot;,&quot;password&quot;:&quot;admin123&quot;}'" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>成功响应</strong>：</p><div dir="auto"><pre>{
+  <span>"token"</span>: <span><span>"</span>eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...<span>"</span></span>,
+  <span>"expires_at"</span>: <span>1234567890</span>,
+  <span>"username"</span>: <span><span>"</span>admin<span>"</span></span>
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;token&quot;: &quot;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&quot;,
+  &quot;expires_at&quot;: 1234567890,
+  &quot;username&quot;: &quot;admin&quot;
+}" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>错误响应</strong>：</p><div dir="auto"><pre>{
+  <span>"error"</span>: <span><span>"</span>用户名或密码错误<span>"</span></span>
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;error&quot;: &quot;用户名或密码错误&quot;
+}" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h4 tabindex="-1" dir="auto">验证Token</h4><a aria-label="Permalink: 验证Token" href="#验证token"></a></div><p dir="auto">验证当前Token是否有效。</p><p dir="auto"><strong>接口地址</strong>：<code>/api/auth/verify</code><br><strong>请求方法</strong>：<code>POST</code><br><strong>是否需要认证</strong>：是</p><p dir="auto"><strong>请求示例</strong>：</p><div dir="auto"><pre>curl -X POST http://localhost:8888/api/auth/verify \
+  -H <span><span>"</span>Authorization: Bearer eyJhbGc...<span>"</span></span></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="curl -X POST http://localhost:8888/api/auth/verify \
+  -H &quot;Authorization: Bearer eyJhbGc...&quot;" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>成功响应</strong>：</p><div dir="auto"><pre>{
+  <span>"valid"</span>: <span>true</span>,
+  <span>"username"</span>: <span><span>"</span>admin<span>"</span></span>
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;valid&quot;: true,
+  &quot;username&quot;: &quot;admin&quot;
+}" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h4 tabindex="-1" dir="auto">退出登录</h4><a aria-label="Permalink: 退出登录" href="#退出登录"></a></div><p dir="auto">退出当前登录（客户端删除Token即可）。</p><p dir="auto"><strong>接口地址</strong>：<code>/api/auth/logout</code><br><strong>请求方法</strong>：<code>POST</code><br><strong>是否需要认证</strong>：否</p><p dir="auto"><strong>请求示例</strong>：</p><div dir="auto"><pre>curl -X POST http://localhost:8888/api/auth/logout</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="curl -X POST http://localhost:8888/api/auth/logout" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>成功响应</strong>：</p><div dir="auto"><pre>{
+  <span>"message"</span>: <span><span>"</span>退出成功<span>"</span></span>
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;message&quot;: &quot;退出成功&quot;
+}" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h3 tabindex="-1" dir="auto">搜索API</h3><a aria-label="Permalink: 搜索API" href="#搜索api"></a></div><p dir="auto">搜索网盘资源。</p><p dir="auto"><strong>接口地址</strong>：<code>/api/search</code><br><strong>请求方法</strong>：<code>POST</code> 或 <code>GET</code><br><strong>Content-Type</strong>：<code>application/json</code>（POST方法）<br><strong>是否需要认证</strong>：取决于<code>AUTH_ENABLED</code>配置</p><p dir="auto"><strong>POST请求参数</strong>：</p><markdown-accessiblity-table><table><thead><tr><th>参数名</th><th>类型</th><th>必填</th><th>描述</th></tr></thead><tbody><tr><td>kw</td><td>string</td><td>是</td><td>搜索关键词</td></tr><tr><td>channels</td><td>string[]</td><td>否</td><td>搜索的频道列表，不提供则使用默认配置</td></tr><tr><td>conc</td><td>number</td><td>否</td><td>并发搜索数量，不提供则自动设置为频道数+插件数+10</td></tr><tr><td>refresh</td><td>boolean</td><td>否</td><td>强制刷新，不使用缓存，便于调试和获取最新数据</td></tr><tr><td>res</td><td>string</td><td>否</td><td>结果类型：all(返回所有结果)、results(仅返回results)、merge(仅返回merged_by_type)，默认为merge</td></tr><tr><td>src</td><td>string</td><td>否</td><td>数据来源类型：all(默认，全部来源)、tg(仅Telegram)、plugin(仅插件)</td></tr><tr><td>plugins</td><td>string[]</td><td>否</td><td>指定搜索的插件列表，不指定则搜索全部插件</td></tr><tr><td>cloud_types</td><td>string[]</td><td>否</td><td>指定返回的网盘类型列表，支持：baidu、aliyun、quark、tianyi、uc、mobile、115、pikpak、xunlei、123、magnet、ed2k，不指定则返回所有类型</td></tr><tr><td>ext</td><td>object</td><td>否</td><td>扩展参数，用于传递给插件的自定义参数，如{"title_en":"English Title", "is_all":true}</td></tr></tbody></table></markdown-accessiblity-table><p dir="auto"><strong>GET请求参数</strong>：</p><markdown-accessiblity-table><table><thead><tr><th>参数名</th><th>类型</th><th>必填</th><th>描述</th></tr></thead><tbody><tr><td>kw</td><td>string</td><td>是</td><td>搜索关键词</td></tr><tr><td>channels</td><td>string</td><td>否</td><td>搜索的频道列表，使用英文逗号分隔多个频道，不提供则使用默认配置</td></tr><tr><td>conc</td><td>number</td><td>否</td><td>并发搜索数量，不提供则自动设置为频道数+插件数+10</td></tr><tr><td>refresh</td><td>boolean</td><td>否</td><td>强制刷新，设置为"true"表示不使用缓存</td></tr><tr><td>res</td><td>string</td><td>否</td><td>结果类型：all(返回所有结果)、results(仅返回results)、merge(仅返回merged_by_type)，默认为merge</td></tr><tr><td>src</td><td>string</td><td>否</td><td>数据来源类型：all(默认，全部来源)、tg(仅Telegram)、plugin(仅插件)</td></tr><tr><td>plugins</td><td>string</td><td>否</td><td>指定搜索的插件列表，使用英文逗号分隔多个插件名，不指定则搜索全部插件</td></tr><tr><td>cloud_types</td><td>string</td><td>否</td><td>指定返回的网盘类型列表，使用英文逗号分隔多个类型，支持：baidu、aliyun、quark、tianyi、uc、mobile、115、pikpak、xunlei、123、magnet、ed2k，不指定则返回所有类型</td></tr><tr><td>ext</td><td>string</td><td>否</td><td>JSON格式的扩展参数，用于传递给插件的自定义参数，如{"title_en":"English Title", "is_all":true}</td></tr></tbody></table></markdown-accessiblity-table><p dir="auto"><strong>POST请求示例</strong>：</p><div dir="auto"><pre><span><span>#</span> 未启用认证</span>
+curl -X POST http://localhost:8888/api/search \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -d <span><span>'</span>{</span><span>    "kw": "速度与激情",</span><span>    "channels": ["tgsearchers3", "xxx"],</span><span>    "conc": 2,</span><span>    "refresh": true,</span><span>    "res": "merge",</span><span>    "src": "all",</span><span>    "plugins": ["jikepan"],</span><span>    "cloud_types": ["baidu", "quark"],</span><span>    "ext": {</span><span>      "title_en": "Fast and Furious",</span><span>      "is_all": true</span><span>    }</span><span>  }<span>'</span></span><span><span>#</span> 启用认证时（需要添加Authorization头）</span>
+curl -X POST http://localhost:8888/api/search \
+  -H <span><span>"</span>Content-Type: application/json<span>"</span></span> \
+  -H <span><span>"</span>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...<span>"</span></span> \
+  -d <span><span>'</span>{</span><span>    "kw": "速度与激情",</span><span>    "res": "merge"</span><span>  }<span>'</span></span></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 未启用认证
+curl -X POST http://localhost:8888/api/search \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{
+    &quot;kw&quot;: &quot;速度与激情&quot;,
+    &quot;channels&quot;: [&quot;tgsearchers3&quot;, &quot;xxx&quot;],
+    &quot;conc&quot;: 2,
+    &quot;refresh&quot;: true,
+    &quot;res&quot;: &quot;merge&quot;,
+    &quot;src&quot;: &quot;all&quot;,
+    &quot;plugins&quot;: [&quot;jikepan&quot;],
+    &quot;cloud_types&quot;: [&quot;baidu&quot;, &quot;quark&quot;],
+    &quot;ext&quot;: {
+      &quot;title_en&quot;: &quot;Fast and Furious&quot;,
+      &quot;is_all&quot;: true
+    }
+  }'
+
+# 启用认证时（需要添加Authorization头）
+curl -X POST http://localhost:8888/api/search \
+  -H &quot;Content-Type: application/json&quot; \
+  -H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&quot; \
+  -d '{
+    &quot;kw&quot;: &quot;速度与激情&quot;,
+    &quot;res&quot;: &quot;merge&quot;
+  }'" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>GET请求示例</strong>：</p><div dir="auto"><pre><span><span>#</span> 未启用认证</span>
+curl <span><span>"</span>http://localhost:8888/api/search?kw=速度与激情&amp;res=merge&amp;src=tg<span>"</span></span><span><span>#</span> 启用认证时（需要添加Authorization头）</span>
+curl <span><span>"</span>http://localhost:8888/api/search?kw=速度与激情&amp;res=merge<span>"</span></span> \
+  -H <span><span>"</span>Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...<span>"</span></span></pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="# 未启用认证
+curl &quot;http://localhost:8888/api/search?kw=速度与激情&amp;res=merge&amp;src=tg&quot;
+
+# 启用认证时（需要添加Authorization头）
+curl &quot;http://localhost:8888/api/search?kw=速度与激情&amp;res=merge&quot; \
+  -H &quot;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...&quot;" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>成功响应</strong>：</p><div dir="auto"><pre>{
+  <span>"total"</span>: <span>15</span>,
+  <span>"results"</span>: [
+    {
+      <span>"message_id"</span>: <span><span>"</span>12345<span>"</span></span>,
+      <span>"unique_id"</span>: <span><span>"</span>channel-12345<span>"</span></span>,
+      <span>"channel"</span>: <span><span>"</span>tgsearchers3<span>"</span></span>,
+      <span>"datetime"</span>: <span><span>"</span>2023-06-10T14:23:45Z<span>"</span></span>,
+      <span>"title"</span>: <span><span>"</span>速度与激情全集1-10<span>"</span></span>,
+      <span>"content"</span>: <span><span>"</span>速度与激情系列全集，1080P高清...<span>"</span></span>,
+      <span>"links"</span>: [
+        {
+          <span>"type"</span>: <span><span>"</span>baidu<span>"</span></span>,
+          <span>"url"</span>: <span><span>"</span>https://pan.baidu.com/s/1abcdef<span>"</span></span>,
+          <span>"password"</span>: <span><span>"</span>1234<span>"</span></span>
+        }
+      ],
+      <span>"tags"</span>: [<span><span>"</span>电影<span>"</span></span>, <span><span>"</span>合集<span>"</span></span>],
+      <span>"images"</span>: [
+        <span><span>"</span>https://cdn1.cdn-telegram.org/file/xxx.jpg<span>"</span></span>
+      ]
+    },
+    <span>// 更多结果...</span>
+  ],
+  <span>"merged_by_type"</span>: {
+    <span>"baidu"</span>: [
+      {
+        <span>"url"</span>: <span><span>"</span>https://pan.baidu.com/s/1abcdef<span>"</span></span>,
+        <span>"password"</span>: <span><span>"</span>1234<span>"</span></span>,
+        <span>"note"</span>: <span><span>"</span>速度与激情全集1-10<span>"</span></span>,
+        <span>"datetime"</span>: <span><span>"</span>2023-06-10T14:23:45Z<span>"</span></span>,
+        <span>"source"</span>: <span><span>"</span>tg:频道名称<span>"</span></span>,
+        <span>"images"</span>: [
+          <span><span>"</span>https://cdn1.cdn-telegram.org/file/xxx.jpg<span>"</span></span>
+        ]
+      },
+      <span>// 更多百度网盘链接...</span>
+    ],
+    <span>"quark"</span>: [
+      {
+        <span>"url"</span>: <span><span>"</span>https://pan.quark.cn/s/xxxx<span>"</span></span>,
+        <span>"password"</span>: <span><span>"</span><span>"</span></span>,
+        <span>"note"</span>: <span><span>"</span>凡人修仙传<span>"</span></span>,
+        <span>"datetime"</span>: <span><span>"</span>2023-06-10T15:30:22Z<span>"</span></span>,
+        <span>"source"</span>: <span><span>"</span>plugin:插件名<span>"</span></span>,
+        <span>"images"</span>: []
+      }
+    ],
+    <span>"aliyun"</span>: [
+      <span>// 阿里云盘链接...</span>
+    ]
+    <span>// 更多网盘类型...</span>
+  }
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;total&quot;: 15,
+  &quot;results&quot;: [
+    {
+      &quot;message_id&quot;: &quot;12345&quot;,
+      &quot;unique_id&quot;: &quot;channel-12345&quot;,
+      &quot;channel&quot;: &quot;tgsearchers3&quot;,
+      &quot;datetime&quot;: &quot;2023-06-10T14:23:45Z&quot;,
+      &quot;title&quot;: &quot;速度与激情全集1-10&quot;,
+      &quot;content&quot;: &quot;速度与激情系列全集，1080P高清...&quot;,
+      &quot;links&quot;: [
+        {
+          &quot;type&quot;: &quot;baidu&quot;,
+          &quot;url&quot;: &quot;https://pan.baidu.com/s/1abcdef&quot;,
+          &quot;password&quot;: &quot;1234&quot;
+        }
+      ],
+      &quot;tags&quot;: [&quot;电影&quot;, &quot;合集&quot;],
+      &quot;images&quot;: [
+        &quot;https://cdn1.cdn-telegram.org/file/xxx.jpg&quot;
+      ]
+    },
+    // 更多结果...
+  ],
+  &quot;merged_by_type&quot;: {
+    &quot;baidu&quot;: [
+      {
+        &quot;url&quot;: &quot;https://pan.baidu.com/s/1abcdef&quot;,
+        &quot;password&quot;: &quot;1234&quot;,
+        &quot;note&quot;: &quot;速度与激情全集1-10&quot;,
+        &quot;datetime&quot;: &quot;2023-06-10T14:23:45Z&quot;,
+        &quot;source&quot;: &quot;tg:频道名称&quot;,
+        &quot;images&quot;: [
+          &quot;https://cdn1.cdn-telegram.org/file/xxx.jpg&quot;
+        ]
+      },
+      // 更多百度网盘链接...
+    ],
+    &quot;quark&quot;: [
+      {
+        &quot;url&quot;: &quot;https://pan.quark.cn/s/xxxx&quot;,
+        &quot;password&quot;: &quot;&quot;,
+        &quot;note&quot;: &quot;凡人修仙传&quot;,
+        &quot;datetime&quot;: &quot;2023-06-10T15:30:22Z&quot;,
+        &quot;source&quot;: &quot;plugin:插件名&quot;,
+        &quot;images&quot;: []
+      }
+    ],
+    &quot;aliyun&quot;: [
+      // 阿里云盘链接...
+    ]
+    // 更多网盘类型...
+  }
+}" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>字段说明</strong>：</p><ul dir="auto"><li><code>source</code>: 数据来源标识
+<ul dir="auto"><li><code>tg:频道名称</code>: 来自Telegram频道</li><li><code>plugin:插件名</code>: 来自指定插件</li><li><code>unknown</code>: 未知来源</li></ul></li><li><code>images</code>: TG消息中的图片链接数组（可选字段）
+<ul dir="auto"><li>仅在来源为Telegram频道且消息包含图片时出现</li></ul></li></ul><p dir="auto"><strong>错误响应</strong>：</p><div dir="auto"><pre><span>// 参数错误</span>
+{
+  <span>"code"</span>: <span>400</span>,
+  <span>"message"</span>: <span><span>"</span>关键词不能为空<span>"</span></span>
+}
+
+<span>// 未授权（启用认证但未提供Token）</span>
+{
+  <span>"error"</span>: <span><span>"</span>未授权：缺少认证令牌<span>"</span></span>,
+  <span>"code"</span>: <span><span>"</span>AUTH_TOKEN_MISSING<span>"</span></span>
+}
+
+<span>// Token无效或过期</span>
+{
+  <span>"error"</span>: <span><span>"</span>未授权：令牌无效或已过期<span>"</span></span>,
+  <span>"code"</span>: <span><span>"</span>AUTH_TOKEN_INVALID<span>"</span></span>
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="// 参数错误
+{
+  &quot;code&quot;: 400,
+  &quot;message&quot;: &quot;关键词不能为空&quot;
+}
+
+// 未授权（启用认证但未提供Token）
+{
+  &quot;error&quot;: &quot;未授权：缺少认证令牌&quot;,
+  &quot;code&quot;: &quot;AUTH_TOKEN_MISSING&quot;
+}
+
+// Token无效或过期
+{
+  &quot;error&quot;: &quot;未授权：令牌无效或已过期&quot;,
+  &quot;code&quot;: &quot;AUTH_TOKEN_INVALID&quot;
+}" tabindex="0" role="button"></clipboard-copy></div></div><div dir="auto"><h3 tabindex="-1" dir="auto">健康检查</h3><a aria-label="Permalink: 健康检查" href="#健康检查"></a></div><p dir="auto">检查API服务是否正常运行。</p><p dir="auto"><strong>接口地址</strong>：<code>/api/health</code><br><strong>请求方法</strong>：<code>GET</code><br><strong>是否需要认证</strong>：否（公开接口）</p><p dir="auto"><strong>请求示例</strong>：</p><div dir="auto"><pre>curl http://localhost:8888/api/health</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="curl http://localhost:8888/api/health" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>成功响应</strong>：</p><div dir="auto"><pre>{
+  <span>"status"</span>: <span><span>"</span>ok<span>"</span></span>,
+  <span>"auth_enabled"</span>: <span>true</span>,
+  <span>"plugins_enabled"</span>: <span>true</span>,
+  <span>"plugin_count"</span>: <span>16</span>,
+  <span>"plugins"</span>: [
+    <span><span>"</span>pansearch<span>"</span></span>,
+    <span><span>"</span>panta<span>"</span></span>, 
+    <span><span>"</span>qupansou<span>"</span></span>,
+    <span><span>"</span>hunhepan<span>"</span></span>,
+    <span><span>"</span>jikepan<span>"</span></span>,
+    <span><span>"</span>pan666<span>"</span></span>,
+    <span><span>"</span>panyq<span>"</span></span>,
+    <span><span>"</span>susu<span>"</span></span>,
+    <span><span>"</span>xuexizhinan<span>"</span></span>,
+    <span><span>"</span>hdr4k<span>"</span></span>,
+    <span><span>"</span>labi<span>"</span></span>,
+    <span><span>"</span>shandian<span>"</span></span>,
+    <span><span>"</span>duoduo<span>"</span></span>,
+    <span><span>"</span>muou<span>"</span></span>,
+    <span><span>"</span>wanou<span>"</span></span>,
+    <span><span>"</span>ouge<span>"</span></span>,
+    <span><span>"</span>zhizhen<span>"</span></span>,
+    <span><span>"</span>huban<span>"</span></span>
+  ],
+  <span>"channels_count"</span>: <span>1</span>,
+  <span>"channels"</span>: [
+    <span><span>"</span>tgsearchers3<span>"</span></span>
+  ]
+}</pre><div><clipboard-copy aria-label="Copy" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;status&quot;: &quot;ok&quot;,
+  &quot;auth_enabled&quot;: true,
+  &quot;plugins_enabled&quot;: true,
+  &quot;plugin_count&quot;: 16,
+  &quot;plugins&quot;: [
+    &quot;pansearch&quot;,
+    &quot;panta&quot;, 
+    &quot;qupansou&quot;,
+    &quot;hunhepan&quot;,
+    &quot;jikepan&quot;,
+    &quot;pan666&quot;,
+    &quot;panyq&quot;,
+    &quot;susu&quot;,
+    &quot;xuexizhinan&quot;,
+    &quot;hdr4k&quot;,
+    &quot;labi&quot;,
+    &quot;shandian&quot;,
+    &quot;duoduo&quot;,
+    &quot;muou&quot;,
+    &quot;wanou&quot;,
+    &quot;ouge&quot;,
+    &quot;zhizhen&quot;,
+    &quot;huban&quot;
+  ],
+  &quot;channels_count&quot;: 1,
+  &quot;channels&quot;: [
+    &quot;tgsearchers3&quot;
+  ]
+}" tabindex="0" role="button"></clipboard-copy></div></div><p dir="auto"><strong>字段说明</strong>：</p><ul dir="auto"><li><code>status</code>: 服务状态，"ok"表示正常</li><li><code>auth_enabled</code>: 是否启用认证功能</li><li><code>plugins_enabled</code>: 是否启用插件</li><li><code>plugin_count</code>: 已启用的插件数量</li><li><code>plugins</code>: 已启用的插件列表</li><li><code>channels_count</code>: 配置的频道数量</li><li><code>channels</code>: 配置的频道列表</li></ul><div dir="auto"><h2 tabindex="-1" dir="auto">📄 许可证</h2><a aria-label="Permalink: 📄 许可证" href="#-许可证"></a></div><p dir="auto">本项目采用 MIT 许可证。详情请见 <a href="/fish2018/pansou/blob/main/LICENSE">LICENSE</a> 文件。</p><div dir="auto"><h2 tabindex="-1" dir="auto">⭐ Star 历史</h2><a aria-label="Permalink: ⭐ Star 历史" href="#-star-历史"></a></div><p dir="auto"><a href="https://star-history.com/#fish2018/pansou&amp;Date" rel="nofollow"></a></p></article></div></div></div></div></div><!-- --><!-- --></div></react-partial><input type="hidden" value="BfbjSPPcK-bfbjBsrWI--cfgyqdtAOvvnANuK49-zpGFAsnnNmg5Pfg-Mhcbe3vvEhR_mI7t5CIGZef7vM2DAQ" data-csrf="true"></div><div data-view-component="true"><div data-pjax=""><div><div><div><h2>About</h2><p>
+        PanSou是一款高性能的网盘资源搜索API服务，支持TG频道和插件搜索。系统设计以性能和可扩展性为核心，支持多频道多插件并发搜索、结果智能排序和网盘类型分类。docker集成前后端，一键启动，开箱即用。 <a href="https://so.252035.xyz/" rel="nofollow">https://so.252035.xyz/</a></p><h3>Resources</h3><div><a data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:readme&quot;}" href="#readme-ov-file">
+        Readme
+</a></div><h3>License</h3><div><a href="#MIT-1-ov-file" data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:license&quot;}">
+     MIT license
+    </a></div><include-fragment src="/fish2018/pansou/hovercards/citation/sidebar_partial?tree_name=main" data-nonce="v2:dd17edc8-17df-3c75-254a-f9a37ca632f4" data-view-component="true"><div data-show-on-forbidden-error="" hidden=""><div><div><div data-view-component="true"><h3 data-view-component="true">        Uh oh!
+</h3><p data-view-component="true"></p><p>There was an error while loading. <a data-turbo="false" href="" aria-label="Please reload this page">Please reload this page</a>.</p><p></p></div></div></div></div></include-fragment><div><a href="/fish2018/pansou/activity" data-view-component="true"><span>Activity</span></a></div><h3>Stars</h3><div><a href="/fish2018/pansou/stargazers" data-view-component="true"><strong>7.6k</strong>
+      stars</a></div><h3>Watchers</h3><div><a href="/fish2018/pansou/watchers" data-view-component="true"><strong>22</strong>
+      watching</a></div><h3>Forks</h3><div><a href="/fish2018/pansou/forks" data-view-component="true"><strong>1.7k</strong>
+      forks</a></div><div><a href="/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Ffish2018%2Fpansou&amp;report=fish2018+%28user%29">
+          Report repository
+</a></div></div></div></div><div><div><h2><a href="/fish2018/pansou/graphs/contributors" data-view-component="true">Contributors
+      <span title="3" data-view-component="true">3</span></a></h2><ul><li><a href="https://github.com/fish2018" data-hovercard-type="user" data-hovercard-url="/users/fish2018/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp"></a><span data-view-component="true"><a href="https://github.com/fish2018"><strong>fish2018</strong><span>Nobody</span></a></span></li><li><a href="https://github.com/yayoinoyume" data-hovercard-type="user" data-hovercard-url="/users/yayoinoyume/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp"></a><span data-view-component="true"><a href="https://github.com/yayoinoyume"><strong>yayoinoyume</strong><span>YAYOI27</span></a></span></li><li><a href="https://github.com/wj2008" data-hovercard-type="user" data-hovercard-url="/users/wj2008/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp"></a><span data-view-component="true"><a href="https://github.com/wj2008"><strong>wj2008</strong></a></span></li></ul></div></div><div><div><h2>Languages</h2><div><span data-view-component="true"><span itemprop="keywords" data-view-component="true"></span><span itemprop="keywords" data-view-component="true"></span><span itemprop="keywords" data-view-component="true"></span></span></div><ul><li><a href="/fish2018/pansou/search?l=go" data-ga-click="Repository, language stats search click, location:repo overview"><span>Go</span><span>94.4%</span></a></li><li><a href="/fish2018/pansou/search?l=typescript" data-ga-click="Repository, language stats search click, location:repo overview"><span>TypeScript</span><span>4.4%</span></a></li><li><span><span>Other</span><span>1.2%</span></span></li></ul></div></div></div></div></div></div></div></div></turbo-frame></main></div></div><footer role="contentinfo"><h2>Footer</h2><div><div><a aria-label="GitHub Homepage" href="https://github.com"></a><span>
+        © 2025 GitHub,&nbsp;Inc.
+      </span></div><nav aria-label="Footer"><h3>Footer navigation</h3><ul aria-labelledby="sr-footer-heading"><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true">Terms</a></li><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true">Privacy</a></li><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security" data-view-component="true">Security</a></li><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}" href="https://www.githubstatus.com/" data-view-component="true">Status</a></li><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to community&quot;,&quot;label&quot;:&quot;text:community&quot;}" href="https://github.community/" data-view-component="true">Community</a></li><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to docs&quot;,&quot;label&quot;:&quot;text:docs&quot;}" href="https://docs.github.com/" data-view-component="true">Docs</a></li><li><a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}" href="https://support.github.com?tags=dotcom-footer" data-view-component="true">Contact</a></li><li><cookie-consent-link><button type="button" data-action="click:cookie-consent-link#showConsentManagement" data-analytics-event="{&quot;location&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;cookies&quot;,&quot;context&quot;:&quot;subfooter&quot;,&quot;tag&quot;:&quot;link&quot;,&quot;label&quot;:&quot;cookies_link_subfooter_footer&quot;}">
+       Manage cookies
+    </button></cookie-consent-link></li><li><cookie-consent-link><button type="button" data-action="click:cookie-consent-link#showConsentManagement" data-analytics-event="{&quot;location&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;dont_share_info&quot;,&quot;context&quot;:&quot;subfooter&quot;,&quot;tag&quot;:&quot;link&quot;,&quot;label&quot;:&quot;dont_share_info_link_subfooter_footer&quot;}">
+      Do not share my personal information
+    </button></cookie-consent-link></li></ul></nav></div></footer><ghcc-consent data-locale="en" data-initial-cookie-consent-allowed="" data-cookie-consent-required="false"></ghcc-consent><div hidden=""><button type="button" aria-label="Dismiss error"></button>
+    You can’t perform that action at this time.
+  </div><template>
+  <details class="details-reset details-overlay details-overlay-dark lh-default color-fg-default hx_rsm" open="">
+    <summary role="button" aria-label="Close dialog"></summary>
+    <details-dialog class="Box Box--overlay d-flex flex-column anim-fade-in fast hx_rsm-dialog hx_rsm-modal">
+      <button class="Box-btn-octicon m-0 btn-octicon position-absolute right-0 top-0" type="button" aria-label="Close dialog" data-close-dialog="">
+        <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+      </button>
+      <div class="octocat-spinner my-6 js-details-dialog-spinner"></div>
+    </details-dialog>
+  </details>
+</template><div><div></div></div><template>
+  <div class="zeroclipboard-container position-absolute right-0 top-0">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn js-clipboard-copy m-2 p-0" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon m-2">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none m-2">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template><template>
+  <div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w">
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div>
+</template></div><div aria-live="polite" aria-atomic="true"></div><div aria-live="assertive" aria-atomic="true"></div><div></div>
+</body>
+</html>
